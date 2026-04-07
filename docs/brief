@@ -1,0 +1,234 @@
+Approach this as a **design system**, not just a colour set. Dracula works because it encodes *roles*, not just colours. Helsing should do the same.
+
+---
+
+# 1. Concept: “Helsing”
+
+**Core idea:**
+A disciplined, daylight counterpart to Dracula. Where Dracula is nocturnal and saturated, Helsing is **measured, paper-like, and precise**.
+
+**Design pillars**
+
+* **Daylight readability** (no pure white glare, no washed-out greys)
+* **Ink-on-paper feel** (subtle warmth, not sterile blue-white)
+* **Controlled accents** (colour used sparingly, with intent)
+* **Semantic consistency** (roles > colours)
+
+**Visual metaphor**
+
+* Dracula → neon night, glowing terminal
+* Helsing → annotated manuscript, engineer’s notebook
+
+---
+
+# 2. Base Palette (Foundation)
+
+Define neutrals first. These matter more than accents.
+
+| Role           | Name        | Hex       | Notes                       |
+| -------------- | ----------- | --------- | --------------------------- |
+| Background     | `bg`        | `#F4F1EA` | Warm paper (not pure white) |
+| Background Alt | `bg_alt`    | `#EAE5DC` | Panels, splits              |
+| Foreground     | `fg`        | `#2A2A2A` | Soft charcoal               |
+| Muted          | `muted`     | `#6B6B6B` | Comments, secondary         |
+| Subtle         | `subtle`    | `#A8A29E` | UI chrome                   |
+| Border         | `border`    | `#D6D0C4` | Low contrast lines          |
+| Selection      | `selection` | `#E6DCC8` | Warm highlight              |
+
+**Rationale**
+
+* Avoid `#FFFFFF` → causes eye strain
+* Avoid pure black → too harsh in light themes
+* Keep everything slightly warm → avoids clinical feel
+
+---
+
+# 3. Accent Palette (Semantic Colours)
+
+Keep Dracula’s *intent*, but reinterpret for daylight.
+
+| Role     | Name     | Hex       | Purpose               |
+| -------- | -------- | --------- | --------------------- |
+| Keyword  | `purple` | `#7C6EE6` | Calm, intellectual    |
+| Function | `blue`   | `#3A7BD5` | Primary action        |
+| String   | `green`  | `#4C9A5F` | Natural, readable     |
+| Number   | `orange` | `#C47A2C` | Warm, distinct        |
+| Type     | `cyan`   | `#2F8F8B` | Structural            |
+| Constant | `pink`   | `#C05A8C` | Rare emphasis         |
+| Error    | `red`    | `#C23B3B` | Muted, not aggressive |
+| Warning  | `yellow` | `#B58900` | Inspired by Solarized |
+| Info     | `info`   | `#4A90E2` | Optional              |
+
+**Key rule:**
+No neon. Saturation is reduced ~20–30% compared to Dracula.
+
+---
+
+# 4. Semantic Mapping (Critical for Portability)
+
+This is what makes it “Dracula-level portable”.
+
+Define **roles, not syntax groups**:
+
+| Semantic Role  | Colour              |
+| -------------- | ------------------- |
+| Text           | `fg`                |
+| Comment        | `muted`             |
+| Keyword        | `purple`            |
+| Function       | `blue`              |
+| Variable       | `fg`                |
+| String         | `green`             |
+| Number         | `orange`            |
+| Type           | `cyan`              |
+| Constant       | `pink`              |
+| Error          | `red`               |
+| Warning        | `yellow`            |
+| Cursor         | `fg` on `selection` |
+| Selection      | `selection`         |
+| Line Highlight | `bg_alt`            |
+
+---
+
+# 5. Neovim Theme (Starter Lua)
+
+Minimal, clean, portable base:
+
+```lua
+local helsing = {}
+
+helsing.colors = {
+  bg        = "#F4F1EA",
+  bg_alt    = "#EAE5DC",
+  fg        = "#2A2A2A",
+  muted     = "#6B6B6B",
+  subtle    = "#A8A29E",
+  border    = "#D6D0C4",
+  selection = "#E6DCC8",
+
+  purple = "#7C6EE6",
+  blue   = "#3A7BD5",
+  green  = "#4C9A5F",
+  orange = "#C47A2C",
+  cyan   = "#2F8F8B",
+  pink   = "#C05A8C",
+  red    = "#C23B3B",
+  yellow = "#B58900",
+}
+
+function helsing.setup()
+  local c = helsing.colors
+
+  vim.cmd("highlight clear")
+  vim.o.background = "light"
+  vim.g.colors_name = "helsing"
+
+  local hl = vim.api.nvim_set_hl
+
+  -- UI
+  hl(0, "Normal",       { fg = c.fg, bg = c.bg })
+  hl(0, "LineNr",       { fg = c.subtle })
+  hl(0, "CursorLine",   { bg = c.bg_alt })
+  hl(0, "Visual",       { bg = c.selection })
+  hl(0, "VertSplit",    { fg = c.border })
+  hl(0, "Comment",      { fg = c.muted, italic = true })
+
+  -- Syntax
+  hl(0, "Keyword",      { fg = c.purple })
+  hl(0, "Function",     { fg = c.blue })
+  hl(0, "String",       { fg = c.green })
+  hl(0, "Number",       { fg = c.orange })
+  hl(0, "Type",         { fg = c.cyan })
+  hl(0, "Constant",     { fg = c.pink })
+
+  -- Diagnostics
+  hl(0, "DiagnosticError", { fg = c.red })
+  hl(0, "DiagnosticWarn",  { fg = c.yellow })
+end
+
+return helsing
+```
+
+---
+
+# 6. Naming Consistency (Important)
+
+For cross-platform adoption:
+
+Use **token names**, not editor-specific names:
+
+```
+helsing.bg
+helsing.fg
+helsing.comment
+helsing.keyword
+helsing.string
+helsing.function
+helsing.type
+helsing.error
+```
+
+This lets you port easily to:
+
+* VS Code
+* WezTerm
+* Alacritty
+* Waybar
+* CSS variables
+
+---
+
+# 7. What Makes This “Dracula-Level”
+
+To reach that level, you need:
+
+### 1. Strict palette contract
+
+No ad-hoc colours in implementations.
+
+### 2. Documentation
+
+* Colour roles
+* Usage examples
+* Contrast guarantees
+
+### 3. Reference implementations
+
+* Neovim (you’re starting here)
+* VS Code JSON
+* Terminal theme
+
+### 4. Visual identity
+
+* Screenshots
+* Consistent typography (IBM Plex Mono fits your ecosystem)
+
+---
+
+# 8. Next Step (Recommended)
+
+Refine before expanding:
+
+1. Test in Neovim with:
+
+   * Python
+   * YAML (important for your DevOps work)
+   * JSON
+
+2. Adjust:
+
+   * Comment contrast
+   * Keyword visibility
+   * Selection clarity
+
+3. Then:
+
+   * Export to VS Code theme
+   * Add terminal version
+
+---
+
+If needed, next iteration can:
+
+* tighten contrast ratios (WCAG)
+* align palette with your **Caffeinated Minds** brand
+* generate a full “theme spec” document (Dracula-style) for publishing
