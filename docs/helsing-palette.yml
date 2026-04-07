@@ -1,0 +1,68 @@
+name: Helsing
+slug: helsing
+version: 0.1.0
+variant: light
+
+meta:
+  intent: "A disciplined daylight theme with paper warmth and semantic restraint."
+  goals:
+    - aesthetic_beauty
+    - maximum_usability
+    - semantic_consistency
+  source_docs:
+    - docs/brief
+    - docs/helsing-core-tokens.md
+    - docs/helsing-theme-spec.md
+
+core:
+  structural:
+    bg: "#F4F1EA"
+    bg_alt: "#EAE5DC"
+    fg: "#2A2A2A"
+    muted: "#6B6B6B"
+    subtle: "#A8A29E"
+    border: "#D6D0C4"
+    selection: "#E6DCC8"
+  semantic:
+    purple: "#7C6EE6"
+    blue: "#3A7BD5"
+    green: "#4C9A5F"
+    orange: "#C47A2C"
+    cyan: "#2F8F8B"
+    pink: "#C05A8C"
+    red: "#C23B3B"
+    yellow: "#B58900"
+    info: "#4A90E2"
+
+semantic_roles:
+  background: bg
+  surface: bg_alt
+  text: fg
+  text_muted: muted
+  chrome: subtle
+  border: border
+  selection: selection
+  keyword: purple
+  function: blue
+  string: green
+  number: orange
+  type: cyan
+  constant: pink
+  error: red
+  warning: yellow
+  info: info
+
+rules:
+  use_semantic_roles_first: true
+  allow_ad_hoc_hex_in_targets: false
+  separate_structural_from_semantic: true
+  preserve_warmth: true
+  preserve_restraint: true
+  avoid_pure_white_backgrounds: true
+  avoid_pure_black_foregrounds: true
+  avoid_neon_accents: true
+
+notes:
+  - "This file is the canonical machine-readable source of truth for Helsing core tokens."
+  - "Target implementations should consume these tokens before introducing target-specific helper colors."
+  - "Helper colors such as diff backgrounds or popup surfaces should live in implementation files unless promoted here intentionally."

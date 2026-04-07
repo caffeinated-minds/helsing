@@ -1,0 +1,95 @@
+target: wezterm
+output: themes/wezterm/helsing.toml
+
+metadata:
+  name: Helsing
+  author: Caffeinated Minds
+  origin_url: https://github.com/caffeinatedminds/helsing
+
+colors:
+  foreground: fg
+  background: bg
+  cursor_bg: fg
+  cursor_fg: bg
+  cursor_border: fg
+  selection_fg: fg
+  selection_bg: selection
+  scrollbar_thumb: subtle
+  split: border
+  compose_cursor: orange
+
+  copy_mode_active_highlight_bg: selection
+  copy_mode_active_highlight_fg: fg
+  copy_mode_inactive_highlight_bg: bg_alt
+  copy_mode_inactive_highlight_fg: muted
+
+  quick_select_label_bg: blue
+  quick_select_label_fg: bg
+  quick_select_match_bg: selection
+  quick_select_match_fg: fg
+
+  input_selector_label_bg: purple
+  input_selector_label_fg: bg
+  launcher_label_bg: cyan
+  launcher_label_fg: bg
+
+ansi:
+  - fg
+  - red
+  - green
+  - yellow
+  - blue
+  - pink
+  - cyan
+  - bg_alt
+
+brights:
+  - muted
+  - red
+  - green
+  - yellow
+  - info
+  - pink
+  - cyan
+  - bg
+
+indexed: {}
+
+tab_bar:
+  background: bg_alt
+  inactive_tab_edge: border
+  active_tab:
+    bg_color: bg
+    fg_color: fg
+    intensity: Bold
+    underline: None
+    italic: false
+    strikethrough: false
+  inactive_tab:
+    bg_color: bg_alt
+    fg_color: muted
+    intensity: Normal
+    underline: None
+    italic: false
+    strikethrough: false
+  inactive_tab_hover:
+    bg_color: selection
+    fg_color: fg
+    intensity: Normal
+    underline: None
+    italic: false
+    strikethrough: false
+  new_tab:
+    bg_color: bg_alt
+    fg_color: blue
+    intensity: Normal
+    underline: None
+    italic: false
+    strikethrough: false
+  new_tab_hover:
+    bg_color: selection
+    fg_color: blue
+    intensity: Bold
+    underline: None
+    italic: false
+    strikethrough: false

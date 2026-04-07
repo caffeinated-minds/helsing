@@ -1,0 +1,95 @@
+# Generated from `docs/helsing-palette.yml`.
+# Intended for use as a WezTerm color scheme TOML file.
+
+[colors]
+foreground = '{{ colors[wezterm.colors.foreground] }}'
+background = '{{ colors[wezterm.colors.background] }}'
+cursor_bg = '{{ colors[wezterm.colors.cursor_bg] }}'
+cursor_fg = '{{ colors[wezterm.colors.cursor_fg] }}'
+cursor_border = '{{ colors[wezterm.colors.cursor_border] }}'
+selection_fg = '{{ colors[wezterm.colors.selection_fg] }}'
+selection_bg = '{{ colors[wezterm.colors.selection_bg] }}'
+scrollbar_thumb = '{{ colors[wezterm.colors.scrollbar_thumb] }}'
+split = '{{ colors[wezterm.colors.split] }}'
+compose_cursor = '{{ colors[wezterm.colors.compose_cursor] }}'
+
+copy_mode_active_highlight_bg = { Color = '{{ colors[wezterm.colors.copy_mode_active_highlight_bg] }}' }
+copy_mode_active_highlight_fg = { Color = '{{ colors[wezterm.colors.copy_mode_active_highlight_fg] }}' }
+copy_mode_inactive_highlight_bg = { Color = '{{ colors[wezterm.colors.copy_mode_inactive_highlight_bg] }}' }
+copy_mode_inactive_highlight_fg = { Color = '{{ colors[wezterm.colors.copy_mode_inactive_highlight_fg] }}' }
+
+quick_select_label_bg = { Color = '{{ colors[wezterm.colors.quick_select_label_bg] }}' }
+quick_select_label_fg = { Color = '{{ colors[wezterm.colors.quick_select_label_fg] }}' }
+quick_select_match_bg = { Color = '{{ colors[wezterm.colors.quick_select_match_bg] }}' }
+quick_select_match_fg = { Color = '{{ colors[wezterm.colors.quick_select_match_fg] }}' }
+
+input_selector_label_bg = { Color = '{{ colors[wezterm.colors.input_selector_label_bg] }}' }
+input_selector_label_fg = { Color = '{{ colors[wezterm.colors.input_selector_label_fg] }}' }
+launcher_label_bg = { Color = '{{ colors[wezterm.colors.launcher_label_bg] }}' }
+launcher_label_fg = { Color = '{{ colors[wezterm.colors.launcher_label_fg] }}' }
+
+ansi = [
+{%- for token in wezterm.ansi %}
+  '{{ colors[token] }}'{{ "," if not loop.last }}
+{%- endfor %}
+]
+
+brights = [
+{%- for token in wezterm.brights %}
+  '{{ colors[token] }}'{{ "," if not loop.last }}
+{%- endfor %}
+]
+
+[colors.indexed]
+{%- for key, token in wezterm.indexed.items() %}
+{{ key }} = '{{ colors[token] if token in colors else token }}'
+{%- endfor %}
+
+[colors.tab_bar]
+background = '{{ colors[wezterm.tab_bar.background] }}'
+inactive_tab_edge = '{{ colors[wezterm.tab_bar.inactive_tab_edge] }}'
+
+[colors.tab_bar.active_tab]
+bg_color = '{{ colors[wezterm.tab_bar.active_tab.bg_color] }}'
+fg_color = '{{ colors[wezterm.tab_bar.active_tab.fg_color] }}'
+intensity = '{{ wezterm.tab_bar.active_tab.intensity }}'
+underline = '{{ wezterm.tab_bar.active_tab.underline }}'
+italic = {{ 'true' if wezterm.tab_bar.active_tab.italic else 'false' }}
+strikethrough = {{ 'true' if wezterm.tab_bar.active_tab.strikethrough else 'false' }}
+
+[colors.tab_bar.inactive_tab]
+bg_color = '{{ colors[wezterm.tab_bar.inactive_tab.bg_color] }}'
+fg_color = '{{ colors[wezterm.tab_bar.inactive_tab.fg_color] }}'
+intensity = '{{ wezterm.tab_bar.inactive_tab.intensity }}'
+underline = '{{ wezterm.tab_bar.inactive_tab.underline }}'
+italic = {{ 'true' if wezterm.tab_bar.inactive_tab.italic else 'false' }}
+strikethrough = {{ 'true' if wezterm.tab_bar.inactive_tab.strikethrough else 'false' }}
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '{{ colors[wezterm.tab_bar.inactive_tab_hover.bg_color] }}'
+fg_color = '{{ colors[wezterm.tab_bar.inactive_tab_hover.fg_color] }}'
+intensity = '{{ wezterm.tab_bar.inactive_tab_hover.intensity }}'
+underline = '{{ wezterm.tab_bar.inactive_tab_hover.underline }}'
+italic = {{ 'true' if wezterm.tab_bar.inactive_tab_hover.italic else 'false' }}
+strikethrough = {{ 'true' if wezterm.tab_bar.inactive_tab_hover.strikethrough else 'false' }}
+
+[colors.tab_bar.new_tab]
+bg_color = '{{ colors[wezterm.tab_bar.new_tab.bg_color] }}'
+fg_color = '{{ colors[wezterm.tab_bar.new_tab.fg_color] }}'
+intensity = '{{ wezterm.tab_bar.new_tab.intensity }}'
+underline = '{{ wezterm.tab_bar.new_tab.underline }}'
+italic = {{ 'true' if wezterm.tab_bar.new_tab.italic else 'false' }}
+strikethrough = {{ 'true' if wezterm.tab_bar.new_tab.strikethrough else 'false' }}
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '{{ colors[wezterm.tab_bar.new_tab_hover.bg_color] }}'
+fg_color = '{{ colors[wezterm.tab_bar.new_tab_hover.fg_color] }}'
+intensity = '{{ wezterm.tab_bar.new_tab_hover.intensity }}'
+underline = '{{ wezterm.tab_bar.new_tab_hover.underline }}'
+italic = {{ 'true' if wezterm.tab_bar.new_tab_hover.italic else 'false' }}
+strikethrough = {{ 'true' if wezterm.tab_bar.new_tab_hover.strikethrough else 'false' }}
+
+[metadata]
+name = '{{ wezterm.metadata.name }}'
+author = '{{ wezterm.metadata.author }}'
+origin_url = '{{ wezterm.metadata.origin_url }}'

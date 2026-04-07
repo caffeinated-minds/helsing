@@ -1,0 +1,14 @@
+target: neovim
+output: themes/neovim/helsing.lua
+
+helpers:
+  diff_add: "#DCEEDB"
+  diff_change: "#E8E1F3"
+  diff_delete: "#F3D9D9"
+  search: "#F1E7B8"
+  incsearch: "#E8D58B"
+  cursorline: "#EFE9DF"
+  linenr: "#B3ADA4"
+  visual: "#E6DCC8"
+  pmenu: "#ECE7DE"
+  pmenu_sel: "#DDD4C5"
