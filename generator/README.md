@@ -11,6 +11,8 @@ The contract lives in one place:
 The generator consumes that contract and renders target-specific output such as:
 
 - `themes/neovim/helsing.lua`
+- `themes/wezterm/helsing.toml`
+- `themes/vscode/helsing-color-theme.json`
 
 ## Layout
 
@@ -26,6 +28,10 @@ The generator consumes that contract and renders target-specific output such as:
   - WezTerm color scheme template
 - `generator/config/wezterm.yml`
   - WezTerm-specific mappings, ANSI slots, and tab bar colors
+- `generator/templates/vscode/helsing-color-theme.json.j2`
+  - VS Code color theme template
+- `generator/config/vscode.yml`
+  - VS Code UI colors, token scopes, and semantic token mappings
 
 ## Usage
 
@@ -47,6 +53,8 @@ Canonical data belongs in:
 Target-specific data belongs in:
 
 - `generator/config/neovim.yml`
+- `generator/config/wezterm.yml`
+- `generator/config/vscode.yml`
 
 Examples of target-specific data:
 

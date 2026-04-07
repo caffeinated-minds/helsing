@@ -1,0 +1,9 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "name": "{{ vscode.metadata.name }}",
+  "type": "{{ vscode.metadata.type }}",
+  "semanticHighlighting": {{ "true" if vscode.metadata.semantic_highlighting else "false" }},
+  "colors": {{ vscode.colors | to_pretty_json }},
+  "tokenColors": {{ vscode.tokenColors | to_pretty_json }},
+  "semanticTokenColors": {{ vscode.semanticTokenColors | to_pretty_json }}
+}

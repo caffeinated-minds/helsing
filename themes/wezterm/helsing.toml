@@ -1,0 +1,83 @@
+# Generated from `docs/helsing-palette.yml`.
+# Intended for use as a WezTerm color scheme TOML file.
+
+[colors]
+foreground = '#2A2A2A'
+background = '#F4F1EA'
+cursor_bg = '#2A2A2A'
+cursor_fg = '#F4F1EA'
+cursor_border = '#2A2A2A'
+selection_fg = '#2A2A2A'
+selection_bg = '#E6DCC8'
+scrollbar_thumb = '#A8A29E'
+split = '#D6D0C4'
+compose_cursor = '#C47A2C'
+
+copy_mode_active_highlight_bg = { Color = '#E6DCC8' }
+copy_mode_active_highlight_fg = { Color = '#2A2A2A' }
+copy_mode_inactive_highlight_bg = { Color = '#EAE5DC' }
+copy_mode_inactive_highlight_fg = { Color = '#6B6B6B' }
+
+quick_select_label_bg = { Color = '#3A7BD5' }
+quick_select_label_fg = { Color = '#F4F1EA' }
+quick_select_match_bg = { Color = '#E6DCC8' }
+quick_select_match_fg = { Color = '#2A2A2A' }
+
+input_selector_label_bg = { Color = '#7C6EE6' }
+input_selector_label_fg = { Color = '#F4F1EA' }
+launcher_label_bg = { Color = '#2F8F8B' }
+launcher_label_fg = { Color = '#F4F1EA' }
+
+ansi = [  '#2A2A2A',  '#C23B3B',  '#4C9A5F',  '#B58900',  '#3A7BD5',  '#C05A8C',  '#2F8F8B',  '#EAE5DC']
+
+brights = [  '#6B6B6B',  '#C23B3B',  '#4C9A5F',  '#B58900',  '#4A90E2',  '#C05A8C',  '#2F8F8B',  '#F4F1EA']
+
+[colors.indexed]
+[colors.tab_bar]
+background = '#EAE5DC'
+inactive_tab_edge = '#D6D0C4'
+
+[colors.tab_bar.active_tab]
+bg_color = '#F4F1EA'
+fg_color = '#2A2A2A'
+intensity = 'Bold'
+underline = 'None'
+italic = false
+strikethrough = false
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#EAE5DC'
+fg_color = '#6B6B6B'
+intensity = 'Normal'
+underline = 'None'
+italic = false
+strikethrough = false
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#E6DCC8'
+fg_color = '#2A2A2A'
+intensity = 'Normal'
+underline = 'None'
+italic = false
+strikethrough = false
+
+[colors.tab_bar.new_tab]
+bg_color = '#EAE5DC'
+fg_color = '#3A7BD5'
+intensity = 'Normal'
+underline = 'None'
+italic = false
+strikethrough = false
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#E6DCC8'
+fg_color = '#3A7BD5'
+intensity = 'Bold'
+underline = 'None'
+italic = false
+strikethrough = false
+
+[metadata]
+name = 'Helsing'
+author = 'Caffeinated Minds'
+origin_url = 'https://github.com/caffeinatedminds/helsing'

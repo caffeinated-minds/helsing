@@ -1,0 +1,364 @@
+target: vscode
+output: themes/vscode/helsing-color-theme.json
+
+metadata:
+  name: Helsing
+  type: light
+  semantic_highlighting: true
+
+helpers:
+  diff_add: "#DCEEDB"
+  diff_change: "#E8E1F3"
+  diff_delete: "#F3D9D9"
+  editor_line: "#EFE9DF"
+  linenr: "#B3ADA4"
+  input_bg: "#ECE7DE"
+  input_active: "#DDD4C5"
+  find_match: "#F1E7B8"
+  current_find_match: "#E8D58B"
+
+colors:
+  foreground: fg
+  focusBorder: blue
+  widget.border: border
+  widget.shadow: selection
+  selection.background: selection
+  descriptionForeground: muted
+  errorForeground: red
+  icon.foreground: fg
+
+  textLink.foreground: blue
+  textLink.activeForeground: info
+  textBlockQuote.background: bg_alt
+  textBlockQuote.border: border
+  textCodeBlock.background: bg_alt
+  textPreformat.foreground: orange
+  textSeparator.foreground: border
+
+  button.background: blue
+  button.foreground: bg
+  button.hoverBackground: info
+  button.secondaryBackground: bg_alt
+  button.secondaryForeground: fg
+  button.secondaryHoverBackground: selection
+
+  dropdown.background: input_bg
+  dropdown.foreground: fg
+  dropdown.border: border
+
+  input.background: input_bg
+  input.foreground: fg
+  input.border: border
+  input.placeholderForeground: muted
+  inputOption.activeBorder: blue
+  inputValidation.infoBorder: info
+  inputValidation.warningBorder: yellow
+  inputValidation.errorBorder: red
+
+  editor.background: bg
+  editor.foreground: fg
+  editorCursor.foreground: fg
+  editor.selectionBackground: selection
+  editor.inactiveSelectionBackground: bg_alt
+  editor.lineHighlightBackground: editor_line
+  editor.findMatchBackground: current_find_match
+  editor.findMatchHighlightBackground: find_match
+  editor.findRangeHighlightBackground: bg_alt
+  editor.hoverHighlightBackground: selection
+  editor.wordHighlightBackground: selection
+  editor.wordHighlightStrongBackground: current_find_match
+  editorLineNumber.foreground: linenr
+  editorLineNumber.activeForeground: orange
+  editorWhitespace.foreground: border
+  editorIndentGuide.background: border
+  editorIndentGuide.activeBackground: subtle
+  editorRuler.foreground: border
+  editorBracketMatch.background: selection
+  editorBracketMatch.border: orange
+
+  editorGutter.background: bg
+  editorGutter.modifiedBackground: purple
+  editorGutter.addedBackground: green
+  editorGutter.deletedBackground: red
+
+  editorError.foreground: red
+  editorWarning.foreground: yellow
+  editorInfo.foreground: info
+  editorHint.foreground: cyan
+
+  editorWidget.background: bg_alt
+  editorWidget.border: border
+  editorHoverWidget.background: bg_alt
+  editorHoverWidget.foreground: fg
+  editorHoverWidget.border: border
+  editorSuggestWidget.background: input_bg
+  editorSuggestWidget.foreground: fg
+  editorSuggestWidget.border: border
+  editorSuggestWidget.selectedBackground: input_active
+  editorSuggestWidget.highlightForeground: blue
+
+  peekView.border: border
+  peekViewEditor.background: bg
+  peekViewResult.background: bg_alt
+  peekViewResult.selectionBackground: selection
+  peekViewTitle.background: bg_alt
+  peekViewTitleLabel.foreground: fg
+  peekViewTitleDescription.foreground: muted
+
+  diffEditor.insertedLineBackground: diff_add
+  diffEditor.removedLineBackground: diff_delete
+  diffEditor.insertedTextBackground: diff_add
+  diffEditor.removedTextBackground: diff_delete
+  diffEditor.diagonalFill: border
+
+  list.activeSelectionBackground: selection
+  list.activeSelectionForeground: fg
+  list.inactiveSelectionBackground: bg_alt
+  list.hoverBackground: input_active
+  list.highlightForeground: blue
+  list.focusOutline: border
+  list.errorForeground: red
+  list.warningForeground: yellow
+
+  sideBar.background: bg_alt
+  sideBar.foreground: fg
+  sideBar.border: border
+  sideBarTitle.foreground: fg
+
+  activityBar.background: bg_alt
+  activityBar.foreground: fg
+  activityBar.inactiveForeground: muted
+  activityBar.border: border
+  activityBarBadge.background: blue
+  activityBarBadge.foreground: bg
+
+  panel.background: bg_alt
+  panel.border: border
+  panelTitle.activeForeground: fg
+  panelTitle.inactiveForeground: muted
+  panelTitle.activeBorder: blue
+
+  statusBar.background: bg_alt
+  statusBar.foreground: fg
+  statusBar.border: border
+  statusBar.debuggingBackground: orange
+  statusBar.debuggingForeground: bg
+  statusBar.noFolderBackground: bg_alt
+  statusBarItem.hoverBackground: selection
+  statusBarItem.prominentBackground: selection
+
+  tab.activeBackground: bg
+  tab.activeForeground: fg
+  tab.inactiveBackground: bg_alt
+  tab.inactiveForeground: muted
+  tab.border: border
+  tab.hoverBackground: selection
+
+  terminal.background: bg
+  terminal.foreground: fg
+  terminalCursor.foreground: fg
+  terminal.selectionBackground: selection
+  terminal.ansiBlack: fg
+  terminal.ansiRed: red
+  terminal.ansiGreen: green
+  terminal.ansiYellow: yellow
+  terminal.ansiBlue: blue
+  terminal.ansiMagenta: pink
+  terminal.ansiCyan: cyan
+  terminal.ansiWhite: bg_alt
+  terminal.ansiBrightBlack: muted
+  terminal.ansiBrightRed: red
+  terminal.ansiBrightGreen: green
+  terminal.ansiBrightYellow: yellow
+  terminal.ansiBrightBlue: info
+  terminal.ansiBrightMagenta: pink
+  terminal.ansiBrightCyan: cyan
+  terminal.ansiBrightWhite: bg
+
+  scrollbarSlider.background: border
+  scrollbarSlider.hoverBackground: subtle
+  scrollbarSlider.activeBackground: muted
+
+tokenColors:
+  - name: Comments
+    scope:
+      - comment
+      - punctuation.definition.comment
+    settings:
+      foreground: muted
+      fontStyle: italic
+
+  - name: Strings
+    scope:
+      - string
+      - string.quoted
+      - string.template
+    settings:
+      foreground: green
+
+  - name: Numbers
+    scope:
+      - constant.numeric
+      - constant.language.boolean
+    settings:
+      foreground: orange
+
+  - name: Keywords
+    scope:
+      - keyword
+      - storage
+      - keyword.control
+    settings:
+      foreground: purple
+
+  - name: Operators
+    scope:
+      - keyword.operator
+      - punctuation.separator
+      - punctuation.terminator
+    settings:
+      foreground: red
+
+  - name: Functions
+    scope:
+      - entity.name.function
+      - support.function
+      - meta.function-call
+    settings:
+      foreground: blue
+
+  - name: Types
+    scope:
+      - entity.name.type
+      - support.type
+      - storage.type
+    settings:
+      foreground: cyan
+
+  - name: Constants
+    scope:
+      - constant
+      - variable.other.constant
+      - support.constant
+    settings:
+      foreground: pink
+
+  - name: Variables
+    scope:
+      - variable
+      - meta.definition.variable
+    settings:
+      foreground: fg
+
+  - name: Parameters
+    scope:
+      - variable.parameter
+    settings:
+      foreground: fg
+
+  - name: Properties
+    scope:
+      - variable.other.property
+      - meta.property-name
+    settings:
+      foreground: fg
+
+  - name: Tags and Attributes
+    scope:
+      - entity.name.tag
+      - entity.other.attribute-name
+    settings:
+      foreground: orange
+
+  - name: Modules and Namespaces
+    scope:
+      - entity.name.namespace
+      - entity.name.module
+    settings:
+      foreground: cyan
+
+  - name: Invalid
+    scope:
+      - invalid
+      - invalid.illegal
+    settings:
+      foreground: red
+      fontStyle: ""
+
+  - name: Markdown Headings
+    scope:
+      - markup.heading
+    settings:
+      foreground: blue
+      fontStyle: bold
+
+  - name: Markdown Bold
+    scope:
+      - markup.bold
+    settings:
+      foreground: fg
+      fontStyle: bold
+
+  - name: Markdown Italic
+    scope:
+      - markup.italic
+    settings:
+      foreground: fg
+      fontStyle: italic
+
+  - name: Markdown Links
+    scope:
+      - markup.underline.link
+      - string.other.link
+    settings:
+      foreground: blue
+      fontStyle: underline
+
+semanticTokenColors:
+  class:
+    foreground: cyan
+  comment:
+    foreground: muted
+    fontStyle: italic
+  decorator:
+    foreground: orange
+  enum:
+    foreground: cyan
+  enumMember:
+    foreground: pink
+  function:
+    foreground: blue
+  interface:
+    foreground: cyan
+  keyword:
+    foreground: purple
+  macro:
+    foreground: pink
+    fontStyle: italic
+  method:
+    foreground: blue
+  namespace:
+    foreground: cyan
+  number:
+    foreground: orange
+  operator:
+    foreground: red
+  parameter:
+    foreground: fg
+  property:
+    foreground: fg
+  regexp:
+    foreground: red
+  string:
+    foreground: green
+  type:
+    foreground: cyan
+  typeParameter:
+    foreground: purple
+  variable:
+    foreground: fg
+  variable.defaultLibrary:
+    foreground: blue
+    fontStyle: italic
+  variable.readonly:
+    foreground: pink
