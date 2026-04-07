@@ -1,2 +1,3 @@
-# helsing
+# Helsing
+
 A light theme to guard against the dark.
