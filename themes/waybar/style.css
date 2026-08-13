@@ -1,0 +1,102 @@
+/* Helsing palette applied to a known-good Waybar layout. */
+
+* {
+  font-family: "FiraCode Nerd Font";
+  font-size: 14px;
+  border: none;
+  min-height: 0;
+}
+
+/* Bar background */
+window#waybar {
+  background: #F7F4EE;
+  color: #2A2A2A;
+}
+
+/* Module blocks */
+#workspaces, #clock, #network, #pulseaudio, #bluetooth, #tray {
+  padding: 0 10px;
+  margin: 6px 4px;
+  background: #ECE7DE;
+  color: #2A2A2A;
+  border: 1px solid #D6D0C4;
+  border-radius: 6px;
+}
+
+/* Workspace buttons */
+#workspaces button {
+  padding: 0 8px;
+  margin: 0 2px;
+  color: rgba(42, 42, 42, 0.70);
+  background: transparent;
+  border-radius: 6px;
+}
+
+/* Focused workspace */
+#workspaces button.focused,
+#workspaces button.active {
+  color: #2A2A2A;
+  background: #E6DCC8;
+  border: 1px solid #3A7BD5;
+}
+
+/* Urgent workspace */
+#workspaces button.urgent {
+  color: #C23B3B;
+  background: #F3D9D9;
+  border: 1px solid #C23B3B;
+}
+
+/* Inactive modules stay readable but softer */
+#network, #bluetooth, #pulseaudio {
+  color: #6B6B6B;
+}
+
+#clock {
+  color: #3A7BD5;
+}
+
+#mpd,
+#idle_inhibitor,
+#tray {
+  color: #C05A8C;
+}
+
+#network {
+  color: #4C9A5F;
+}
+
+#bluetooth {
+  color: #2F8F8B;
+}
+
+#power-profiles-daemon,
+#backlight {
+  color: #C47A2C;
+}
+
+#cpu,
+#memory,
+#battery,
+#battery.bat2 {
+  color: #4C9A5F;
+}
+
+#temperature {
+  color: #C47A2C;
+}
+
+#keyboard-state,
+#language {
+  color: #7C6EE6;
+}
+
+#pulseaudio {
+  color: #C47A2C;
+}
+
+/* Hover */
+#workspaces button:hover {
+  background: #DDD4C5;
+  color: #2A2A2A;
+}

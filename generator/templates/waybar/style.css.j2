@@ -1,0 +1,102 @@
+/* Helsing palette applied to a known-good Waybar layout. */
+
+* {
+  font-family: {{ waybar.style.font_family }};
+  font-size: {{ waybar.style.font_size }};
+  border: none;
+  min-height: {{ waybar.style.bar_min_height }};
+}
+
+/* Bar background */
+window#waybar {
+  background: {{ waybar.helpers.bar_bg }};
+  color: {{ waybar.helpers.bar_fg }};
+}
+
+/* Module blocks */
+#workspaces, #clock, #network, #pulseaudio, #bluetooth, #tray {
+  padding: 0 {{ waybar.style.module_padding_h }};
+  margin: 6px {{ waybar.style.module_margin_h }};
+  background: {{ waybar.helpers.module_bg }};
+  color: {{ waybar.helpers.module_fg }};
+  border: {{ waybar.style.border_width }} solid {{ colors.border }};
+  border-radius: 6px;
+}
+
+/* Workspace buttons */
+#workspaces button {
+  padding: 0 8px;
+  margin: 0 2px;
+  color: {{ waybar.helpers.workspace_fg_muted }};
+  background: transparent;
+  border-radius: 6px;
+}
+
+/* Focused workspace */
+#workspaces button.focused,
+#workspaces button.active {
+  color: {{ waybar.helpers.workspace_fg_active }};
+  background: {{ waybar.helpers.workspace_active_bg }};
+  border: {{ waybar.style.border_width }} solid {{ colors.blue }};
+}
+
+/* Urgent workspace */
+#workspaces button.urgent {
+  color: {{ colors.red }};
+  background: {{ waybar.helpers.workspace_urgent_bg }};
+  border: {{ waybar.style.border_width }} solid {{ colors.red }};
+}
+
+/* Inactive modules stay readable but softer */
+#network, #bluetooth, #pulseaudio {
+  color: {{ waybar.helpers.module_fg_muted }};
+}
+
+#clock {
+  color: {{ colors.blue }};
+}
+
+#mpd,
+#idle_inhibitor,
+#tray {
+  color: {{ colors.pink }};
+}
+
+#network {
+  color: {{ colors.green }};
+}
+
+#bluetooth {
+  color: {{ colors.cyan }};
+}
+
+#power-profiles-daemon,
+#backlight {
+  color: {{ colors.orange }};
+}
+
+#cpu,
+#memory,
+#battery,
+#battery.bat2 {
+  color: {{ colors.green }};
+}
+
+#temperature {
+  color: {{ colors.orange }};
+}
+
+#keyboard-state,
+#language {
+  color: {{ colors.purple }};
+}
+
+#pulseaudio {
+  color: {{ colors.orange }};
+}
+
+/* Hover */
+#workspaces button:hover {
+  background: {{ waybar.helpers.workspace_hover }};
+  color: {{ waybar.helpers.module_fg }};
+}

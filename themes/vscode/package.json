@@ -1,0 +1,54 @@
+{
+  "name": "helsing-theme",
+  "displayName": "Helsing Theme",
+  "description": "A disciplined daylight theme with paper warmth and semantic restraint.",
+  "version": "0.1.0",
+  "publisher": "caffeinatedminds",
+  "files": [
+    "themes",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "theme:generate": "../../.venv/bin/python ../../generator/generate.py",
+    "vscode:prepublish": "npm run theme:generate",
+    "package:vsix": "vsce package",
+    "package:vsix:pre-release": "vsce package --pre-release",
+    "publish:marketplace": "vsce publish",
+    "publish:marketplace:pre-release": "vsce publish --pre-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caffeinatedminds/helsing.git"
+  },
+  "homepage": "https://github.com/caffeinatedminds/helsing",
+  "bugs": {
+    "url": "https://github.com/caffeinatedminds/helsing/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0",
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "3.6.1"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "light-theme",
+    "helsing"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Helsing",
+        "uiTheme": "vs",
+        "path": "./themes/helsing-color-theme.json"
+      }
+    ]
+  }
+}

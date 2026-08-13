@@ -1,0 +1,82 @@
+# Generated from `docs/helsing-palette.yml`.
+# Intended for import from `alacritty.toml`.
+# Name: Helsing
+# Author: Caffeinated Minds
+# Origin: https://github.com/caffeinatedminds/helsing
+
+[colors]
+draw_bold_text_with_bright_colors = false
+transparent_background_colors = false
+indexed_colors = []
+
+[colors.primary]
+foreground = "#2A2A2A"
+background = "#F4F1EA"
+dim_foreground = "#6B6B6B"
+bright_foreground = "#2A2A2A"
+
+[colors.cursor]
+text = "#F4F1EA"
+cursor = "#2A2A2A"
+
+[colors.vi_mode_cursor]
+text = "#F4F1EA"
+cursor = "#C47A2C"
+
+[colors.selection]
+text = "#2A2A2A"
+background = "#E6DCC8"
+
+[colors.search.matches]
+foreground = "#2A2A2A"
+background = "#F1E7B8"
+
+[colors.search.focused_match]
+foreground = "#2A2A2A"
+background = "#E8D58B"
+
+[colors.hints.start]
+foreground = "#F4F1EA"
+background = "#3A7BD5"
+
+[colors.hints.end]
+foreground = "#2A2A2A"
+background = "#E6DCC8"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+foreground = "#2A2A2A"
+background = "#EAE5DC"
+
+[colors.normal]
+black = "#2A2A2A"
+red = "#C23B3B"
+green = "#4C9A5F"
+yellow = "#B58900"
+blue = "#3A7BD5"
+magenta = "#C05A8C"
+cyan = "#2F8F8B"
+white = "#EAE5DC"
+
+[colors.bright]
+black = "#6B6B6B"
+red = "#C23B3B"
+green = "#4C9A5F"
+yellow = "#B58900"
+blue = "#4A90E2"
+magenta = "#C05A8C"
+cyan = "#2F8F8B"
+white = "#F4F1EA"
+
+[colors.dim]
+black = "#A8A29E"
+red = "#C23B3B"
+green = "#4C9A5F"
+yellow = "#C47A2C"
+blue = "#3A7BD5"
+magenta = "#C05A8C"
+cyan = "#2F8F8B"
+white = "#6B6B6B"

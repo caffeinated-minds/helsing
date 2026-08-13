@@ -1,0 +1,103 @@
+target: waybar
+outputs:
+  style: themes/waybar/style.css
+  colors: themes/waybar/colors.css
+
+metadata:
+  name: Helsing
+  author: Caffeinated Minds
+  origin_url: https://github.com/caffeinatedminds/helsing
+
+helpers:
+  bar_bg: "#F7F4EE"
+  module_bg: "#ECE7DE"
+  module_hover: "#DDD4C5"
+  tooltip_bg: "#F6F2EB"
+  workspace_bg: "#EAE5DC"
+  workspace_hover: "#DDD4C5"
+  workspace_active_bg: "#E6DCC8"
+  workspace_urgent_bg: "#F3D9D9"
+  good_bg: "#DCEEDB"
+  warn_bg: "#F1E7B8"
+  bar_fg: "#2A2A2A"
+  module_fg: "#2A2A2A"
+  module_fg_muted: "#6B6B6B"
+  workspace_fg_muted: "rgba(42, 42, 42, 0.70)"
+  workspace_fg_active: "#2A2A2A"
+
+style:
+  font_family: '"FiraCode Nerd Font"'
+  font_size: 14px
+  bar_min_height: 0
+  window_padding_h: 8px
+  window_padding_v: 6px
+  window_margin_h: 8px
+  window_margin_top: 8px
+  border_width: 1px
+  module_padding_h: 10px
+  module_padding_v: 2px
+  module_margin_h: 4px
+  module_radius: 10px
+  workspace_button_min_width: 18px
+
+modules:
+  common:
+    - "#clock"
+    - "#window"
+    - "#mode"
+    - "#battery"
+    - "#cpu"
+    - "#memory"
+    - "#temperature"
+    - "#disk"
+    - "#backlight"
+    - "#network"
+    - "#bluetooth"
+    - "#pulseaudio"
+    - "#wireplumber"
+    - "#tray"
+    - "#idle_inhibitor"
+    - "#mpd"
+    - "#language"
+    - "#custom-launcher"
+    - "#custom-notification"
+    - "#custom-updates"
+    - "#custom-power"
+
+  accents:
+    blue:
+      - "#clock"
+      - "#custom-launcher"
+      - "#mode"
+      - "#window"
+    cyan:
+      - "#network"
+      - "#bluetooth"
+      - "#tray"
+      - "#language"
+    green:
+      - "#battery.charging"
+      - "#battery.plugged"
+      - "#cpu"
+      - "#memory"
+    orange:
+      - "#backlight"
+      - "#temperature"
+      - "#disk"
+    pink:
+      - "#pulseaudio"
+      - "#wireplumber"
+      - "#mpd"
+      - "#idle_inhibitor"
+    red:
+      - "#battery.critical:not(.charging)"
+      - "#temperature.critical"
+      - "#pulseaudio.muted"
+      - "#wireplumber.muted"
+      - "#network.disconnected"
+      - "#custom-notification.critical"
+      - "#custom-power"
+    yellow:
+      - "#battery.warning"
+      - "#temperature.warning"
+      - "#custom-notification.warning"

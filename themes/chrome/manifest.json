@@ -1,0 +1,155 @@
+{
+  "manifest_version": 3,
+  "version": "0.1.0",
+  "name": "Helsing Theme",
+  "description": "A disciplined daylight browser theme with paper warmth and semantic restraint.",
+  "theme": {
+    "colors":
+    {
+      "frame": [
+        234,
+        229,
+        220
+      ],
+      "frame_inactive": [
+        214,
+        208,
+        196
+      ],
+      "frame_incognito": [
+        168,
+        162,
+        158
+      ],
+      "frame_incognito_inactive": [
+        214,
+        208,
+        196
+      ],
+      "toolbar": [
+        244,
+        241,
+        234
+      ],
+      "toolbar_button_icon": [
+        42,
+        42,
+        42
+      ],
+      "tab_background_text": [
+        107,
+        107,
+        107
+      ],
+      "tab_text": [
+        42,
+        42,
+        42
+      ],
+      "bookmark_text": [
+        42,
+        42,
+        42
+      ],
+      "button_background": [
+        230,
+        220,
+        200
+      ],
+      "control_background": [
+        42,
+        42,
+        42
+      ],
+      "omnibox_background": [
+        244,
+        241,
+        234
+      ],
+      "omnibox_text": [
+        42,
+        42,
+        42
+      ],
+      "omnibox_results_bg": [
+        244,
+        241,
+        234
+      ],
+      "omnibox_results_text": [
+        42,
+        42,
+        42
+      ],
+      "omnibox_results_url": [
+        58,
+        123,
+        213
+      ],
+      "omnibox_results_selected_bg": [
+        230,
+        220,
+        200
+      ],
+      "omnibox_results_selected_text": [
+        42,
+        42,
+        42
+      ],
+      "omnibox_results_selected_url": [
+        74,
+        144,
+        226
+      ],
+      "ntp_background": [
+        244,
+        241,
+        234
+      ],
+      "ntp_text": [
+        42,
+        42,
+        42
+      ],
+      "ntp_link": [
+        58,
+        123,
+        213
+      ],
+      "ntp_link_underline": [
+        58,
+        123,
+        213
+      ],
+      "ntp_header": [
+        214,
+        208,
+        196
+      ],
+      "ntp_section": [
+        234,
+        229,
+        220
+      ],
+      "ntp_section_text": [
+        42,
+        42,
+        42
+      ],
+      "ntp_section_link": [
+        58,
+        123,
+        213
+      ],
+      "ntp_section_link_underline": [
+        58,
+        123,
+        213
+      ]
+    },
+    "properties":
+    {
+      "ntp_background_alignment": "bottom",
+      "ntp_background_repeat": "no-repeat"
+    }  }
+}

@@ -1,0 +1,90 @@
+target: alacritty
+output: themes/alacritty/helsing.toml
+
+metadata:
+  name: Helsing
+  author: Caffeinated Minds
+  origin_url: https://github.com/caffeinatedminds/helsing
+
+helpers:
+  search_match: "#F1E7B8"
+  search_match_focused: "#E8D58B"
+
+settings:
+  draw_bold_text_with_bright_colors: false
+  transparent_background_colors: false
+
+colors:
+  primary:
+    foreground: fg
+    background: bg
+    dim_foreground: muted
+    bright_foreground: fg
+
+  cursor:
+    text: bg
+    cursor: fg
+
+  vi_mode_cursor:
+    text: bg
+    cursor: orange
+
+  selection:
+    text: fg
+    background: selection
+
+  search:
+    matches:
+      foreground: fg
+      background: search_match
+    focused_match:
+      foreground: fg
+      background: search_match_focused
+
+  hints:
+    start:
+      foreground: bg
+      background: blue
+    end:
+      foreground: fg
+      background: selection
+
+  line_indicator:
+    foreground: None
+    background: None
+
+  footer_bar:
+    foreground: fg
+    background: bg_alt
+
+  normal:
+    black: fg
+    red: red
+    green: green
+    yellow: yellow
+    blue: blue
+    magenta: pink
+    cyan: cyan
+    white: bg_alt
+
+  bright:
+    black: muted
+    red: red
+    green: green
+    yellow: yellow
+    blue: info
+    magenta: pink
+    cyan: cyan
+    white: bg
+
+  dim:
+    black: subtle
+    red: red
+    green: green
+    yellow: orange
+    blue: blue
+    magenta: pink
+    cyan: cyan
+    white: muted
+
+indexed_colors: []

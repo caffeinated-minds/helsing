@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "version": "{{ palette.version }}",
+  "name": "{{ chrome.metadata.name }}",
+  "description": "{{ chrome.metadata.description }}",
+  "theme": {
+    "colors":
+{{ chrome.theme.colors | to_pretty_json | indent(4, true) }}{% if chrome.theme.get("properties") %},
+    "properties":
+{{ chrome.theme.properties | to_pretty_json | indent(4, true) }}{% endif %}{% if chrome.theme.get("tints") %},
+    "tints":
+{{ chrome.theme.tints | to_pretty_json | indent(4, true) }}{% endif %}
+  }
+}

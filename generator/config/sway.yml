@@ -1,0 +1,61 @@
+target: sway
+output: themes/sway/config
+
+metadata:
+  name: Helsing
+  author: Caffeinated Minds
+  origin_url: https://github.com/caffeinatedminds/helsing
+
+style:
+  font: "pango:FiraCode Nerd Font, monospace 10"
+
+variables:
+  mod: Mod1
+  term: alacritty
+  menu: fuzzel
+
+cursor:
+  theme: Adwaita
+  size: 24
+
+keyboard:
+  layouts: us,gb
+  variant: dvorak,
+  options: lv3:ralt_alt
+  next_layout_binding: Mod4+space
+
+wallpaper:
+  mode: color
+  color: bg
+
+clients:
+  focused:
+    border: blue
+    background: bg_alt
+    text: fg
+    indicator: green
+    child_border: blue
+  unfocused:
+    border: border
+    background: bg
+    text: muted
+    indicator: border
+    child_border: border
+  focused_inactive:
+    border: subtle
+    background: bg
+    text: fg
+    indicator: subtle
+    child_border: subtle
+  urgent:
+    border: red
+    background: bg
+    text: fg
+    indicator: red
+    child_border: red
+  placeholder:
+    border: border
+    background: bg
+    text: muted
+    indicator: border
+    child_border: border

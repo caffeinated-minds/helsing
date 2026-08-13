@@ -1,0 +1,43 @@
+target: chrome
+output: themes/chrome/manifest.json
+
+metadata:
+  name: Helsing Theme
+  description: A disciplined daylight browser theme with paper warmth and semantic restraint.
+  author: Caffeinated Minds
+  homepage: https://github.com/caffeinatedminds/helsing
+
+theme:
+  colors:
+    frame: bg_alt
+    frame_inactive: border
+    frame_incognito: subtle
+    frame_incognito_inactive: border
+    toolbar: bg
+    toolbar_button_icon: fg
+    tab_background_text: muted
+    tab_text: fg
+    bookmark_text: fg
+    button_background: selection
+    control_background: fg
+    omnibox_background: bg
+    omnibox_text: fg
+    omnibox_results_bg: bg
+    omnibox_results_text: fg
+    omnibox_results_url: blue
+    omnibox_results_selected_bg: selection
+    omnibox_results_selected_text: fg
+    omnibox_results_selected_url: info
+    ntp_background: bg
+    ntp_text: fg
+    ntp_link: blue
+    ntp_link_underline: blue
+    ntp_header: border
+    ntp_section: bg_alt
+    ntp_section_text: fg
+    ntp_section_link: blue
+    ntp_section_link_underline: blue
+
+  properties:
+    ntp_background_alignment: bottom
+    ntp_background_repeat: no-repeat

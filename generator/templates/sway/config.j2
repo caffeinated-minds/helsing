@@ -1,0 +1,153 @@
+# Generated from `docs/helsing-palette.yml`.
+# Intended for use as a Sway config.
+# Name: {{ sway.metadata.name }}
+# Author: {{ sway.metadata.author }}
+# Origin: {{ sway.metadata.origin_url }}
+
+set $mod {{ sway.variables.mod }}
+set $term {{ sway.variables.term }}
+set $menu {{ sway.variables.menu }}
+
+seat * xcursor_theme {{ sway.cursor.theme }} {{ sway.cursor.size }}
+
+# Bindings
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+b exec $BROWSER
+
+bindsym $mod+Shift+c exec gnome-characters
+
+# Apps
+bindsym $mod+c exec $BROWSER --app=https://calendar.google.com
+bindsym $mod+s exec code
+bindsym $mod+e exec $BROWSER --app=https://mail.google.com/mail/u/0/#inbox
+bindsym $mod+t exec $BROWSER --app=https://www.twitch.tv/ferretsoftware
+bindsym $mod+y exec $BROWSER --app=https://www.youtube.com/
+bindsym $mod+a exec $BROWSER --app=https://chatgpt.com/
+bindsym $mod+w exec $BROWSER --app=https://web.whatsapp.com/
+bindsym $mod+x exec $BROWSER --app=https://x.com/home
+bindsym $mod+n exec $BROWSER --app=https://www.crunchyroll.com/
+bindsym $mod+Shift+w exec $BROWSER --app=https://discord.com/channels/@me
+
+# Focus (hjkl)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move containers (hjkl)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Optional: split + layout basics
+bindsym $mod+v split v
+bindsym $mod+Shift+v split h
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+# Close focused window
+bindsym $mod+q kill
+
+# System Exits
+bindsym $mod+Shift+e exec ~/.local/bin/session-menu
+
+# Workspaces 1-9: switch
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+# Workspaces 1-9: move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace number 1, workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2, workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3, workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4, workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5, workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6, workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7, workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8, workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9, workspace number 9
+
+# Keyboard
+input * {
+    xkb_layout {{ sway.keyboard.layouts }}
+    xkb_variant {{ sway.keyboard.variant }}
+    xkb_options "{{ sway.keyboard.options }}"
+}
+
+bindsym {{ sway.keyboard.next_layout_binding }} input * xkb_switch_layout next
+
+exec_always nm-applet
+exec_always swaybg -c \{{ sway.wallpaper.color }}
+# exec_always swaybg -i ~/Pictures/wallpapers/warm-gradient-organic-shapes-3e-3440x1440.jpg -m fill
+exec_always waybar
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Don't assume Kwallet
+exec_always export KDE_SESSION_VERSION=5
+exec_always export KDE_FULL_SESSION=false
+
+# XWayland
+xwayland enable
+
+# Idle
+exec_always pkill swayidle; swayidle -w \
+  timeout 300 "$HOME/.local/bin/term-saver" \
+  resume "$HOME/.local/bin/term-saver-kill"
+
+for_window [app_id="term-saver"] {
+    fullscreen enable
+    border none
+}
+
+# Style
+font {{ sway.style.font }}
+
+# Focused window
+client.focused          {{ sway.clients.focused.border }} {{ sway.clients.focused.background }} {{ sway.clients.focused.text }} {{ sway.clients.focused.indicator }} {{ sway.clients.focused.child_border }}
+
+# Unfocused window
+client.unfocused        {{ sway.clients.unfocused.border }} {{ sway.clients.unfocused.background }} {{ sway.clients.unfocused.text }} {{ sway.clients.unfocused.indicator }} {{ sway.clients.unfocused.child_border }}
+
+# Inactive but focused workspace
+client.focused_inactive {{ sway.clients.focused_inactive.border }} {{ sway.clients.focused_inactive.background }} {{ sway.clients.focused_inactive.text }} {{ sway.clients.focused_inactive.indicator }} {{ sway.clients.focused_inactive.child_border }}
+
+# Urgent window
+client.urgent           {{ sway.clients.urgent.border }} {{ sway.clients.urgent.background }} {{ sway.clients.urgent.text }} {{ sway.clients.urgent.indicator }} {{ sway.clients.urgent.child_border }}
+
+# Placeholder
+client.placeholder      {{ sway.clients.placeholder.border }} {{ sway.clients.placeholder.background }} {{ sway.clients.placeholder.text }} {{ sway.clients.placeholder.indicator }} {{ sway.clients.placeholder.child_border }}
+
+# Gaps and Borders
+# gaps inner 10
+# gaps outer 3
+# smart_gaps off
+
+# Monitors
+### Outputs: prefer external HDMI when present
+
+# External ultrawide
+output HDMI-A-1 {
+    pos 0 0
+    mode 3440x1440@49.987Hz
+    scale 1
+}
+
+# Laptop panel to the right (only if enabled)
+output eDP-1 {
+    pos 3440 0
+    scale 1
+}
+
+# If lid closes, disable laptop output so nothing can land there
+bindswitch --reload --locked lid:on  output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
+
+include ~/.config/sway/config.d/*

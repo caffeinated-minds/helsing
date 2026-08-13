@@ -1,0 +1,86 @@
+# Generated from `docs/helsing-palette.yml`.
+# Intended for import from `alacritty.toml`.
+# Name: {{ alacritty.metadata.name }}
+# Author: {{ alacritty.metadata.author }}
+# Origin: {{ alacritty.metadata.origin_url }}
+
+[colors]
+draw_bold_text_with_bright_colors = {{ "true" if alacritty.settings.draw_bold_text_with_bright_colors else "false" }}
+transparent_background_colors = {{ "true" if alacritty.settings.transparent_background_colors else "false" }}
+indexed_colors = [
+{%- for indexed_color in alacritty.indexed_colors %}
+  { index = {{ indexed_color.index }}, color = "{{ indexed_color.color }}" }{{ "," if not loop.last else "" }}
+{%- endfor %}
+]
+
+[colors.primary]
+foreground = "{{ alacritty.colors.primary.foreground }}"
+background = "{{ alacritty.colors.primary.background }}"
+dim_foreground = "{{ alacritty.colors.primary.dim_foreground }}"
+bright_foreground = "{{ alacritty.colors.primary.bright_foreground }}"
+
+[colors.cursor]
+text = "{{ alacritty.colors.cursor.text }}"
+cursor = "{{ alacritty.colors.cursor.cursor }}"
+
+[colors.vi_mode_cursor]
+text = "{{ alacritty.colors.vi_mode_cursor.text }}"
+cursor = "{{ alacritty.colors.vi_mode_cursor.cursor }}"
+
+[colors.selection]
+text = "{{ alacritty.colors.selection.text }}"
+background = "{{ alacritty.colors.selection.background }}"
+
+[colors.search.matches]
+foreground = "{{ alacritty.colors.search.matches.foreground }}"
+background = "{{ alacritty.colors.search.matches.background }}"
+
+[colors.search.focused_match]
+foreground = "{{ alacritty.colors.search.focused_match.foreground }}"
+background = "{{ alacritty.colors.search.focused_match.background }}"
+
+[colors.hints.start]
+foreground = "{{ alacritty.colors.hints.start.foreground }}"
+background = "{{ alacritty.colors.hints.start.background }}"
+
+[colors.hints.end]
+foreground = "{{ alacritty.colors.hints.end.foreground }}"
+background = "{{ alacritty.colors.hints.end.background }}"
+
+[colors.line_indicator]
+foreground = "{{ alacritty.colors.line_indicator.foreground }}"
+background = "{{ alacritty.colors.line_indicator.background }}"
+
+[colors.footer_bar]
+foreground = "{{ alacritty.colors.footer_bar.foreground }}"
+background = "{{ alacritty.colors.footer_bar.background }}"
+
+[colors.normal]
+black = "{{ alacritty.colors.normal.black }}"
+red = "{{ alacritty.colors.normal.red }}"
+green = "{{ alacritty.colors.normal.green }}"
+yellow = "{{ alacritty.colors.normal.yellow }}"
+blue = "{{ alacritty.colors.normal.blue }}"
+magenta = "{{ alacritty.colors.normal.magenta }}"
+cyan = "{{ alacritty.colors.normal.cyan }}"
+white = "{{ alacritty.colors.normal.white }}"
+
+[colors.bright]
+black = "{{ alacritty.colors.bright.black }}"
+red = "{{ alacritty.colors.bright.red }}"
+green = "{{ alacritty.colors.bright.green }}"
+yellow = "{{ alacritty.colors.bright.yellow }}"
+blue = "{{ alacritty.colors.bright.blue }}"
+magenta = "{{ alacritty.colors.bright.magenta }}"
+cyan = "{{ alacritty.colors.bright.cyan }}"
+white = "{{ alacritty.colors.bright.white }}"
+
+[colors.dim]
+black = "{{ alacritty.colors.dim.black }}"
+red = "{{ alacritty.colors.dim.red }}"
+green = "{{ alacritty.colors.dim.green }}"
+yellow = "{{ alacritty.colors.dim.yellow }}"
+blue = "{{ alacritty.colors.dim.blue }}"
+magenta = "{{ alacritty.colors.dim.magenta }}"
+cyan = "{{ alacritty.colors.dim.cyan }}"
+white = "{{ alacritty.colors.dim.white }}"

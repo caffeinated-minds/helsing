@@ -1,5 +1,5 @@
 target: vscode
-output: themes/vscode/helsing-color-theme.json
+output: themes/vscode/themes/helsing-color-theme.json
 
 metadata:
   name: Helsing
