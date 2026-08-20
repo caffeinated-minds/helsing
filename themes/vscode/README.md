@@ -1,48 +1,54 @@
 # Helsing Theme for VS Code
 
-Helsing is a light theme built around paper warmth, restrained accents, and stable semantic color roles.
+Helsing is a disciplined light theme built around paper warmth, restrained
+accents and stable semantic colour roles.
 
-## Local development
+## Design
 
-From this folder, you can open the extension in VS Code and run the `Run Extension` launch target.
+- Warm paper backgrounds instead of pure white
+- Dark graphite text instead of pure black
+- Consistent semantic colours for code, diagnostics and source control
+- TextMate and semantic-token coverage
+- No runtime code, telemetry or network access
 
-The theme payload lives at `themes/helsing-color-theme.json` and is generated from the repo palette contract.
+Helsing changes VS Code's colours only. It does not install or select an editor
+font, so users remain in control of their typography.
 
-## Packaging
+## Install and activate
 
-This scaffold uses the current VS Code extension packaging tool, `@vscode/vsce`, as a local dev dependency.
+After installing the extension:
 
-Requirements:
+1. Open the Command Palette with `Ctrl+Shift+P` or `Cmd+Shift+P`.
+2. Run **Preferences: Color Theme**.
+3. Select **Helsing**.
 
-- Node.js 20+
-- repo `.venv` with the generator dependencies installed
+## Feedback
 
-From this folder:
+Report inconsistent colours or missing language coverage through the
+[Helsing issue tracker](https://github.com/caffeinated-minds/helsing/issues).
+When reporting syntax highlighting, include the language, the relevant source
+sample and a screenshot.
+
+## Development
+
+The published theme is generated from Helsing's palette contract rather than
+edited directly:
+
+- Palette: `docs/helsing-palette.yml`
+- VS Code mapping: `generator/config/vscode.yml`
+- Template: `generator/templates/vscode/helsing-color-theme.json.j2`
+- Generated payload: `themes/vscode/themes/helsing-color-theme.json`
+
+Open this directory as the VS Code workspace and press `F5` to launch the
+**Run Helsing Theme** Extension Development Host configuration.
+
+To regenerate and package from this directory:
 
 ```bash
-npm install
+npm ci
+npm run theme:generate
 npm run package:vsix
 ```
 
-That produces a `.vsix` file in this directory.
-
-To publish to the Marketplace:
-
-```bash
-export VSCE_PAT=your_pat_here
-npm run publish:marketplace
-```
-
-## Regenerating the theme
-
-From the repo root:
-
-```bash
-.venv/bin/python generator/generate.py
-```
-
-Or from this extension folder:
-
-```bash
-npm run theme:generate
-```
+Maintainers should follow [PUBLISHING.md](PUBLISHING.md) for the complete test
+and Marketplace release procedure.

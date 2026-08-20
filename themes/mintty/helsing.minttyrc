@@ -1,0 +1,28 @@
+# Generated from `docs/helsing-palette.yml`.
+# Helsing theme for Mintty (including Git Bash for Windows).
+# Name: Helsing
+# Author: Caffeinated Minds
+# Origin: https://github.com/caffeinatedminds/helsing
+
+ForegroundColour=42,42,42
+BackgroundColour=244,241,234
+CursorColour=42,42,42
+HighlightForegroundColour=42,42,42
+HighlightBackgroundColour=230,220,200
+
+Black=42,42,42
+Red=194,59,59
+Green=76,154,95
+Yellow=181,137,0
+Blue=58,123,213
+Magenta=192,90,140
+Cyan=47,143,139
+White=234,229,220
+BoldBlack=107,107,107
+BoldRed=194,59,59
+BoldGreen=76,154,95
+BoldYellow=181,137,0
+BoldBlue=74,144,226
+BoldMagenta=192,90,140
+BoldCyan=47,143,139
+BoldWhite=244,241,234

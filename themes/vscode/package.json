@@ -1,7 +1,7 @@
 {
   "name": "helsing-theme",
   "displayName": "Helsing Theme",
-  "description": "A disciplined daylight theme with paper warmth and semantic restraint.",
+  "description": "A disciplined light theme for VS Code with paper warmth and semantic restraint.",
   "version": "0.1.0",
   "publisher": "caffeinatedminds",
   "files": [
@@ -11,27 +11,38 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "theme:generate": "../../.venv/bin/python ../../generator/generate.py",
+    "theme:generate": "../../.venv/bin/python ../../generator/generate.py vscode",
     "vscode:prepublish": "npm run theme:generate",
+    "check:contents": "vsce ls --tree",
+    "check:release": "node scripts/check-release.mjs",
     "package:vsix": "vsce package",
-    "package:vsix:pre-release": "vsce package --pre-release",
-    "publish:marketplace": "vsce publish",
-    "publish:marketplace:pre-release": "vsce publish --pre-release"
+    "package:vsix:pre-release": "vsce package --pre-release"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/caffeinatedminds/helsing.git"
+    "url": "https://github.com/caffeinated-minds/helsing.git",
+    "directory": "themes/vscode"
   },
-  "homepage": "https://github.com/caffeinatedminds/helsing",
+  "homepage": "https://github.com/caffeinated-minds/helsing",
   "bugs": {
-    "url": "https://github.com/caffeinatedminds/helsing/issues"
+    "url": "https://github.com/caffeinated-minds/helsing/issues"
   },
+  "qna": "https://github.com/caffeinated-minds/helsing/issues",
+  "galleryBanner": {
+    "color": "#F4F1EA",
+    "theme": "light"
+  },
+  "pricing": "Free",
   "engines": {
-    "vscode": "^1.85.0",
-    "node": ">=20"
+    "vscode": "^1.85.0"
+  },
+  "vsce": {
+    "githubBranch": "master",
+    "baseContentUrl": "https://github.com/caffeinated-minds/helsing/blob/master/themes/vscode",
+    "baseImagesUrl": "https://raw.githubusercontent.com/caffeinated-minds/helsing/master/themes/vscode"
   },
   "devDependencies": {
-    "@vscode/vsce": "3.6.1"
+    "@vscode/vsce": "3.9.2"
   },
   "categories": [
     "Themes"
@@ -40,7 +51,11 @@
     "theme",
     "color-theme",
     "light-theme",
-    "helsing"
+    "helsing",
+    "daylight",
+    "warm",
+    "paper",
+    "minimal"
   ],
   "contributes": {
     "themes": [

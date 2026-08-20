@@ -1,0 +1,32 @@
+target: mintty
+output: themes/mintty/helsing.minttyrc
+
+metadata:
+  name: Helsing
+  author: Caffeinated Minds
+  origin_url: https://github.com/caffeinatedminds/helsing
+
+colors:
+  foreground: fg
+  background: bg
+  cursor: fg
+  selection_foreground: fg
+  selection_background: selection
+
+ansi:
+  Black: fg
+  Red: red
+  Green: green
+  Yellow: yellow
+  Blue: blue
+  Magenta: pink
+  Cyan: cyan
+  White: bg_alt
+  BoldBlack: muted
+  BoldRed: red
+  BoldGreen: green
+  BoldYellow: yellow
+  BoldBlue: info
+  BoldMagenta: pink
+  BoldCyan: cyan
+  BoldWhite: bg

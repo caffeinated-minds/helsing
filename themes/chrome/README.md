@@ -16,3 +16,8 @@ From the repo root:
 2. Enable `Developer mode`
 3. Choose `Load unpacked`
 4. Select this `themes/chrome` folder
+
+## Publish
+
+Follow [PUBLISHING.md](PUBLISHING.md) for the release checklist, Store listing,
+privacy declarations, review process and post-publication cortadOS handoff.

@@ -18,6 +18,7 @@ The generator consumes that contract and renders target-specific output such as:
 - `themes/waybar/colors.css`
 - `themes/sway/config`
 - `themes/chrome/manifest.json`
+- `themes/mintty/helsing.minttyrc`
 
 ## Layout
 
@@ -55,6 +56,10 @@ The generator consumes that contract and renders target-specific output such as:
   - Chrome theme manifest template
 - `generator/config/chrome.yml`
   - Chrome browser color mappings and theme metadata
+- `generator/templates/mintty/helsing.minttyrc.j2`
+  - Mintty and Git Bash colour-scheme template
+- `generator/config/mintty.yml`
+  - Mintty foreground, background, selection, cursor, and ANSI mappings
 
 ## Usage
 
@@ -66,6 +71,15 @@ python3 -m venv .venv
 pip install -r generator/requirements.txt
 python generator/generate.py
 ```
+
+Generate only the targets needed by a target-specific release:
+
+```bash
+python generator/generate.py vscode
+python generator/generate.py chrome mintty
+```
+
+With no target arguments, the generator continues to render every target.
 
 ## What is canonical vs target-specific
 
@@ -82,6 +96,7 @@ Target-specific data belongs in:
 - `generator/config/waybar.yml`
 - `generator/config/sway.yml`
 - `generator/config/chrome.yml`
+- `generator/config/mintty.yml`
 
 Examples of target-specific data:
 

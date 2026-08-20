@@ -1,0 +1,15 @@
+# Generated from `docs/helsing-palette.yml`.
+# Helsing theme for Mintty (including Git Bash for Windows).
+# Name: {{ mintty.metadata.name }}
+# Author: {{ mintty.metadata.author }}
+# Origin: {{ mintty.metadata.origin_url }}
+
+ForegroundColour={{ mintty.colors.foreground | to_rgb_csv }}
+BackgroundColour={{ mintty.colors.background | to_rgb_csv }}
+CursorColour={{ mintty.colors.cursor | to_rgb_csv }}
+HighlightForegroundColour={{ mintty.colors.selection_foreground | to_rgb_csv }}
+HighlightBackgroundColour={{ mintty.colors.selection_background | to_rgb_csv }}
+
+{% for name, color in mintty.ansi.items() -%}
+{{ name }}={{ color | to_rgb_csv }}
+{% endfor %}

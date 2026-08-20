@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -21,6 +22,7 @@ ALACRITTY_CONFIG_FILE = GENERATOR_DIR / "config" / "alacritty.yml"
 WAYBAR_CONFIG_FILE = GENERATOR_DIR / "config" / "waybar.yml"
 SWAY_CONFIG_FILE = GENERATOR_DIR / "config" / "sway.yml"
 CHROME_CONFIG_FILE = GENERATOR_DIR / "config" / "chrome.yml"
+MINTTY_CONFIG_FILE = GENERATOR_DIR / "config" / "mintty.yml"
 
 
 def load_yaml(path: Path) -> dict:
@@ -149,6 +151,17 @@ def build_chrome_context() -> dict:
     return context
 
 
+def build_mintty_context() -> dict:
+    context = build_base_context()
+    mintty = load_yaml(MINTTY_CONFIG_FILE)
+    context["mintty"] = resolve_tokens(mintty, context["colors"])
+    return context
+
+
+def hex_to_rgb_csv(value: str) -> str:
+    return ",".join(str(channel) for channel in hex_to_rgb(value))
+
+
 def render_template(template_name: str, context: dict) -> str:
     environment = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
@@ -158,6 +171,7 @@ def render_template(template_name: str, context: dict) -> str:
         keep_trailing_newline=True,
     )
     environment.filters["to_pretty_json"] = lambda value: json.dumps(value, indent=2)
+    environment.filters["to_rgb_csv"] = hex_to_rgb_csv
     template = environment.get_template(template_name)
     return template.render(**context)
 
@@ -227,17 +241,39 @@ def generate_chrome() -> Path:
     return output_path
 
 
+def generate_mintty() -> Path:
+    context = build_mintty_context()
+    output = render_template("mintty/helsing.minttyrc.j2", context)
+    output_path = ROOT / context["mintty"]["output"]
+    write_file(output_path, output)
+    return output_path
+
+
 def main() -> int:
+    generators = {
+        "neovim": generate_neovim,
+        "wezterm": generate_wezterm,
+        "vscode": generate_vscode,
+        "alacritty": generate_alacritty,
+        "waybar": generate_waybar,
+        "sway": generate_sway,
+        "chrome": generate_chrome,
+        "mintty": generate_mintty,
+    }
+    parser = argparse.ArgumentParser(
+        description="Generate Helsing theme artifacts."
+    )
+    parser.add_argument(
+        "targets",
+        nargs="*",
+        choices=generators,
+        help="targets to generate (default: all targets)",
+    )
+    args = parser.parse_args()
+    selected_targets = args.targets or list(generators)
+
     try:
-        output_paths = [
-            generate_neovim(),
-            generate_wezterm(),
-            generate_vscode(),
-            generate_alacritty(),
-            generate_waybar(),
-            generate_sway(),
-            generate_chrome(),
-        ]
+        output_paths = [generators[target]() for target in selected_targets]
     except Exception as exc:  # pragma: no cover - CLI failure path
         print(f"Generation failed: {exc}", file=sys.stderr)
         return 1
