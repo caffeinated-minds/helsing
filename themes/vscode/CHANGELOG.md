@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Refine the Marketplace README and presentation.
+
 ## 0.1.0
 
 - Initial Helsing light theme.
