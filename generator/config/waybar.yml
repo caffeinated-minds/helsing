@@ -26,7 +26,6 @@ helpers:
   workspace_fg_active: "#2A2A2A"
 
 style:
-  font_family: '"FiraCode Nerd Font"'
   font_size: 14px
   bar_min_height: 0
   window_padding_h: 8px

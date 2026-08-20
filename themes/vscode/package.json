@@ -1,11 +1,15 @@
 {
   "name": "helsing-theme",
   "displayName": "Helsing Theme",
-  "description": "A disciplined light theme for VS Code with paper warmth and semantic restraint.",
+  "description": "A scholarly daylight theme for VS Code with warm paper, graphite text and restrained semantic colour.",
   "version": "0.1.0",
   "publisher": "caffeinatedminds",
+  "license": "MIT",
+  "icon": "images/icon.png",
   "files": [
     "themes",
+    "images",
+    "LICENSE",
     "package.json",
     "README.md",
     "CHANGELOG.md"

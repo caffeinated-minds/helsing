@@ -7,7 +7,7 @@ metadata:
   origin_url: https://github.com/caffeinatedminds/helsing
 
 style:
-  font: "pango:FiraCode Nerd Font, monospace 10"
+  font_size: 10
 
 variables:
   mod: Mod1

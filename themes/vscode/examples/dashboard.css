@@ -1,0 +1,54 @@
+:root {
+  color-scheme: light;
+  --paper: #f4f1ea;
+  --ink: #2a2a2a;
+  --muted: #6b6b6b;
+  --rule: #d6d0c4;
+  --alert: #c23b3b;
+  --safe: #4c9a5f;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font:
+    1rem/1.5 "Go Mono",
+    monospace;
+}
+
+.watch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  width: min(64rem, 90vw);
+  margin: 4rem auto;
+}
+
+.observation {
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 1rem rgb(42 42 42 / 8%);
+}
+
+.observation[data-level="clear"] {
+  border-inline-start: 0.3rem solid var(--safe);
+}
+
+.observation[data-level="severe"] {
+  border-inline-start: 0.3rem solid var(--alert);
+}
+
+.observation:is(:hover, :focus-within) {
+  background: color-mix(in srgb, var(--paper), white 35%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .observation {
+    transition:
+      background-color 160ms ease,
+      transform 160ms ease;
+  }
+}

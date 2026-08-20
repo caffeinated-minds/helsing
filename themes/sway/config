@@ -108,7 +108,7 @@ for_window [app_id="term-saver"] {
 }
 
 # Style
-font pango:FiraCode Nerd Font, monospace 10
+font pango:GoMono Nerd Font Regular 10
 
 # Focused window
 client.focused          #3A7BD5 #EAE5DC #2A2A2A #4C9A5F #3A7BD5

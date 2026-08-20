@@ -108,7 +108,7 @@ for_window [app_id="term-saver"] {
 }
 
 # Style
-font {{ sway.style.font }}
+font pango:{{ palette.typography.ui.family }} {{ palette.typography.ui.style }} {{ sway.style.font_size }}
 
 # Focused window
 client.focused          {{ sway.clients.focused.border }} {{ sway.clients.focused.background }} {{ sway.clients.focused.text }} {{ sway.clients.focused.indicator }} {{ sway.clients.focused.child_border }}

@@ -1,6 +1,6 @@
 # Helsing Theme Generator
 
-This folder contains the generator that turns the canonical palette in `docs/helsing-palette.yml` into target theme files.
+This folder contains the generator that turns the canonical colour and typography contract in `docs/helsing-palette.yml` into target theme files.
 
 ## Purpose
 

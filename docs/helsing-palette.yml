@@ -14,6 +14,20 @@ meta:
     - docs/helsing-core-tokens.md
     - docs/helsing-theme-spec.md
 
+typography:
+  ui:
+    family: "GoMono Nerd Font"
+    style: "Regular"
+    weight: 400
+  terminal:
+    family: "GoMono Nerd Font Mono"
+  icons:
+    family: "GoMono Nerd Font"
+  rules:
+    - "Use the regular GoMono Nerd Font role on graphical interface surfaces."
+    - "Keep terminal grids, editors and TUIs on the monospaced role."
+    - "Use the glyph-complete icon role when an interface contains Nerd Font symbols."
+
 core:
   structural:
     bg: "#F4F1EA"
@@ -64,5 +78,6 @@ rules:
 
 notes:
   - "This file is the canonical machine-readable source of truth for Helsing core tokens."
+  - "The typography roles are part of the same target contract as the colour roles."
   - "Target implementations should consume these tokens before introducing target-specific helper colors."
   - "Helper colors such as diff backgrounds or popup surfaces should live in implementation files unless promoted here intentionally."

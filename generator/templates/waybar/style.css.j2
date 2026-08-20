@@ -1,7 +1,8 @@
 /* Helsing palette applied to a known-good Waybar layout. */
 
 * {
-  font-family: {{ waybar.style.font_family }};
+  font-family: "{{ palette.typography.ui.family }}", "{{ palette.typography.icons.family }}";
+  font-weight: {{ palette.typography.ui.weight }};
   font-size: {{ waybar.style.font_size }};
   border: none;
   min-height: {{ waybar.style.bar_min_height }};

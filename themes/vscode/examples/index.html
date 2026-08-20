@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Daylight observations from the Helsing archive"
+    />
+    <title>Helsing Daylight Watch</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Daylight Watch</h1>
+      <p>Measured observations for unusually long nights.</p>
+    </header>
+
+    <main class="watch-grid" aria-label="Recent observations">
+      <article class="observation" data-level="clear">
+        <h2>Library</h2>
+        <p>No unexplained shadows recorded.</p>
+        <time datetime="2026-08-20T08:15:00Z">08:15 UTC</time>
+      </article>
+
+      <article class="observation" data-level="severe">
+        <h2>North Crypt</h2>
+        <p><strong>Four</strong> moving shadows detected.</p>
+        <button type="button" aria-describedby="crypt-note">
+          Review evidence
+        </button>
+        <small id="crypt-note">Garlic inventory: 12 bulbs</small>
+      </article>
+    </main>
+
+    <template id="empty-observation">
+      <article class="observation" data-level="clear">
+        <h2>All quiet</h2>
+      </article>
+    </template>
+  </body>
+</html>
