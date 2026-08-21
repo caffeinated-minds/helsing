@@ -85,6 +85,13 @@ execute 'highlight DiffText guifg=' . s:fg . ' guibg=' . s:selection . ' gui=bol
 
 highlight! link htmlTag Type
 highlight! link htmlArg Identifier
+" Match Neovim's Tree-sitter Markdown heading hierarchy.
+execute 'highlight markdownH1 guifg=' . s:blue . ' gui=bold ctermfg=68 cterm=bold'
+execute 'highlight markdownH2 guifg=' . s:purple . ' gui=bold ctermfg=99 cterm=bold'
+execute 'highlight markdownH3 guifg=' . s:cyan . ' gui=bold ctermfg=30 cterm=bold'
+execute 'highlight markdownH4 guifg=' . s:green . ' gui=bold ctermfg=71 cterm=bold'
+execute 'highlight markdownH5 guifg=' . s:orange . ' gui=bold ctermfg=172 cterm=bold'
+execute 'highlight markdownH6 guifg=' . s:pink . ' gui=bold ctermfg=168 cterm=bold'
 highlight! link markdownHeadingDelimiter Keyword
 highlight! link markdownCode String
 highlight! link yamlKey Identifier
