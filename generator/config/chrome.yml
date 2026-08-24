@@ -6,6 +6,7 @@ metadata:
   description: A disciplined daylight browser theme with paper warmth and semantic restraint.
   author: Caffeinated Minds
   homepage: https://github.com/caffeinatedminds/helsing
+  icon: icons/helsing-128.png
 
 theme:
   colors:

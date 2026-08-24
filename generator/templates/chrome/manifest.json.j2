@@ -3,6 +3,7 @@
   "version": "{{ palette.version }}",
   "name": "{{ chrome.metadata.name }}",
   "description": "{{ chrome.metadata.description }}",
+  "icons": { "128": "{{ chrome.metadata.icon }}" },
   "theme": {
     "colors":
 {{ chrome.theme.colors | to_pretty_json | indent(4, true) }}{% if chrome.theme.get("properties") %},
