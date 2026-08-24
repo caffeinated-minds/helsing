@@ -50,6 +50,8 @@ python generator/generate.py neovim
 ./checks/validate.sh
 ```
 
+Generate the Doom Emacs target with `python generator/generate.py doom-emacs`.
+
 Use `python generator/generate.py --check` when you only want to verify that every generated target is current. Generated files should be committed with the template or configuration change that produced them.
 
 ## License

@@ -46,4 +46,34 @@ else
   echo "Skipping Neovim runtime validation: nvim is not installed."
 fi
 
+doom_themes_dir=""
+for candidate in \
+  "$HOME/.config/emacs/.local/straight/build-"*/doom-themes \
+  "$HOME/.config/emacs/.local/straight/repos/themes"; do
+  if [[ -f "$candidate/doom-themes.el" ]]; then
+    doom_themes_dir="$candidate"
+    break
+  fi
+done
+
+if command -v emacs >/dev/null 2>&1 && [[ -n "$doom_themes_dir" ]]; then
+  HELSING_THEME_DIR="$repo_root/themes/doom-emacs" \
+    emacs --batch -Q -L "$doom_themes_dir" \
+    --eval '(progn
+      (require '\''doom-themes'')
+      (add-to-list '\''custom-theme-load-path (getenv "HELSING_THEME_DIR"))
+      (load-theme '\''helsing t)
+      (unless (custom-theme-enabled-p '\''helsing)
+        (error "Helsing Doom theme did not enable"))
+      (unless (equal (cdr (assq '\''bg doom-themes--colors))
+                     '\''("#F4F1EA" "white" "white"))
+        (error "Helsing Doom background token is incorrect"))
+      (unless (equal (cdr (assq '\''fg doom-themes--colors))
+                     '\''("#2A2A2A" "black" "black"))
+        (error "Helsing Doom foreground token is incorrect"))
+      (disable-theme '\''helsing))'
+else
+  echo "Skipping Doom Emacs runtime validation: Emacs or doom-themes is not installed."
+fi
+
 echo "Helsing validation passed."

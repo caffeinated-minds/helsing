@@ -20,6 +20,7 @@ The generator consumes that contract and renders target-specific output such as:
 - `themes/sway/config`
 - `themes/chrome/manifest.json`
 - `themes/mintty/helsing.minttyrc`
+- `themes/doom-emacs/helsing-theme.el`
 
 ## Layout
 
@@ -65,6 +66,10 @@ The generator consumes that contract and renders target-specific output such as:
   - Mintty and Git Bash colour-scheme template
 - `generator/config/mintty.yml`
   - Mintty foreground, background, selection, cursor, and ANSI mappings
+- `generator/templates/doom-emacs/helsing-theme.el.j2`
+  - Doom Emacs theme entrypoint
+- `generator/config/doom-emacs.yml`
+  - Doom-specific neutral ramp and helper surfaces
 
 ## Usage
 
@@ -82,6 +87,7 @@ Generate only the targets needed by a target-specific release:
 ```bash
 python generator/generate.py vscode
 python generator/generate.py chrome mintty
+python generator/generate.py doom-emacs
 ```
 
 With no target arguments, the generator continues to render every target.

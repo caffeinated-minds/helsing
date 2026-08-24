@@ -1,0 +1,23 @@
+target: doom-emacs
+output: themes/doom-emacs/helsing-theme.el
+
+# Doom themes require a light-to-dark neutral ramp in addition to the
+# portable Helsing structural roles. These are derived target helpers; the
+# canonical palette remains docs/helsing-palette.yml.
+helpers:
+  base0: "#FBF9F4"
+  base1: "#F4F1EA"
+  base2: "#EAE5DC"
+  base3: "#D6D0C4"
+  base4: "#B8B1A7"
+  base5: "#A8A29E"
+  base6: "#6B6B6B"
+  base7: "#4A4742"
+  base8: "#2A2A2A"
+  modeline_bg: "#EAE5DC"
+  modeline_bg_inactive: "#D6D0C4"
+  popup_bg: "#EAE5DC"
+  popup_selection: "#E6DCC8"
+  diff_add_bg: "#DCEEDB"
+  diff_change_bg: "#E8E1F3"
+  diff_delete_bg: "#F3D9D9"

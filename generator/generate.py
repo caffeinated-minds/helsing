@@ -23,6 +23,7 @@ WAYBAR_CONFIG_FILE = GENERATOR_DIR / "config" / "waybar.yml"
 SWAY_CONFIG_FILE = GENERATOR_DIR / "config" / "sway.yml"
 CHROME_CONFIG_FILE = GENERATOR_DIR / "config" / "chrome.yml"
 MINTTY_CONFIG_FILE = GENERATOR_DIR / "config" / "mintty.yml"
+DOOM_EMACS_CONFIG_FILE = GENERATOR_DIR / "config" / "doom-emacs.yml"
 
 
 def load_yaml(path: Path) -> dict:
@@ -158,6 +159,25 @@ def build_mintty_context() -> dict:
     return context
 
 
+def build_doom_emacs_context() -> dict:
+    context = build_base_context()
+    doom_emacs = load_yaml(DOOM_EMACS_CONFIG_FILE)
+    helpers = doom_emacs.get("helpers", {})
+
+    context["colors"].update(helpers)
+    context["doom_emacs"] = doom_emacs
+    context["helpers"] = helpers
+    return context
+
+
+def generate_doom_emacs(*, check: bool = False) -> list[Path]:
+    context = build_doom_emacs_context()
+    output = render_template("doom-emacs/helsing-theme.el.j2", context)
+    output_path = ROOT / context["doom_emacs"]["output"]
+    write_file(output_path, output, check=check)
+    return [output_path]
+
+
 def hex_to_rgb_csv(value: str) -> str:
     return ",".join(str(channel) for channel in hex_to_rgb(value))
 
@@ -270,6 +290,7 @@ def main() -> int:
         "sway": generate_sway,
         "chrome": generate_chrome,
         "mintty": generate_mintty,
+        "doom-emacs": generate_doom_emacs,
     }
     parser = argparse.ArgumentParser(
         description="Generate Helsing theme artifacts."
