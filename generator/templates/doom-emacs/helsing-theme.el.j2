@@ -5,6 +5,11 @@
 
 (require 'doom-themes)
 
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-directory load-file-name)))
+
 (defgroup helsing-theme nil
   "Options for the Helsing Doom Emacs theme."
   :group 'doom-themes)
