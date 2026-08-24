@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# JavaScript and editor caches
+node_modules/
+.ruff_cache/
+*.vsix
+
+# Local editor and assistant state
+.codex
+.nvimlog
+continue-codex
+
+# Release build outputs
+dist/
+themes/chrome/Cached Theme.pak

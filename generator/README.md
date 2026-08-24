@@ -81,6 +81,18 @@ python generator/generate.py chrome mintty
 
 With no target arguments, the generator continues to render every target.
 
+Verify that every committed generated target matches its template and configuration without modifying the working tree:
+
+```bash
+python generator/generate.py --check
+```
+
+Run the repository validation after changing a palette, target configuration or template:
+
+```bash
+./checks/validate.sh
+```
+
 ## What is canonical vs target-specific
 
 Canonical data belongs in:

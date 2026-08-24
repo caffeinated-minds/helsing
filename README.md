@@ -39,6 +39,19 @@ A new port should:
 
 Experience with the target application matters more than familiarity with this repository. If you use a system or tool that Helsing does not support yet, you are invited to help give it a proper home there.
 
+## Development
+
+The [canonical palette](docs/helsing-palette.yml) is the source of truth. Target-specific helpers and mappings live under `generator/config/` and `generator/templates/`; files under `themes/` are generated release artefacts unless their target documentation says otherwise.
+
+After changing a generated theme, regenerate the affected target and run the repository validation:
+
+```bash
+python generator/generate.py neovim
+./checks/validate.sh
+```
+
+Use `python generator/generate.py --check` when you only want to verify that every generated target is current. Generated files should be committed with the template or configuration change that produced them.
+
 ## License
 
 Helsing is available under the [MIT License](LICENSE).

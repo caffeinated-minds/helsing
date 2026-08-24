@@ -176,76 +176,83 @@ def render_template(template_name: str, context: dict) -> str:
     return template.render(**context)
 
 
-def write_file(path: Path, content: str) -> None:
+def write_file(path: Path, content: str, *, check: bool = False) -> None:
+    if check:
+        if not path.is_file():
+            raise ValueError(f"Generated output is missing: {path.relative_to(ROOT)}")
+        if path.read_text(encoding="utf-8") != content:
+            raise ValueError(f"Generated output is stale: {path.relative_to(ROOT)}")
+        return
+
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
 
 
-def generate_neovim() -> Path:
+def generate_neovim(*, check: bool = False) -> Path:
     context = build_neovim_context()
     output = render_template("neovim/helsing.lua.j2", context)
     output_path = ROOT / context["neovim"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
-def generate_wezterm() -> Path:
+def generate_wezterm(*, check: bool = False) -> Path:
     context = build_wezterm_context()
     output = render_template("wezterm/helsing.toml.j2", context)
     output_path = ROOT / context["wezterm"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
-def generate_vscode() -> Path:
+def generate_vscode(*, check: bool = False) -> Path:
     context = build_vscode_context()
     output = render_template("vscode/helsing-color-theme.json.j2", context)
     output_path = ROOT / context["vscode"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
-def generate_alacritty() -> Path:
+def generate_alacritty(*, check: bool = False) -> Path:
     context = build_alacritty_context()
     output = render_template("alacritty/helsing.toml.j2", context)
     output_path = ROOT / context["alacritty"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
-def generate_waybar() -> Path:
+def generate_waybar(*, check: bool = False) -> Path:
     context = build_waybar_context()
     style_output = render_template("waybar/style.css.j2", context)
     style_path = ROOT / context["waybar"]["outputs"]["style"]
-    write_file(style_path, style_output)
+    write_file(style_path, style_output, check=check)
 
     colors_output = render_template("waybar/colors.css.j2", context)
     colors_path = ROOT / context["waybar"]["outputs"]["colors"]
-    write_file(colors_path, colors_output)
+    write_file(colors_path, colors_output, check=check)
     return style_path
 
 
-def generate_sway() -> Path:
+def generate_sway(*, check: bool = False) -> Path:
     context = build_sway_context()
     output = render_template("sway/config.j2", context)
     output_path = ROOT / context["sway"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
-def generate_chrome() -> Path:
+def generate_chrome(*, check: bool = False) -> Path:
     context = build_chrome_context()
     output = render_template("chrome/manifest.json.j2", context)
     output_path = ROOT / context["chrome"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
-def generate_mintty() -> Path:
+def generate_mintty(*, check: bool = False) -> Path:
     context = build_mintty_context()
     output = render_template("mintty/helsing.minttyrc.j2", context)
     output_path = ROOT / context["mintty"]["output"]
-    write_file(output_path, output)
+    write_file(output_path, output, check=check)
     return output_path
 
 
@@ -269,17 +276,25 @@ def main() -> int:
         choices=generators,
         help="targets to generate (default: all targets)",
     )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="verify generated outputs without modifying them",
+    )
     args = parser.parse_args()
     selected_targets = args.targets or list(generators)
 
     try:
-        output_paths = [generators[target]() for target in selected_targets]
+        output_paths = [
+            generators[target](check=args.check) for target in selected_targets
+        ]
     except Exception as exc:  # pragma: no cover - CLI failure path
         print(f"Generation failed: {exc}", file=sys.stderr)
         return 1
 
+    action = "Verified" if args.check else "Generated"
     for output_path in output_paths:
-        print(f"Generated {output_path.relative_to(ROOT)}")
+        print(f"{action} {output_path.relative_to(ROOT)}")
     return 0
 
 
