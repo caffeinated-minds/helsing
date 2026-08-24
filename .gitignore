@@ -13,6 +13,9 @@ node_modules/
 .nvimlog
 continue-codex
 
+# Local design reference
+dracula-template/
+
 # Release build outputs
 dist/
 themes/chrome/Cached Theme.pak
