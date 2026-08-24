@@ -95,6 +95,7 @@ execute 'highlight markdownH6 guifg=' . s:pink . ' gui=bold ctermfg=168 cterm=bo
 highlight! link markdownHeadingDelimiter Keyword
 highlight! link markdownCode String
 highlight! link yamlKey Identifier
+highlight! link Whitespace Comment
 highlight! link jsonKeyword Identifier
 highlight! link shVariable Identifier
 highlight! link pythonBuiltin Type
