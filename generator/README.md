@@ -120,6 +120,7 @@ Target-specific data belongs in:
 - `generator/config/sway.yml`
 - `generator/config/chrome.yml`
 - `generator/config/mintty.yml`
+- `generator/config/doom-emacs.yml`
 
 Examples of target-specific data:
 
