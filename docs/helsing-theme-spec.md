@@ -54,11 +54,11 @@ The pattern in this repo is consistent:
 
 ## What the current Helsing implementation contains
 
-The current Neovim theme at `themes/neovim/helsing.lua` defines **25 palette entries**:
+The current Neovim theme at `themes/neovim/helsing.lua` defines **26 palette entries**:
 
-- **15 core design tokens**
+- **16 core design tokens**
   - 7 neutral/base tokens
-  - 8 accent tokens
+  - 9 accent tokens
 - **10 implementation-specific helper tokens**
   - `diff_add`
   - `diff_change`
@@ -71,7 +71,7 @@ The current Neovim theme at `themes/neovim/helsing.lua` defines **25 palette ent
   - `pmenu`
   - `pmenu_sel`
 
-It then maps those tokens across **161 highlight groups**, which is where the palette becomes an actual theme.
+It currently maps those tokens across more than **600 highlight groups**, covering Neovim itself and the explicitly supported plugin interfaces. This count will evolve with plugin coverage; the palette roles, rather than the raw group count, are the stable contract.
 
 ## Recommended Helsing contract
 
