@@ -12,11 +12,25 @@ fi
 
 "$python_bin" "$repo_root/generator/generate.py" --check
 
-mapping_body=$(sed -n '/^local function hl/,$p' "$repo_root/generator/templates/neovim/helsing.lua.j2")
+mapping_body=$(sed -n '/^local function hl/,$p' "$repo_root/themes/neovim/helsing.lua")
 if grep -Eq '#[0-9A-Fa-f]{6}' <<<"$mapping_body"; then
   echo "Neovim mappings contain a literal colour outside the palette table." >&2
   exit 1
 fi
+
+if grep -Eq 'nvim_create_(autocmd|augroup)|vim\.defer_fn|VeryLazy' \
+  "$repo_root/themes/neovim/helsing.lua"; then
+  echo "The public Neovim colour scheme contains plugin lifecycle behaviour." >&2
+  exit 1
+fi
+
+while IFS= read -r source_file; do
+  if awk 'length($0) > 120 { exit 1 }' "$source_file"; then
+    continue
+  fi
+  echo "Neovim source exceeds 120 columns: ${source_file#"$repo_root/"}" >&2
+  exit 1
+done < <(find "$repo_root/generator/templates/neovim" -type f -name '*.j2' -print)
 
 if command -v nvim >/dev/null 2>&1; then
   runtime_dir=$(mktemp -d)
@@ -26,7 +40,7 @@ if command -v nvim >/dev/null 2>&1; then
     NVIM_LOG_FILE="$runtime_dir/nvim.log" \
     XDG_RUNTIME_DIR="$runtime_dir" \
     nvim -u NONE -i NONE -n --headless \
-    '+lua local seen = {}; local set_hl = vim.api.nvim_set_hl; vim.api.nvim_set_hl = function(ns, name, opts) assert(not seen[name], "duplicate highlight declaration: " .. name); seen[name] = true; return set_hl(ns, name, opts) end; dofile(vim.env.HELSING_ROOT .. "/themes/neovim/helsing.lua"); assert(vim.g.colors_name == "helsing", "Helsing did not load")' \
+    '+lua local seen = {}; local set_hl = vim.api.nvim_set_hl; vim.api.nvim_set_hl = function(ns, name, opts) assert(not seen[name], "duplicate highlight declaration: " .. name); seen[name] = true; return set_hl(ns, name, opts) end; dofile(vim.env.HELSING_ROOT .. "/themes/neovim/helsing.lua"); assert(vim.g.colors_name == "helsing", "Helsing did not load"); local integration = dofile(vim.env.HELSING_ROOT .. "/themes/neovim/lua/helsing/integrations/bufferline.lua"); local opts = integration.apply({}); assert(type(opts.highlights) == "function", "Bufferline integration did not configure highlights")' \
     +qa
 else
   echo "Skipping Neovim runtime validation: nvim is not installed."

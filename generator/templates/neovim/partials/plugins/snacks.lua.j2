@@ -1,0 +1,52 @@
+-- Snacks surfaces beyond the Picker integration above.
+link_many("NormalFloat", { "SnacksNormal", "SnacksInputNormal", "SnacksNotifier", "SnacksScratch" })
+link_many("Normal", { "SnacksDashboardNormal" })
+link_many("FloatBorder", { "SnacksInputBorder", "SnacksWinSeparator", "SnacksGhBorder", "SnacksScratchBorder" })
+link_many(
+  "Title",
+  { "SnacksTitle", "SnacksInputTitle", "SnacksDashboardHeader", "SnacksScratchTitle", "SnacksGhTitle" }
+)
+link_many("Comment", {
+  "SnacksDim",
+  "SnacksFooter",
+  "SnacksFooterDesc",
+  "SnacksDashboardDesc",
+  "SnacksIndent",
+  "SnacksIndent1",
+  "SnacksIndent2",
+  "SnacksIndent3",
+  "SnacksIndent4",
+  "SnacksIndent5",
+  "SnacksIndent6",
+  "SnacksIndent7",
+  "SnacksIndent8",
+})
+link_many("Function", { "SnacksDashboardKey", "SnacksFooterKey", "SnacksInputIcon" })
+link_many("DiagnosticInfo", { "SnacksImageSpinner" })
+link_many("Added", { "SnacksDiffAdd", "SnacksGhAdditions", "SnacksGhGreen" })
+link_many("Changed", { "SnacksGhPurple" })
+link_many("DiagnosticWarn", { "SnacksDiffConflict" })
+link_many("Removed", { "SnacksDiffDelete", "SnacksGhDeletions", "SnacksGhRed" })
+hl("SnacksPickerTree", { fg = c.subtle, bg = c.bg_alt })
+-- A focused result is an active selection, not merely the editor's current
+-- line. The virtual marker uses the same surface as the result row.
+link("SnacksPickerListCursorLine", "Visual")
+hl("SnacksPickerSelected", { fg = c.blue, bg = c.selection, bold = true })
+
+-- Snacks Explorer Git states. Link to Helsing's existing semantic roles
+-- instead of Snacks' diagnostic defaults.
+link("SnacksPickerGitStatusAdded", "Added")
+link("SnacksPickerGitStatusModified", "Changed")
+link("SnacksPickerGitStatusDeleted", "Removed")
+link("SnacksPickerGitStatusRenamed", "Changed")
+link("SnacksPickerGitStatusCopied", "Added")
+link("SnacksPickerGitStatusUntracked", "Added")
+link("SnacksPickerGitStatusUnmerged", "Removed")
+
+-- Snacks Picker metadata should be readable secondary information, not
+-- structural filler such as NonText.
+hl("SnacksPickerBufFlags", { fg = c.muted })
+hl("SnacksPickerDir", { fg = c.muted })
+hl("SnacksPickerTotals", { fg = c.muted })
+
+hl("TelescopeNormal", { fg = c.fg, bg = c.bg_alt })

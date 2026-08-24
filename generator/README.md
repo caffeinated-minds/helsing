@@ -11,6 +11,7 @@ The contract lives in one place:
 The generator consumes that contract and renders target-specific output such as:
 
 - `themes/neovim/helsing.lua`
+- `themes/neovim/lua/helsing/integrations/bufferline.lua`
 - `themes/wezterm/helsing.toml`
 - `themes/vscode/themes/helsing-color-theme.json`
 - `themes/alacritty/helsing.toml`
@@ -27,7 +28,11 @@ The generator consumes that contract and renders target-specific output such as:
 - `generator/requirements.txt`
   - Python dependencies
 - `generator/templates/neovim/helsing.lua.j2`
-  - Neovim theme template
+  - Neovim theme entrypoint
+- `generator/templates/neovim/partials/`
+  - declarative editor, language and optional plugin highlight mappings
+- `generator/templates/neovim/bufferline.lua.j2`
+  - explicit `bufferline.nvim` configuration adapter
 - `generator/config/neovim.yml`
   - Neovim-specific helper colors and metadata
 - `generator/templates/wezterm/helsing.toml.j2`

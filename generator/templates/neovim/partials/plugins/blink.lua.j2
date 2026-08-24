@@ -1,0 +1,37 @@
+-- Completion (blink.cmp)
+link_many("NormalFloat", { "BlinkCmpDoc", "BlinkCmpSignatureHelp" })
+link_many("FloatBorder", { "BlinkCmpDocBorder", "BlinkCmpSignatureHelpBorder" })
+link_many("Pmenu", { "BlinkCmpMenu", "BlinkCmpLabel" })
+hl("BlinkCmpMenuBorder", { fg = c.border, bg = c.pmenu })
+link_many("PmenuSel", { "BlinkCmpMenuSelection", "BlinkCmpCursorLine" })
+link("BlinkCmpDocCursorLine", "Visual")
+link_many("PmenuExtra", { "BlinkCmpLabelDescription", "BlinkCmpLabelDetail", "BlinkCmpSource" })
+link_many("PmenuMatch", { "BlinkCmpLabelMatch" })
+hl("BlinkCmpLabelDeprecated", { fg = c.subtle, bg = c.pmenu, strikethrough = true })
+hl("BlinkCmpGhostText", { fg = c.muted, italic = true })
+link_many("FloatBorder", { "BlinkCmpDocSeparator" })
+link_many("PmenuSbar", { "BlinkCmpScrollBarGutter" })
+link_many("PmenuThumb", { "BlinkCmpScrollBarThumb" })
+link_many("PmenuKind", { "BlinkCmpKind" })
+link_many("Special", { "BlinkCmpKindColor", "BlinkCmpKindEvent", "BlinkCmpKindSnippet" })
+link_many("Function", { "BlinkCmpKindFunction", "BlinkCmpKindMethod" })
+link_many("Type", {
+  "BlinkCmpKindClass",
+  "BlinkCmpKindConstructor",
+  "BlinkCmpKindEnum",
+  "BlinkCmpKindInterface",
+  "BlinkCmpKindStruct",
+  "BlinkCmpKindTypeParameter",
+  "BlinkCmpKindUnit",
+})
+link_many(
+  "Identifier",
+  { "BlinkCmpKindField", "BlinkCmpKindProperty", "BlinkCmpKindVariable", "BlinkCmpKindReference" }
+)
+link_many("Constant", { "BlinkCmpKindConstant", "BlinkCmpKindEnumMember", "BlinkCmpKindValue" })
+link_many("Directory", { "BlinkCmpKindFolder" })
+link_many("Number", { "BlinkCmpKindNumber" })
+link_many("Keyword", { "BlinkCmpKindKeyword" })
+link_many("Operator", { "BlinkCmpKindOperator" })
+link_many("LspSignatureActiveParameter", { "BlinkCmpSignatureHelpActiveParameter" })
+link_many("Number", { "BlinkCmpItemIdx" })

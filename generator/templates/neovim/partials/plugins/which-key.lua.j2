@@ -1,0 +1,22 @@
+-- Which-key's modern UI groups.
+link_many("NormalFloat", { "WhichKeyNormal" })
+link_many("FloatBorder", { "WhichKeyBorder" })
+link_many("Title", { "WhichKeyTitle" })
+link_many("Comment", { "WhichKeyValue", "WhichKeyIconGrey" })
+link_many("Special", { "WhichKeyIcon" })
+link_many("Function", { "WhichKeyIconBlue" })
+link_many("Type", { "WhichKeyIconCyan" })
+link_many("Added", { "WhichKeyIconGreen" })
+link_many("Changed", { "WhichKeyIconPurple" })
+link_many("Removed", { "WhichKeyIconRed" })
+hl("WhichKeyIconOrange", { fg = c.orange })
+hl("WhichKeyIconYellow", { fg = c.yellow })
+
+hl("NvimTreeEmptyFolderName", { fg = c.muted })
+hl("NvimTreeIndentMarker", { fg = c.border, bg = c.bg_alt })
+
+hl("WhichKey", { fg = c.purple })
+hl("WhichKeyGroup", { fg = c.blue })
+hl("WhichKeyDesc", { fg = c.fg })
+hl("WhichKeySeparator", { fg = c.subtle })
+hl("WhichKeyFloat", { bg = c.bg_alt })

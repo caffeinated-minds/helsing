@@ -1,0 +1,24 @@
+-- Todo comments and Trouble lists.
+local function todo_groups(kind, color)
+  hl("TodoFg" .. kind, { fg = color, bold = true })
+  hl("TodoBg" .. kind, { fg = c.bg, bg = color, bold = true })
+  hl("TodoSign" .. kind, { fg = color, bg = c.bg })
+end
+
+todo_groups("FIX", c.red)
+todo_groups("HACK", c.yellow)
+todo_groups("WARN", c.yellow)
+todo_groups("PERF", c.orange)
+todo_groups("NOTE", c.info)
+todo_groups("TODO", c.info)
+todo_groups("TEST", c.cyan)
+link_many("Directory", { "TroubleBasename", "TroubleFilename" })
+link_many("Comment", {
+  "TroubleIndent",
+  "TroubleIndentFoldClosed",
+  "TroubleIndentFoldOpen",
+  "TroubleIndentLast",
+  "TroubleIndentMiddle",
+  "TroubleIndentTop",
+  "TroubleIndentWs",
+})

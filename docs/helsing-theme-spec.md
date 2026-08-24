@@ -6,7 +6,7 @@ This document turns the local Dracula template pattern and `docs/brief` into a r
 
 ### Typical assignment counts
 
-The local Dracula template uses **22 named colour assignments** in its canonical palette file at `dracula-template/template/sample/Dracula.yml`:
+The Dracula-style reference model used during Helsing's initial design has **22 named colour assignments**:
 
 - **11 core palette tokens** used as the main theme contract:
   - `background`
@@ -43,7 +43,6 @@ That means the typical Dracula-style setup is:
 The pattern in this repo is consistent:
 
 1. **Canonical palette/spec file**
-   - `dracula-template/template/sample/Dracula.yml`
    - Stores the durable palette contract and ANSI mappings
 2. **Implementation file**
    - `themes/neovim/helsing.lua`
@@ -71,7 +70,7 @@ The current Neovim theme at `themes/neovim/helsing.lua` defines **26 palette ent
   - `pmenu`
   - `pmenu_sel`
 
-It currently maps those tokens across more than **600 highlight groups**, covering Neovim itself and the explicitly supported plugin interfaces. This count will evolve with plugin coverage; the palette roles, rather than the raw group count, are the stable contract.
+It currently maps those tokens across more than **600 highlight groups**, covering Neovim itself and explicitly supported plugin interfaces. These mappings remain declarative: plugin loading and lifecycle behaviour belong in optional integration modules or the user's plugin configuration. The group count will evolve with plugin coverage; the palette roles, rather than the raw count, are the stable contract.
 
 ## Recommended Helsing contract
 

@@ -1,5 +1,7 @@
 target: neovim
-output: themes/neovim/helsing.lua
+outputs:
+  theme: themes/neovim/helsing.lua
+  bufferline: themes/neovim/lua/helsing/integrations/bufferline.lua
 
 helpers:
   diff_add: "#DCEEDB"

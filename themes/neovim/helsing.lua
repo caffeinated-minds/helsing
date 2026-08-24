@@ -67,297 +67,309 @@ local function hl_many(groups, opts)
   end
 end
 
+
 -- Editor UI
-hl("Normal",       { fg = c.fg, bg = c.bg })
-hl("NormalNC",     { fg = c.fg, bg = c.bg })
-hl("NormalFloat",  { fg = c.fg, bg = c.bg_alt })
-hl("FloatBorder",  { fg = c.border, bg = c.bg_alt })
-hl("FloatTitle",   { fg = c.blue, bg = c.bg_alt, bold = true })
-hl("FloatFooter",  { fg = c.muted, bg = c.bg_alt })
-hl("ColorColumn",  { bg = c.bg_alt })
-hl("Cursor",       { fg = c.fg, bg = c.selection })
-hl("CursorIM",     { fg = c.fg, bg = c.selection })
-hl("lCursor",      { fg = c.fg, bg = c.selection })
-hl("TermCursor",   { fg = c.fg, bg = c.selection })
+hl("Normal", { fg = c.fg, bg = c.bg })
+hl("NormalNC", { fg = c.fg, bg = c.bg })
+hl("NormalFloat", { fg = c.fg, bg = c.bg_alt })
+hl("FloatBorder", { fg = c.border, bg = c.bg_alt })
+hl("FloatTitle", { fg = c.blue, bg = c.bg_alt, bold = true })
+hl("FloatFooter", { fg = c.muted, bg = c.bg_alt })
+hl("ColorColumn", { bg = c.bg_alt })
+hl("Cursor", { fg = c.fg, bg = c.selection })
+hl("CursorIM", { fg = c.fg, bg = c.selection })
+hl("lCursor", { fg = c.fg, bg = c.selection })
+hl("TermCursor", { fg = c.fg, bg = c.selection })
 hl("TermCursorNC", { fg = c.muted, bg = c.bg_alt })
-hl("CursorLine",   { bg = c.cursorline })
+hl("CursorLine", { bg = c.cursorline })
 hl("CursorColumn", { bg = c.cursorline })
 hl("CursorLineNr", { fg = c.orange, bg = c.cursorline, bold = true })
 hl("CursorLineFold", { fg = c.subtle, bg = c.cursorline })
 hl("CursorLineSign", { fg = c.subtle, bg = c.cursorline })
-hl("LineNr",       { fg = c.linenr, bg = c.bg })
-hl("LineNrAbove",  { fg = c.linenr, bg = c.bg })
-hl("LineNrBelow",  { fg = c.linenr, bg = c.bg })
-hl("SignColumn",   { fg = c.subtle, bg = c.bg })
-hl("EndOfBuffer",  { fg = c.border, bg = c.bg })
-hl("VertSplit",    { fg = c.border, bg = c.bg })
+hl("LineNr", { fg = c.linenr, bg = c.bg })
+hl("LineNrAbove", { fg = c.linenr, bg = c.bg })
+hl("LineNrBelow", { fg = c.linenr, bg = c.bg })
+hl("SignColumn", { fg = c.subtle, bg = c.bg })
+hl("EndOfBuffer", { fg = c.border, bg = c.bg })
+hl("VertSplit", { fg = c.border, bg = c.bg })
 hl("WinSeparator", { fg = c.border, bg = c.bg })
-hl("WinBar",       { fg = c.muted, bg = c.bg })
-hl("WinBarNC",     { fg = c.subtle, bg = c.bg })
-hl("Folded",       { fg = c.muted, bg = c.bg_alt })
-hl("FoldColumn",   { fg = c.subtle, bg = c.bg })
-hl("MatchParen",   { fg = c.fg, bg = c.selection, bold = true, underline = true })
-hl("Visual",       { bg = c.visual })
-hl("VisualNOS",    { bg = c.visual })
-hl("Search",       { fg = c.fg, bg = c.search })
-hl("IncSearch",    { fg = c.fg, bg = c.incsearch, bold = true })
-hl("CurSearch",    { fg = c.fg, bg = c.incsearch, bold = true })
-hl("Substitute",   { fg = c.bg, bg = c.blue, bold = true })
-hl("Pmenu",        { fg = c.fg, bg = c.pmenu })
-hl("PmenuSel",     { fg = c.fg, bg = c.pmenu_sel, bold = true })
-hl("PmenuKind",    { fg = c.cyan, bg = c.pmenu })
+hl("WinBar", { fg = c.muted, bg = c.bg })
+hl("WinBarNC", { fg = c.subtle, bg = c.bg })
+hl("Folded", { fg = c.muted, bg = c.bg_alt })
+hl("FoldColumn", { fg = c.subtle, bg = c.bg })
+hl("MatchParen", { fg = c.fg, bg = c.selection, bold = true, underline = true })
+hl("Visual", { bg = c.visual })
+hl("VisualNOS", { bg = c.visual })
+hl("Search", { fg = c.fg, bg = c.search })
+hl("IncSearch", { fg = c.fg, bg = c.incsearch, bold = true })
+hl("CurSearch", { fg = c.fg, bg = c.incsearch, bold = true })
+hl("Substitute", { fg = c.bg, bg = c.blue, bold = true })
+hl("Pmenu", { fg = c.fg, bg = c.pmenu })
+hl("PmenuSel", { fg = c.fg, bg = c.pmenu_sel, bold = true })
+hl("PmenuKind", { fg = c.cyan, bg = c.pmenu })
 hl("PmenuKindSel", { fg = c.cyan, bg = c.pmenu_sel, bold = true })
-hl("PmenuExtra",   { fg = c.muted, bg = c.pmenu })
-hl("PmenuExtraSel",{ fg = c.muted, bg = c.pmenu_sel })
-hl("PmenuMatch",   { fg = c.blue, bg = c.pmenu, bold = true })
-hl("PmenuMatchSel",{ fg = c.blue, bg = c.pmenu_sel, bold = true })
-hl("PmenuSbar",    { bg = c.bg_alt })
-hl("PmenuThumb",   { bg = c.subtle })
-hl("ComplMatchIns",{ fg = c.blue, bold = true, underline = true })
-hl("StatusLine",   { fg = c.fg, bg = c.bg_alt })
+hl("PmenuExtra", { fg = c.muted, bg = c.pmenu })
+hl("PmenuExtraSel", { fg = c.muted, bg = c.pmenu_sel })
+hl("PmenuMatch", { fg = c.blue, bg = c.pmenu, bold = true })
+hl("PmenuMatchSel", { fg = c.blue, bg = c.pmenu_sel, bold = true })
+hl("PmenuSbar", { bg = c.bg_alt })
+hl("PmenuThumb", { bg = c.subtle })
+hl("ComplMatchIns", { fg = c.blue, bold = true, underline = true })
+hl("StatusLine", { fg = c.fg, bg = c.bg_alt })
 hl("StatusLineNC", { fg = c.muted, bg = c.bg_alt })
-hl("StatusLineTerm",   { fg = c.fg, bg = c.bg_alt })
+hl("StatusLineTerm", { fg = c.fg, bg = c.bg_alt })
 hl("StatusLineTermNC", { fg = c.muted, bg = c.bg_alt })
-hl("TabLine",      { fg = c.muted, bg = c.bg_alt })
-hl("TabLineFill",  { bg = c.bg_alt })
-hl("TabLineSel",   { fg = c.fg, bg = c.bg, bold = true })
-hl("Title",        { fg = c.blue, bold = true })
-hl("Directory",    { fg = c.blue, bold = true })
+hl("TabLine", { fg = c.muted, bg = c.bg_alt })
+hl("TabLineFill", { bg = c.bg_alt })
+hl("TabLineSel", { fg = c.fg, bg = c.bg, bold = true })
+hl("Title", { fg = c.blue, bold = true })
+hl("Directory", { fg = c.blue, bold = true })
 hl("QuickFixLine", { bg = c.selection, bold = true })
-hl("Conceal",      { fg = c.subtle })
-hl("WildMenu",     { fg = c.fg, bg = c.selection, bold = true })
-hl("MsgArea",      { fg = c.fg, bg = c.bg })
+hl("Conceal", { fg = c.subtle })
+hl("WildMenu", { fg = c.fg, bg = c.selection, bold = true })
+hl("MsgArea", { fg = c.fg, bg = c.bg })
 hl("MsgSeparator", { fg = c.border, bg = c.bg })
-hl("NonText",      { fg = c.border })
-hl("Whitespace",   { fg = c.border })
-hl("SpecialKey",   { fg = c.subtle })
-hl("ErrorMsg",     { fg = c.red, bold = true })
-hl("WarningMsg",   { fg = c.yellow, bold = true })
-hl("ModeMsg",      { fg = c.blue, bold = true })
-hl("MoreMsg",      { fg = c.blue })
-hl("Question",     { fg = c.blue, bold = true })
+hl("NonText", { fg = c.border })
+hl("Whitespace", { fg = c.border })
+hl("SpecialKey", { fg = c.subtle })
+hl("ErrorMsg", { fg = c.red, bold = true })
+hl("WarningMsg", { fg = c.yellow, bold = true })
+hl("ModeMsg", { fg = c.blue, bold = true })
+hl("MoreMsg", { fg = c.blue })
+hl("Question", { fg = c.blue, bold = true })
 hl("SnippetTabstop", { bg = c.selection })
-hl("Terminal",     { fg = c.fg, bg = c.bg })
-hl("Menu",         { fg = c.fg, bg = c.bg_alt })
-hl("Scrollbar",    { fg = c.subtle, bg = c.bg_alt })
-hl("Tooltip",      { fg = c.fg, bg = c.bg_alt })
+hl("Terminal", { fg = c.fg, bg = c.bg })
+hl("Menu", { fg = c.fg, bg = c.bg_alt })
+hl("Scrollbar", { fg = c.subtle, bg = c.bg_alt })
+hl("Tooltip", { fg = c.fg, bg = c.bg_alt })
 link_many("StatusLine", { "User1", "User2", "User3", "User4", "User5", "User6", "User7", "User8", "User9" })
-
 -- Syntax
-hl("Comment",      { fg = c.muted, italic = true })
-hl("Constant",     { fg = c.pink })
-hl("String",       { fg = c.green })
-hl("Character",    { fg = c.green })
-hl("Number",       { fg = c.orange })
-hl("Boolean",      { fg = c.orange, bold = true })
-hl("Float",        { fg = c.orange })
-hl("Identifier",   { fg = c.fg })
-hl("Function",     { fg = c.blue })
-hl("Statement",    { fg = c.purple })
-hl("Conditional",  { fg = c.purple })
-hl("Repeat",       { fg = c.purple })
-hl("Label",        { fg = c.purple })
-hl("Operator",     { fg = c.purple })
-hl("Keyword",      { fg = c.purple })
-hl("Exception",    { fg = c.purple })
-hl("PreProc",      { fg = c.pink })
-hl("Include",      { fg = c.purple })
-hl("Define",       { fg = c.pink })
-hl("Macro",        { fg = c.pink })
-hl("PreCondit",    { fg = c.pink })
-hl("Type",         { fg = c.cyan })
+hl("Comment", { fg = c.muted, italic = true })
+hl("Constant", { fg = c.pink })
+hl("String", { fg = c.green })
+hl("Character", { fg = c.green })
+hl("Number", { fg = c.orange })
+hl("Boolean", { fg = c.orange, bold = true })
+hl("Float", { fg = c.orange })
+hl("Identifier", { fg = c.fg })
+hl("Function", { fg = c.blue })
+hl("Statement", { fg = c.purple })
+hl("Conditional", { fg = c.purple })
+hl("Repeat", { fg = c.purple })
+hl("Label", { fg = c.purple })
+hl("Operator", { fg = c.purple })
+hl("Keyword", { fg = c.purple })
+hl("Exception", { fg = c.purple })
+hl("PreProc", { fg = c.pink })
+hl("Include", { fg = c.purple })
+hl("Define", { fg = c.pink })
+hl("Macro", { fg = c.pink })
+hl("PreCondit", { fg = c.pink })
+hl("Type", { fg = c.cyan })
 hl("StorageClass", { fg = c.cyan })
-hl("Structure",    { fg = c.cyan })
-hl("Typedef",      { fg = c.cyan })
-hl("Special",      { fg = c.pink })
-hl("SpecialChar",  { fg = c.pink })
-hl("Tag",          { fg = c.cyan })
-hl("Delimiter",    { fg = c.subtle })
+hl("Structure", { fg = c.cyan })
+hl("Typedef", { fg = c.cyan })
+hl("Special", { fg = c.pink })
+hl("SpecialChar", { fg = c.pink })
+hl("Tag", { fg = c.cyan })
+hl("Delimiter", { fg = c.subtle })
 hl("SpecialComment", { fg = c.muted, italic = true })
-hl("Debug",        { fg = c.pink })
-hl("Underlined",   { underline = true })
-hl("Bold",         { bold = true })
-hl("Italic",       { italic = true })
-hl("Error",        { fg = c.red, bold = true })
-hl("Todo",         { fg = c.yellow, bg = c.bg_alt, bold = true })
+hl("Debug", { fg = c.pink })
+hl("Underlined", { underline = true })
+hl("Bold", { bold = true })
+hl("Italic", { italic = true })
+hl("Error", { fg = c.red, bold = true })
+hl("Todo", { fg = c.yellow, bg = c.bg_alt, bold = true })
 
 -- Diagnostics
-hl("DiagnosticError",            { fg = c.red })
-hl("DiagnosticWarn",             { fg = c.yellow })
-hl("DiagnosticInfo",             { fg = c.info })
-hl("DiagnosticHint",             { fg = c.info })
-hl("DiagnosticOk",               { fg = c.green })
+hl("DiagnosticError", { fg = c.red })
+hl("DiagnosticWarn", { fg = c.yellow })
+hl("DiagnosticInfo", { fg = c.info })
+hl("DiagnosticHint", { fg = c.info })
+hl("DiagnosticOk", { fg = c.green })
 
-hl("DiagnosticUnderlineError",   { undercurl = true, sp = c.red })
-hl("DiagnosticUnderlineWarn",    { undercurl = true, sp = c.yellow })
-hl("DiagnosticUnderlineInfo",    { undercurl = true, sp = c.info })
-hl("DiagnosticUnderlineHint",    { undercurl = true, sp = c.info })
+hl("DiagnosticUnderlineError", { undercurl = true, sp = c.red })
+hl("DiagnosticUnderlineWarn", { undercurl = true, sp = c.yellow })
+hl("DiagnosticUnderlineInfo", { undercurl = true, sp = c.info })
+hl("DiagnosticUnderlineHint", { undercurl = true, sp = c.info })
 
 hl("DiagnosticVirtualTextError", { fg = c.red, bg = c.bg_alt })
-hl("DiagnosticVirtualTextWarn",  { fg = c.yellow, bg = c.bg_alt })
-hl("DiagnosticVirtualTextInfo",  { fg = c.info, bg = c.bg_alt })
-hl("DiagnosticVirtualTextHint",  { fg = c.info, bg = c.bg_alt })
-hl("DiagnosticVirtualTextOk",    { fg = c.green, bg = c.bg_alt })
+hl("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = c.bg_alt })
+hl("DiagnosticVirtualTextInfo", { fg = c.info, bg = c.bg_alt })
+hl("DiagnosticVirtualTextHint", { fg = c.info, bg = c.bg_alt })
+hl("DiagnosticVirtualTextOk", { fg = c.green, bg = c.bg_alt })
 
-hl("DiagnosticVirtualLinesError",{ fg = c.red, bg = c.bg_alt })
+hl("DiagnosticVirtualLinesError", { fg = c.red, bg = c.bg_alt })
 hl("DiagnosticVirtualLinesWarn", { fg = c.yellow, bg = c.bg_alt })
 hl("DiagnosticVirtualLinesInfo", { fg = c.info, bg = c.bg_alt })
 hl("DiagnosticVirtualLinesHint", { fg = c.info, bg = c.bg_alt })
-hl("DiagnosticVirtualLinesOk",   { fg = c.green, bg = c.bg_alt })
+hl("DiagnosticVirtualLinesOk", { fg = c.green, bg = c.bg_alt })
 
-hl("DiagnosticFloatingError",    { fg = c.red, bg = c.bg_alt })
-hl("DiagnosticFloatingWarn",     { fg = c.yellow, bg = c.bg_alt })
-hl("DiagnosticFloatingInfo",     { fg = c.info, bg = c.bg_alt })
-hl("DiagnosticFloatingHint",     { fg = c.info, bg = c.bg_alt })
-hl("DiagnosticFloatingOk",       { fg = c.green, bg = c.bg_alt })
+hl("DiagnosticFloatingError", { fg = c.red, bg = c.bg_alt })
+hl("DiagnosticFloatingWarn", { fg = c.yellow, bg = c.bg_alt })
+hl("DiagnosticFloatingInfo", { fg = c.info, bg = c.bg_alt })
+hl("DiagnosticFloatingHint", { fg = c.info, bg = c.bg_alt })
+hl("DiagnosticFloatingOk", { fg = c.green, bg = c.bg_alt })
 
-hl("DiagnosticSignError",        { fg = c.red, bg = c.bg })
-hl("DiagnosticSignWarn",         { fg = c.yellow, bg = c.bg })
-hl("DiagnosticSignInfo",         { fg = c.info, bg = c.bg })
-hl("DiagnosticSignHint",         { fg = c.info, bg = c.bg })
-hl("DiagnosticSignOk",           { fg = c.green, bg = c.bg })
+hl("DiagnosticSignError", { fg = c.red, bg = c.bg })
+hl("DiagnosticSignWarn", { fg = c.yellow, bg = c.bg })
+hl("DiagnosticSignInfo", { fg = c.info, bg = c.bg })
+hl("DiagnosticSignHint", { fg = c.info, bg = c.bg })
+hl("DiagnosticSignOk", { fg = c.green, bg = c.bg })
 
-hl("DiagnosticDeprecated",       { fg = c.yellow, strikethrough = true })
-hl("DiagnosticUnnecessary",      { fg = c.subtle, italic = true })
-hl("DiagnosticUnderlineOk",      { undercurl = true, sp = c.green })
-hl("LspReferenceText",           { bg = c.selection })
-hl("LspReferenceRead",           { bg = c.selection })
-hl("LspReferenceWrite",          { bg = c.selection, bold = true })
-hl("LspReferenceTarget",         { bg = c.selection, underline = true })
-hl("LspCodeLens",                { fg = c.subtle, italic = true })
-hl("LspCodeLensSeparator",       { fg = c.border })
-hl("LspInlayHint",               { fg = c.muted, bg = c.bg_alt, italic = true })
-hl("LspSignatureActiveParameter",{ fg = c.blue, bold = true, underline = true })
+hl("DiagnosticDeprecated", { fg = c.yellow, strikethrough = true })
+hl("DiagnosticUnnecessary", { fg = c.subtle, italic = true })
+hl("DiagnosticUnderlineOk", { undercurl = true, sp = c.green })
+hl("LspReferenceText", { bg = c.selection })
+hl("LspReferenceRead", { bg = c.selection })
+hl("LspReferenceWrite", { bg = c.selection, bold = true })
+hl("LspReferenceTarget", { bg = c.selection, underline = true })
+hl("LspCodeLens", { fg = c.subtle, italic = true })
+hl("LspCodeLensSeparator", { fg = c.border })
+hl("LspInlayHint", { fg = c.muted, bg = c.bg_alt, italic = true })
+hl("LspSignatureActiveParameter", { fg = c.blue, bold = true, underline = true })
 
 -- Diff / Git
-hl("DiffAdd",    { bg = c.diff_add })
+hl("DiffAdd", { bg = c.diff_add })
 hl("DiffChange", { bg = c.diff_change })
 hl("DiffDelete", { bg = c.diff_delete })
-hl("DiffText",   { bg = c.selection, bold = true })
+hl("DiffText", { bg = c.selection, bold = true })
 
-hl("Added",      { fg = c.green })
-hl("Changed",    { fg = c.purple })
-hl("Removed",    { fg = c.red })
+hl("Added", { fg = c.green })
+hl("Changed", { fg = c.purple })
+hl("Removed", { fg = c.red })
 
 -- Spelling
-hl("SpellBad",   { undercurl = true, sp = c.red })
-hl("SpellCap",   { undercurl = true, sp = c.yellow })
-hl("SpellRare",  { undercurl = true, sp = c.yellow })
+hl("SpellBad", { undercurl = true, sp = c.red })
+hl("SpellCap", { undercurl = true, sp = c.yellow })
+hl("SpellRare", { undercurl = true, sp = c.yellow })
 hl("SpellLocal", { undercurl = true, sp = c.info })
 
 -- Treesitter fallbacks
-link("@comment",             "Comment")
-link("@comment.documentation","Comment")
-link("@comment.error",       "DiagnosticError")
-link("@comment.warning",     "DiagnosticWarn")
-link("@comment.note",        "DiagnosticInfo")
-link("@comment.todo",        "Todo")
-link("@constant",            "Constant")
-hl("@constant.builtin",    { fg = c.pink, italic = true })
-hl("@constant.macro",      { fg = c.pink, italic = true })
-hl("@string",              { link = "String" })
-hl("@string.escape",       { fg = c.pink })
-hl("@string.regexp",       { fg = c.pink })
-hl("@string.special",      { fg = c.green, italic = true })
+link("@comment", "Comment")
+link("@comment.documentation", "Comment")
+link("@comment.error", "DiagnosticError")
+link("@comment.warning", "DiagnosticWarn")
+link("@comment.note", "DiagnosticInfo")
+link("@comment.todo", "Todo")
+link("@constant", "Constant")
+hl("@constant.builtin", { fg = c.pink, italic = true })
+hl("@constant.macro", { fg = c.pink, italic = true })
+hl("@string", { link = "String" })
+hl("@string.escape", { fg = c.pink })
+hl("@string.regexp", { fg = c.pink })
+hl("@string.special", { fg = c.green, italic = true })
 hl("@string.special.path", { fg = c.green, underline = true })
-hl("@string.special.url",  { fg = c.blue, underline = true })
-link("@character",           "Character")
-hl("@character.special",   { fg = c.pink })
-link("@number",              "Number")
-link("@boolean",             "Boolean")
-link("@function",            "Function")
-link("@function.call",       "Function")
-hl("@function.builtin",    { fg = c.blue, italic = true })
-hl("@function.macro",      { fg = c.pink, italic = true })
-hl("@method",              { fg = c.blue })
-hl("@method.call",         { fg = c.blue })
-hl("@constructor",         { fg = c.cyan })
-hl("@module",              { fg = c.cyan })
-hl("@namespace",           { fg = c.cyan })
-hl("@parameter",           { fg = c.fg })
-hl("@variable.parameter",  { fg = c.fg })
-hl("@variable.member",     { fg = c.fg })
-link("@keyword",             "Keyword")
-hl("@keyword.function",    { fg = c.purple })
-hl("@keyword.operator",    { fg = c.purple })
-hl("@keyword.import",      { fg = c.purple })
-hl("@keyword.exception",   { fg = c.purple })
-hl("@keyword.directive",   { fg = c.pink })
-hl("@keyword.return",      { fg = c.purple, italic = true })
-link("@conditional",         "Conditional")
-link("@repeat",              "Repeat")
-link("@operator",            "Operator")
-link("@type",                "Type")
-hl("@type.builtin",        { fg = c.cyan, italic = true })
-hl("@type.definition",     { fg = c.cyan })
-hl("@type.qualifier",      { fg = c.purple })
-hl("@attribute",           { fg = c.pink })
-hl("@property",            { fg = c.fg })
-hl("@field",               { fg = c.fg })
-hl("@variable",            { fg = c.fg })
-hl("@variable.builtin",    { fg = c.pink, italic = true })
+hl("@string.special.url", { fg = c.blue, underline = true })
+link("@character", "Character")
+hl("@character.special", { fg = c.pink })
+link("@number", "Number")
+link("@boolean", "Boolean")
+link("@function", "Function")
+link("@function.call", "Function")
+hl("@function.builtin", { fg = c.blue, italic = true })
+hl("@function.macro", { fg = c.pink, italic = true })
+hl("@method", { fg = c.blue })
+hl("@method.call", { fg = c.blue })
+hl("@constructor", { fg = c.cyan })
+hl("@module", { fg = c.cyan })
+hl("@namespace", { fg = c.cyan })
+hl("@parameter", { fg = c.fg })
+hl("@variable.parameter", { fg = c.fg })
+hl("@variable.member", { fg = c.fg })
+link("@keyword", "Keyword")
+hl("@keyword.function", { fg = c.purple })
+hl("@keyword.operator", { fg = c.purple })
+hl("@keyword.import", { fg = c.purple })
+hl("@keyword.exception", { fg = c.purple })
+hl("@keyword.directive", { fg = c.pink })
+hl("@keyword.return", { fg = c.purple, italic = true })
+link("@conditional", "Conditional")
+link("@repeat", "Repeat")
+link("@operator", "Operator")
+link("@type", "Type")
+hl("@type.builtin", { fg = c.cyan, italic = true })
+hl("@type.definition", { fg = c.cyan })
+hl("@type.qualifier", { fg = c.purple })
+hl("@attribute", { fg = c.pink })
+hl("@property", { fg = c.fg })
+hl("@field", { fg = c.fg })
+hl("@variable", { fg = c.fg })
+hl("@variable.builtin", { fg = c.pink, italic = true })
 hl("@punctuation.delimiter", { fg = c.subtle })
 hl("@punctuation.bracket", { fg = c.subtle })
 hl("@punctuation.special", { fg = c.subtle })
-link("@tag",                 "Tag")
-hl("@tag.attribute",       { fg = c.pink })
-hl("@tag.delimiter",       { fg = c.subtle })
-hl("@markup.strong",       { bold = true })
-hl("@markup.italic",       { italic = true })
-hl("@markup.strikethrough",{ strikethrough = true })
-hl("@markup.heading",      { fg = c.blue, bold = true })
-link_many("@markup.heading", { "@markup.heading.1", "@markup.heading.2", "@markup.heading.3", "@markup.heading.4", "@markup.heading.5", "@markup.heading.6" })
-hl("@markup.link",         { fg = c.blue, underline = true })
-hl("@markup.link.url",     { fg = c.blue, underline = true })
-hl("@markup.raw",          { fg = c.green })
-hl("@markup.raw.block",    { fg = c.green })
-hl("@markup.list",         { fg = c.subtle })
-hl("@markup.quote",        { fg = c.muted, italic = true })
-hl("@diff.plus",           { fg = c.green })
-hl("@diff.minus",          { fg = c.red })
-hl("@diff.delta",          { fg = c.purple })
+link("@tag", "Tag")
+hl("@tag.attribute", { fg = c.pink })
+hl("@tag.delimiter", { fg = c.subtle })
+hl("@markup.strong", { bold = true })
+hl("@markup.italic", { italic = true })
+hl("@markup.strikethrough", { strikethrough = true })
+hl("@markup.heading", { fg = c.blue, bold = true })
+link_many("@markup.heading", {
+  "@markup.heading.1",
+  "@markup.heading.2",
+  "@markup.heading.3",
+  "@markup.heading.4",
+  "@markup.heading.5",
+  "@markup.heading.6",
+})
+hl("@markup.link", { fg = c.blue, underline = true })
+hl("@markup.link.url", { fg = c.blue, underline = true })
+hl("@markup.raw", { fg = c.green })
+hl("@markup.raw.block", { fg = c.green })
+hl("@markup.list", { fg = c.subtle })
+hl("@markup.quote", { fg = c.muted, italic = true })
+hl("@diff.plus", { fg = c.green })
+hl("@diff.minus", { fg = c.red })
+hl("@diff.delta", { fg = c.purple })
 
 -- LSP semantic tokens
-link("@lsp.type.class",          "@type")
-link("@lsp.type.comment",        "@comment")
-link("@lsp.type.decorator",      "@attribute")
-link("@lsp.type.enum",           "@type")
-link("@lsp.type.enumMember",     "@constant")
-link("@lsp.type.event",          "@type")
-link("@lsp.type.function",       "@function")
-link("@lsp.type.interface",      "@type")
-link("@lsp.type.keyword",        "@keyword")
-link("@lsp.type.macro",          "@function.macro")
-link("@lsp.type.method",         "@method")
-link("@lsp.type.modifier",       "@keyword")
-link("@lsp.type.namespace",      "@namespace")
-link("@lsp.type.number",         "@number")
-link("@lsp.type.operator",       "@operator")
-link("@lsp.type.parameter",      "@parameter")
-link("@lsp.type.property",       "@property")
-link("@lsp.type.regexp",         "@string.regexp")
-link("@lsp.type.string",         "@string")
-link("@lsp.type.struct",         "@type")
-link("@lsp.type.type",           "@type")
-link("@lsp.type.typeParameter",  "@type")
-link("@lsp.type.variable",       "@variable")
-hl("@lsp.mod.abstract",          { italic = true })
-hl("@lsp.mod.async",             { italic = true })
-hl("@lsp.mod.declaration",       { bold = true })
-hl("@lsp.mod.defaultLibrary",    { italic = true })
-hl("@lsp.mod.definition",        { bold = true })
-link("@lsp.mod.deprecated",      "DiagnosticDeprecated")
-hl("@lsp.mod.documentation",     { italic = true })
-hl("@lsp.mod.modification",      { underline = true })
-hl("@lsp.mod.readonly",          { fg = c.pink })
-hl("@lsp.mod.static",            { fg = c.pink, italic = true })
+link("@lsp.type.class", "@type")
+link("@lsp.type.comment", "@comment")
+link("@lsp.type.decorator", "@attribute")
+link("@lsp.type.enum", "@type")
+link("@lsp.type.enumMember", "@constant")
+link("@lsp.type.event", "@type")
+link("@lsp.type.function", "@function")
+link("@lsp.type.interface", "@type")
+link("@lsp.type.keyword", "@keyword")
+link("@lsp.type.macro", "@function.macro")
+link("@lsp.type.method", "@method")
+link("@lsp.type.modifier", "@keyword")
+link("@lsp.type.namespace", "@namespace")
+link("@lsp.type.number", "@number")
+link("@lsp.type.operator", "@operator")
+link("@lsp.type.parameter", "@parameter")
+link("@lsp.type.property", "@property")
+link("@lsp.type.regexp", "@string.regexp")
+link("@lsp.type.string", "@string")
+link("@lsp.type.struct", "@type")
+link("@lsp.type.type", "@type")
+link("@lsp.type.typeParameter", "@type")
+link("@lsp.type.variable", "@variable")
+hl("@lsp.mod.abstract", { italic = true })
+hl("@lsp.mod.async", { italic = true })
+hl("@lsp.mod.declaration", { bold = true })
+hl("@lsp.mod.defaultLibrary", { italic = true })
+hl("@lsp.mod.definition", { bold = true })
+link("@lsp.mod.deprecated", "DiagnosticDeprecated")
+hl("@lsp.mod.documentation", { italic = true })
+hl("@lsp.mod.modification", { underline = true })
+hl("@lsp.mod.readonly", { fg = c.pink })
+hl("@lsp.mod.static", { fg = c.pink, italic = true })
 
--- Common plugin groups
-hl("GitSignsAdd",          { fg = c.green, bg = c.bg })
-hl("GitSignsChange",       { fg = c.purple, bg = c.bg })
-hl("GitSignsDelete",       { fg = c.red, bg = c.bg })
-
--- LazyVim plugin integrations. These use only the existing Helsing roles.
+-- Markdown
+hl("markdownH1", { fg = c.blue, bold = true })
+hl("markdownH2", { fg = c.blue, bold = true })
+hl("markdownH3", { fg = c.blue, bold = true })
+hl("markdownCode", { fg = c.green })
+hl("markdownCodeBlock", { fg = c.green })
+hl("markdownItalic", { italic = true })
+hl("markdownBold", { bold = true })
+hl("markdownUrl", { fg = c.blue, underline = true })
+-- Optional plugin highlights. These declarations are inert when a plugin is
+-- absent and contain no plugin loading or lifecycle behaviour.
 -- Completion (blink.cmp)
 link_many("NormalFloat", { "BlinkCmpDoc", "BlinkCmpSignatureHelp" })
 link_many("FloatBorder", { "BlinkCmpDocBorder", "BlinkCmpSignatureHelpBorder" })
@@ -375,8 +387,19 @@ link_many("PmenuThumb", { "BlinkCmpScrollBarThumb" })
 link_many("PmenuKind", { "BlinkCmpKind" })
 link_many("Special", { "BlinkCmpKindColor", "BlinkCmpKindEvent", "BlinkCmpKindSnippet" })
 link_many("Function", { "BlinkCmpKindFunction", "BlinkCmpKindMethod" })
-link_many("Type", { "BlinkCmpKindClass", "BlinkCmpKindConstructor", "BlinkCmpKindEnum", "BlinkCmpKindInterface", "BlinkCmpKindStruct", "BlinkCmpKindTypeParameter", "BlinkCmpKindUnit" })
-link_many("Identifier", { "BlinkCmpKindField", "BlinkCmpKindProperty", "BlinkCmpKindVariable", "BlinkCmpKindReference" })
+link_many("Type", {
+  "BlinkCmpKindClass",
+  "BlinkCmpKindConstructor",
+  "BlinkCmpKindEnum",
+  "BlinkCmpKindInterface",
+  "BlinkCmpKindStruct",
+  "BlinkCmpKindTypeParameter",
+  "BlinkCmpKindUnit",
+})
+link_many(
+  "Identifier",
+  { "BlinkCmpKindField", "BlinkCmpKindProperty", "BlinkCmpKindVariable", "BlinkCmpKindReference" }
+)
 link_many("Constant", { "BlinkCmpKindConstant", "BlinkCmpKindEnumMember", "BlinkCmpKindValue" })
 link_many("Directory", { "BlinkCmpKindFolder" })
 link_many("Number", { "BlinkCmpKindNumber" })
@@ -384,7 +407,6 @@ link_many("Keyword", { "BlinkCmpKindKeyword" })
 link_many("Operator", { "BlinkCmpKindOperator" })
 link_many("LspSignatureActiveParameter", { "BlinkCmpSignatureHelpActiveParameter" })
 link_many("Number", { "BlinkCmpItemIdx" })
-
 -- Buffer tabs (bufferline.nvim)
 hl("BufferLineFill", { bg = c.bg_alt })
 hl_many({ "BufferLineBackground", "BufferLineBuffer" }, { fg = c.muted, bg = c.bg_alt })
@@ -396,8 +418,17 @@ hl("BufferLineModifiedVisible", { fg = c.purple, bg = c.bg_alt })
 hl("BufferLineModifiedSelected", { fg = c.purple, bg = c.selection })
 hl_many({ "BufferLineSeparator", "BufferLineSeparatorVisible" }, { fg = c.border, bg = c.bg_alt })
 hl("BufferLineSeparatorSelected", { fg = c.border, bg = c.selection })
-hl_many({ "BufferLineTruncMarker", "BufferLineGroupSeparator", "BufferLineOffsetSeparator" }, { fg = c.subtle, bg = c.bg_alt })
-hl_many({ "BufferLineNumbers", "BufferLineNumbersVisible", "BufferLineDuplicate", "BufferLineDuplicateVisible", "BufferLineGroupLabel" }, { fg = c.muted, bg = c.bg_alt })
+hl_many(
+  { "BufferLineTruncMarker", "BufferLineGroupSeparator", "BufferLineOffsetSeparator" },
+  { fg = c.subtle, bg = c.bg_alt }
+)
+hl_many({
+  "BufferLineNumbers",
+  "BufferLineNumbersVisible",
+  "BufferLineDuplicate",
+  "BufferLineDuplicateVisible",
+  "BufferLineGroupLabel",
+}, { fg = c.muted, bg = c.bg_alt })
 hl_many({ "BufferLineNumbersSelected", "BufferLineDuplicateSelected" }, { fg = c.fg, bg = c.selection, bold = true })
 hl_many({ "BufferLineCloseButton", "BufferLineCloseButtonVisible" }, { fg = c.subtle, bg = c.bg_alt })
 hl("BufferLineCloseButtonSelected", { fg = c.muted, bg = c.selection })
@@ -421,73 +452,144 @@ bufferline_diagnostics("Error", c.red)
 bufferline_diagnostics("Warning", c.yellow)
 bufferline_diagnostics("Info", c.info)
 bufferline_diagnostics("Hint", c.info)
-
--- Bufferline creates filetype-icon groups dynamically. Keep their backgrounds
--- aligned with the tab state while preserving each icon's semantic foreground.
-local function sync_bufferline_icon_backgrounds()
-  for name, group in pairs(vim.api.nvim_get_hl(0, { link = false })) do
-    if name:match("^BufferLine.*Icon") then
-      local background = name:match("Selected$") and c.selection or c.bg_alt
-      group.bg = background
-      vim.api.nvim_set_hl(0, name, group)
-    end
-  end
-end
-
-local bufferline_icons_group = vim.api.nvim_create_augroup("HelsingBufferlineIcons", { clear = true })
-
-vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "BufEnter", "TabEnter", "ColorScheme" }, {
-  group = bufferline_icons_group,
-  callback = function()
-    -- Bufferline may create inactive icon groups during its own scheduled
-    -- redraw, so run after that redraw rather than before it.
-    vim.defer_fn(sync_bufferline_icon_backgrounds, 25)
-  end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "VeryLazy",
-  group = bufferline_icons_group,
-  callback = function()
-    vim.defer_fn(sync_bufferline_icon_backgrounds, 25)
-  end,
-})
-
 -- Jumping (flash.nvim)
 link_many("Comment", { "FlashBackdrop", "FlashPrompt" })
 link_many("Search", { "FlashMatch", "FlashCurrent" })
 link_many("IncSearch", { "FlashLabel", "FlashLabeler" })
 link_many("Cursor", { "FlashCursor" })
-
+-- Common plugin groups
+hl("GitSignsAdd", { fg = c.green, bg = c.bg })
+hl("GitSignsChange", { fg = c.purple, bg = c.bg })
+hl("GitSignsDelete", { fg = c.red, bg = c.bg })
 -- Extended Git signs. Sign-column states retain the reading field; cursor-line
 -- and diff-preview states receive the surface that describes their state.
-hl_many({ "GitSignsAddNr", "GitSignsUntracked", "GitSignsUntrackedNr", "GitSignsStagedAdd", "GitSignsStagedAddNr", "GitSignsStagedUntracked", "GitSignsStagedUntrackedNr" }, { fg = c.green, bg = c.bg })
-hl_many({ "GitSignsChangeNr", "GitSignsChangedelete", "GitSignsChangedeleteNr", "GitSignsStagedChange", "GitSignsStagedChangeNr", "GitSignsStagedChangedelete", "GitSignsStagedChangedeleteNr" }, { fg = c.purple, bg = c.bg })
-hl_many({ "GitSignsDeleteNr", "GitSignsTopdelete", "GitSignsTopdeleteNr", "GitSignsStagedDelete", "GitSignsStagedDeleteNr", "GitSignsStagedTopdelete", "GitSignsStagedTopdeleteNr" }, { fg = c.red, bg = c.bg })
-hl_many({ "GitSignsAddCul", "GitSignsUntrackedCul", "GitSignsStagedAddCul", "GitSignsStagedUntrackedCul" }, { fg = c.green, bg = c.cursorline })
-hl_many({ "GitSignsChangeCul", "GitSignsChangedeleteCul", "GitSignsStagedChangeCul", "GitSignsStagedChangedeleteCul" }, { fg = c.purple, bg = c.cursorline })
-hl_many({ "GitSignsDeleteCul", "GitSignsTopdeleteCul", "GitSignsStagedDeleteCul", "GitSignsStagedTopdeleteCul" }, { fg = c.red, bg = c.cursorline })
-hl_many({ "GitSignsAddInline", "GitSignsAddLn", "GitSignsAddPreview", "GitSignsAddVirtLn", "GitSignsUntrackedLn", "GitSignsStagedAddLn", "GitSignsStagedUntrackedLn" }, { fg = c.green, bg = c.diff_add })
-hl_many({ "GitSignsChangeInline", "GitSignsChangeLn", "GitSignsChangeVirtLn", "GitSignsChangedeleteLn", "GitSignsStagedChangeLn", "GitSignsStagedChangedeleteLn" }, { fg = c.purple, bg = c.diff_change })
-hl_many({ "GitSignsDeleteInline", "GitSignsDeleteLn", "GitSignsDeletePreview", "GitSignsDeleteVirtLn", "GitSignsTopdeleteLn", "GitSignsStagedDeleteLn", "GitSignsStagedTopdeleteLn" }, { fg = c.red, bg = c.diff_delete })
+hl_many({
+  "GitSignsAddNr",
+  "GitSignsUntracked",
+  "GitSignsUntrackedNr",
+  "GitSignsStagedAdd",
+  "GitSignsStagedAddNr",
+  "GitSignsStagedUntracked",
+  "GitSignsStagedUntrackedNr",
+}, { fg = c.green, bg = c.bg })
+hl_many({
+  "GitSignsChangeNr",
+  "GitSignsChangedelete",
+  "GitSignsChangedeleteNr",
+  "GitSignsStagedChange",
+  "GitSignsStagedChangeNr",
+  "GitSignsStagedChangedelete",
+  "GitSignsStagedChangedeleteNr",
+}, { fg = c.purple, bg = c.bg })
+hl_many({
+  "GitSignsDeleteNr",
+  "GitSignsTopdelete",
+  "GitSignsTopdeleteNr",
+  "GitSignsStagedDelete",
+  "GitSignsStagedDeleteNr",
+  "GitSignsStagedTopdelete",
+  "GitSignsStagedTopdeleteNr",
+}, { fg = c.red, bg = c.bg })
+hl_many(
+  { "GitSignsAddCul", "GitSignsUntrackedCul", "GitSignsStagedAddCul", "GitSignsStagedUntrackedCul" },
+  { fg = c.green, bg = c.cursorline }
+)
+hl_many(
+  { "GitSignsChangeCul", "GitSignsChangedeleteCul", "GitSignsStagedChangeCul", "GitSignsStagedChangedeleteCul" },
+  { fg = c.purple, bg = c.cursorline }
+)
+hl_many(
+  { "GitSignsDeleteCul", "GitSignsTopdeleteCul", "GitSignsStagedDeleteCul", "GitSignsStagedTopdeleteCul" },
+  { fg = c.red, bg = c.cursorline }
+)
+hl_many({
+  "GitSignsAddInline",
+  "GitSignsAddLn",
+  "GitSignsAddPreview",
+  "GitSignsAddVirtLn",
+  "GitSignsUntrackedLn",
+  "GitSignsStagedAddLn",
+  "GitSignsStagedUntrackedLn",
+}, { fg = c.green, bg = c.diff_add })
+hl_many({
+  "GitSignsChangeInline",
+  "GitSignsChangeLn",
+  "GitSignsChangeVirtLn",
+  "GitSignsChangedeleteLn",
+  "GitSignsStagedChangeLn",
+  "GitSignsStagedChangedeleteLn",
+}, { fg = c.purple, bg = c.diff_change })
+hl_many({
+  "GitSignsDeleteInline",
+  "GitSignsDeleteLn",
+  "GitSignsDeletePreview",
+  "GitSignsDeleteVirtLn",
+  "GitSignsTopdeleteLn",
+  "GitSignsStagedDeleteLn",
+  "GitSignsStagedTopdeleteLn",
+}, { fg = c.red, bg = c.diff_delete })
 link_many("Comment", { "GitSignsCurrentLineBlame", "GitSignsVirtLnum" })
-
 -- Search and replace (grug-far.nvim)
-link_many("Title", { "GrugFarInputLabel", "GrugFarResultsHeader", "GrugFarHelpWinHeader", "GrugFarHelpHeader", "GrugFarResultsCmdHeader" })
+link_many("Title", {
+  "GrugFarInputLabel",
+  "GrugFarResultsHeader",
+  "GrugFarHelpWinHeader",
+  "GrugFarHelpHeader",
+  "GrugFarResultsCmdHeader",
+})
 link_many("Function", { "GrugFarHelpHeaderKey", "GrugFarHelpWinActionKey" })
 link_many("DiagnosticInfo", { "GrugFarResultsActionMessage" })
 link_many("Search", { "GrugFarResultsMatch" })
-link_many("Comment", { "GrugFarHelpWinActionDescription", "GrugFarHelpWinActionPrefix", "GrugFarHelpWinActionText", "GrugFarResultsPath", "GrugFarResultsStats", "GrugFarResultsLongLineStr", "GrugFarInputPlaceholder" })
+link_many("Comment", {
+  "GrugFarHelpWinActionDescription",
+  "GrugFarHelpWinActionPrefix",
+  "GrugFarHelpWinActionText",
+  "GrugFarResultsPath",
+  "GrugFarResultsStats",
+  "GrugFarResultsLongLineStr",
+  "GrugFarInputPlaceholder",
+})
 link_many("Added", { "GrugFarResultsAddIndicator", "GrugFarResultsMatchAdded" })
 link_many("Changed", { "GrugFarResultsChangeIndicator" })
 link_many("IncSearch", { "GrugFarCurrentMatch" })
 link_many("Removed", { "GrugFarResultsRemoveIndicator", "GrugFarResultsMatchRemoved" })
-
 -- Plugin manager, package manager, icons, messages and diagnostics lists.
-link_many("NormalFloat", { "LazyNormal", "LazyFloat", "MasonNormal", "NoicePopup", "NoiceCmdlinePopup", "NoiceConfirm", "TroubleNormal", "TroubleNormalNC" })
-link_many("FloatBorder", { "LazyFloatBorder", "MasonBorder", "NoicePopupBorder", "NoiceCmdlinePopupBorder", "NoiceConfirmBorder", "NoicePopupmenuBorder" })
+link_many("NormalFloat", {
+  "LazyNormal",
+  "LazyFloat",
+  "MasonNormal",
+  "NoicePopup",
+  "NoiceCmdlinePopup",
+  "NoiceConfirm",
+  "TroubleNormal",
+  "TroubleNormalNC",
+})
+link_many("FloatBorder", {
+  "LazyFloatBorder",
+  "MasonBorder",
+  "NoicePopupBorder",
+  "NoiceCmdlinePopupBorder",
+  "NoiceConfirmBorder",
+  "NoicePopupmenuBorder",
+})
 link_many("Title", { "LazyH1", "LazyH2", "MasonHeader", "NoicePopupTitle", "NoiceCmdlinePopupTitle", "TroubleTitle" })
-link_many("Comment", { "LazyComment", "LazyDimmed", "LazyDir", "LazyEvent", "LazyFile", "LazyPluginBase", "MasonMuted", "NoiceFormatDate", "NoiceFormatEvent", "NoiceFormatKind", "TroubleDirectory", "TroubleSource", "TroublePos", "TroubleCode", "TroubleText" })
+link_many("Comment", {
+  "LazyComment",
+  "LazyDimmed",
+  "LazyDir",
+  "LazyEvent",
+  "LazyFile",
+  "LazyPluginBase",
+  "MasonMuted",
+  "NoiceFormatDate",
+  "NoiceFormatEvent",
+  "NoiceFormatKind",
+  "TroubleDirectory",
+  "TroubleSource",
+  "TroublePos",
+  "TroubleCode",
+  "TroubleText",
+})
 link_many("NormalFloat", { "NoiceMessage" })
 link_many("Added", { "LazyDone", "LazyInstall", "LazyCheck", "MasonPackageInstalled" })
 link_many("Function", { "LazyLoad", "MasonHighlight" })
@@ -509,21 +611,45 @@ hl("MiniIconsYellow", { fg = c.yellow })
 link_many("PmenuSel", { "NoicePopupmenuSelected" })
 link_many("Pmenu", { "NoicePopupmenu", "NoiceCmdline", "NoiceCmdlinePrompt" })
 link_many("Function", { "NoiceCompletionItemKindFunction", "NoiceCompletionItemKindMethod" })
-link_many("Type", { "NoiceCompletionItemKindClass", "NoiceCompletionItemKindInterface", "NoiceCompletionItemKindStruct", "NoiceCompletionItemKindEnum" })
+link_many("Type", {
+  "NoiceCompletionItemKindClass",
+  "NoiceCompletionItemKindInterface",
+  "NoiceCompletionItemKindStruct",
+  "NoiceCompletionItemKindEnum",
+})
 link_many("Constant", { "NoiceCompletionItemKindConstant", "NoiceCompletionItemKindEnumMember" })
-link_many("Identifier", { "NoiceCompletionItemKindField", "NoiceCompletionItemKindProperty", "NoiceCompletionItemKindVariable" })
+link_many(
+  "Identifier",
+  { "NoiceCompletionItemKindField", "NoiceCompletionItemKindProperty", "NoiceCompletionItemKindVariable" }
+)
 link_many("Directory", { "NoiceCompletionItemKindFolder" })
 link_many("DiagnosticError", { "NoiceFormatLevelError" })
 link_many("DiagnosticWarn", { "NoiceFormatLevelWarn" })
 link_many("DiagnosticInfo", { "NoiceFormatLevelInfo" })
 link_many("Number", { "TroubleCount" })
-
 -- Snacks surfaces beyond the Picker integration above.
 link_many("NormalFloat", { "SnacksNormal", "SnacksInputNormal", "SnacksNotifier", "SnacksScratch" })
 link_many("Normal", { "SnacksDashboardNormal" })
 link_many("FloatBorder", { "SnacksInputBorder", "SnacksWinSeparator", "SnacksGhBorder", "SnacksScratchBorder" })
-link_many("Title", { "SnacksTitle", "SnacksInputTitle", "SnacksDashboardHeader", "SnacksScratchTitle", "SnacksGhTitle" })
-link_many("Comment", { "SnacksDim", "SnacksFooter", "SnacksFooterDesc", "SnacksDashboardDesc", "SnacksIndent", "SnacksIndent1", "SnacksIndent2", "SnacksIndent3", "SnacksIndent4", "SnacksIndent5", "SnacksIndent6", "SnacksIndent7", "SnacksIndent8" })
+link_many(
+  "Title",
+  { "SnacksTitle", "SnacksInputTitle", "SnacksDashboardHeader", "SnacksScratchTitle", "SnacksGhTitle" }
+)
+link_many("Comment", {
+  "SnacksDim",
+  "SnacksFooter",
+  "SnacksFooterDesc",
+  "SnacksDashboardDesc",
+  "SnacksIndent",
+  "SnacksIndent1",
+  "SnacksIndent2",
+  "SnacksIndent3",
+  "SnacksIndent4",
+  "SnacksIndent5",
+  "SnacksIndent6",
+  "SnacksIndent7",
+  "SnacksIndent8",
+})
 link_many("Function", { "SnacksDashboardKey", "SnacksFooterKey", "SnacksInputIcon" })
 link_many("DiagnosticInfo", { "SnacksImageSpinner" })
 link_many("Added", { "SnacksDiffAdd", "SnacksGhAdditions", "SnacksGhGreen" })
@@ -536,6 +662,23 @@ hl("SnacksPickerTree", { fg = c.subtle, bg = c.bg_alt })
 link("SnacksPickerListCursorLine", "Visual")
 hl("SnacksPickerSelected", { fg = c.blue, bg = c.selection, bold = true })
 
+-- Snacks Explorer Git states. Link to Helsing's existing semantic roles
+-- instead of Snacks' diagnostic defaults.
+link("SnacksPickerGitStatusAdded", "Added")
+link("SnacksPickerGitStatusModified", "Changed")
+link("SnacksPickerGitStatusDeleted", "Removed")
+link("SnacksPickerGitStatusRenamed", "Changed")
+link("SnacksPickerGitStatusCopied", "Added")
+link("SnacksPickerGitStatusUntracked", "Added")
+link("SnacksPickerGitStatusUnmerged", "Removed")
+
+-- Snacks Picker metadata should be readable secondary information, not
+-- structural filler such as NonText.
+hl("SnacksPickerBufFlags", { fg = c.muted })
+hl("SnacksPickerDir", { fg = c.muted })
+hl("SnacksPickerTotals", { fg = c.muted })
+
+hl("TelescopeNormal", { fg = c.fg, bg = c.bg_alt })
 -- Todo comments and Trouble lists.
 local function todo_groups(kind, color)
   hl("TodoFg" .. kind, { fg = color, bold = true })
@@ -551,8 +694,15 @@ todo_groups("NOTE", c.info)
 todo_groups("TODO", c.info)
 todo_groups("TEST", c.cyan)
 link_many("Directory", { "TroubleBasename", "TroubleFilename" })
-link_many("Comment", { "TroubleIndent", "TroubleIndentFoldClosed", "TroubleIndentFoldOpen", "TroubleIndentLast", "TroubleIndentMiddle", "TroubleIndentTop", "TroubleIndentWs" })
-
+link_many("Comment", {
+  "TroubleIndent",
+  "TroubleIndentFoldClosed",
+  "TroubleIndentFoldOpen",
+  "TroubleIndentLast",
+  "TroubleIndentMiddle",
+  "TroubleIndentTop",
+  "TroubleIndentWs",
+})
 -- Which-key's modern UI groups.
 link_many("NormalFloat", { "WhichKeyNormal" })
 link_many("FloatBorder", { "WhichKeyBorder" })
@@ -567,49 +717,21 @@ link_many("Removed", { "WhichKeyIconRed" })
 hl("WhichKeyIconOrange", { fg = c.orange })
 hl("WhichKeyIconYellow", { fg = c.yellow })
 
--- Snacks Explorer Git states. Link to Helsing's existing semantic roles
--- instead of Snacks' diagnostic defaults.
-link("SnacksPickerGitStatusAdded",     "Added")
-link("SnacksPickerGitStatusModified",  "Changed")
-link("SnacksPickerGitStatusDeleted",   "Removed")
-link("SnacksPickerGitStatusRenamed",   "Changed")
-link("SnacksPickerGitStatusCopied",    "Added")
-link("SnacksPickerGitStatusUntracked", "Added")
-link("SnacksPickerGitStatusUnmerged",  "Removed")
-
--- Snacks Picker metadata should be readable secondary information, not
--- structural filler such as NonText.
-hl("SnacksPickerBufFlags", { fg = c.muted })
-hl("SnacksPickerDir",    { fg = c.muted })
-hl("SnacksPickerTotals", { fg = c.muted })
-
-hl("TelescopeNormal",      { fg = c.fg, bg = c.bg_alt })
-hl("TelescopeBorder",      { fg = c.border, bg = c.bg_alt })
-hl("TelescopePromptNormal",{ fg = c.fg, bg = c.bg_alt })
-hl("TelescopePromptBorder",{ fg = c.border, bg = c.bg_alt })
-hl("TelescopeSelection",   { bg = c.selection, bold = true })
-hl("TelescopeMatching",    { fg = c.blue, bold = true })
-
-hl("NvimTreeNormal",       { fg = c.fg, bg = c.bg_alt })
-hl("NvimTreeWinSeparator", { fg = c.border, bg = c.bg_alt })
-hl("NvimTreeRootFolder",   { fg = c.blue, bold = true })
-hl("NvimTreeFolderName",   { fg = c.blue })
-hl("NvimTreeOpenedFolderName", { fg = c.blue, bold = true })
-hl("NvimTreeEmptyFolderName",  { fg = c.muted })
+hl("NvimTreeEmptyFolderName", { fg = c.muted })
 hl("NvimTreeIndentMarker", { fg = c.border, bg = c.bg_alt })
 
-hl("WhichKey",             { fg = c.purple })
-hl("WhichKeyGroup",        { fg = c.blue })
-hl("WhichKeyDesc",         { fg = c.fg })
-hl("WhichKeySeparator",    { fg = c.subtle })
-hl("WhichKeyFloat",        { bg = c.bg_alt })
-
--- Markdown
-hl("markdownH1",           { fg = c.blue, bold = true })
-hl("markdownH2",           { fg = c.blue, bold = true })
-hl("markdownH3",           { fg = c.blue, bold = true })
-hl("markdownCode",         { fg = c.green })
-hl("markdownCodeBlock",    { fg = c.green })
-hl("markdownItalic",       { italic = true })
-hl("markdownBold",         { bold = true })
-hl("markdownUrl",          { fg = c.blue, underline = true })
+hl("WhichKey", { fg = c.purple })
+hl("WhichKeyGroup", { fg = c.blue })
+hl("WhichKeyDesc", { fg = c.fg })
+hl("WhichKeySeparator", { fg = c.subtle })
+hl("WhichKeyFloat", { bg = c.bg_alt })
+hl("TelescopeBorder", { fg = c.border, bg = c.bg_alt })
+hl("TelescopePromptNormal", { fg = c.fg, bg = c.bg_alt })
+hl("TelescopePromptBorder", { fg = c.border, bg = c.bg_alt })
+hl("TelescopeSelection", { bg = c.selection, bold = true })
+hl("TelescopeMatching", { fg = c.blue, bold = true })
+hl("NvimTreeNormal", { fg = c.fg, bg = c.bg_alt })
+hl("NvimTreeWinSeparator", { fg = c.border, bg = c.bg_alt })
+hl("NvimTreeRootFolder", { fg = c.blue, bold = true })
+hl("NvimTreeFolderName", { fg = c.blue })
+hl("NvimTreeOpenedFolderName", { fg = c.blue, bold = true })

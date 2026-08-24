@@ -1,0 +1,74 @@
+-- Plugin manager, package manager, icons, messages and diagnostics lists.
+link_many("NormalFloat", {
+  "LazyNormal",
+  "LazyFloat",
+  "MasonNormal",
+  "NoicePopup",
+  "NoiceCmdlinePopup",
+  "NoiceConfirm",
+  "TroubleNormal",
+  "TroubleNormalNC",
+})
+link_many("FloatBorder", {
+  "LazyFloatBorder",
+  "MasonBorder",
+  "NoicePopupBorder",
+  "NoiceCmdlinePopupBorder",
+  "NoiceConfirmBorder",
+  "NoicePopupmenuBorder",
+})
+link_many("Title", { "LazyH1", "LazyH2", "MasonHeader", "NoicePopupTitle", "NoiceCmdlinePopupTitle", "TroubleTitle" })
+link_many("Comment", {
+  "LazyComment",
+  "LazyDimmed",
+  "LazyDir",
+  "LazyEvent",
+  "LazyFile",
+  "LazyPluginBase",
+  "MasonMuted",
+  "NoiceFormatDate",
+  "NoiceFormatEvent",
+  "NoiceFormatKind",
+  "TroubleDirectory",
+  "TroubleSource",
+  "TroublePos",
+  "TroubleCode",
+  "TroubleText",
+})
+link_many("NormalFloat", { "NoiceMessage" })
+link_many("Added", { "LazyDone", "LazyInstall", "LazyCheck", "MasonPackageInstalled" })
+link_many("Function", { "LazyLoad", "MasonHighlight" })
+link_many("Changed", { "LazyProgressTodo", "MasonPackagePending" })
+link_many("Removed", { "LazyError", "LazyClean", "MasonPackageUninstalled" })
+link_many("DiagnosticWarn", { "LazyHealth", "MasonWarning" })
+link_many("DiagnosticInfo", { "LazyInfo" })
+hl("LazyButton", { fg = c.blue, bg = c.bg_alt })
+hl("LazyButtonActive", { fg = c.fg, bg = c.selection, bold = true })
+hl_many({ "MasonHighlightBlock", "MasonHighlightBlockBold" }, { fg = c.bg, bg = c.blue, bold = true })
+hl("MiniIconsBlue", { fg = c.blue })
+hl("MiniIconsCyan", { fg = c.cyan })
+hl("MiniIconsGreen", { fg = c.green })
+hl("MiniIconsGrey", { fg = c.muted })
+hl("MiniIconsOrange", { fg = c.orange })
+hl("MiniIconsPurple", { fg = c.purple })
+hl("MiniIconsRed", { fg = c.red })
+hl("MiniIconsYellow", { fg = c.yellow })
+link_many("PmenuSel", { "NoicePopupmenuSelected" })
+link_many("Pmenu", { "NoicePopupmenu", "NoiceCmdline", "NoiceCmdlinePrompt" })
+link_many("Function", { "NoiceCompletionItemKindFunction", "NoiceCompletionItemKindMethod" })
+link_many("Type", {
+  "NoiceCompletionItemKindClass",
+  "NoiceCompletionItemKindInterface",
+  "NoiceCompletionItemKindStruct",
+  "NoiceCompletionItemKindEnum",
+})
+link_many("Constant", { "NoiceCompletionItemKindConstant", "NoiceCompletionItemKindEnumMember" })
+link_many(
+  "Identifier",
+  { "NoiceCompletionItemKindField", "NoiceCompletionItemKindProperty", "NoiceCompletionItemKindVariable" }
+)
+link_many("Directory", { "NoiceCompletionItemKindFolder" })
+link_many("DiagnosticError", { "NoiceFormatLevelError" })
+link_many("DiagnosticWarn", { "NoiceFormatLevelWarn" })
+link_many("DiagnosticInfo", { "NoiceFormatLevelInfo" })
+link_many("Number", { "TroubleCount" })

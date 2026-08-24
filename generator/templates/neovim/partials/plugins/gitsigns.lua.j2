@@ -1,0 +1,72 @@
+-- Common plugin groups
+hl("GitSignsAdd", { fg = c.green, bg = c.bg })
+hl("GitSignsChange", { fg = c.purple, bg = c.bg })
+hl("GitSignsDelete", { fg = c.red, bg = c.bg })
+-- Extended Git signs. Sign-column states retain the reading field; cursor-line
+-- and diff-preview states receive the surface that describes their state.
+hl_many({
+  "GitSignsAddNr",
+  "GitSignsUntracked",
+  "GitSignsUntrackedNr",
+  "GitSignsStagedAdd",
+  "GitSignsStagedAddNr",
+  "GitSignsStagedUntracked",
+  "GitSignsStagedUntrackedNr",
+}, { fg = c.green, bg = c.bg })
+hl_many({
+  "GitSignsChangeNr",
+  "GitSignsChangedelete",
+  "GitSignsChangedeleteNr",
+  "GitSignsStagedChange",
+  "GitSignsStagedChangeNr",
+  "GitSignsStagedChangedelete",
+  "GitSignsStagedChangedeleteNr",
+}, { fg = c.purple, bg = c.bg })
+hl_many({
+  "GitSignsDeleteNr",
+  "GitSignsTopdelete",
+  "GitSignsTopdeleteNr",
+  "GitSignsStagedDelete",
+  "GitSignsStagedDeleteNr",
+  "GitSignsStagedTopdelete",
+  "GitSignsStagedTopdeleteNr",
+}, { fg = c.red, bg = c.bg })
+hl_many(
+  { "GitSignsAddCul", "GitSignsUntrackedCul", "GitSignsStagedAddCul", "GitSignsStagedUntrackedCul" },
+  { fg = c.green, bg = c.cursorline }
+)
+hl_many(
+  { "GitSignsChangeCul", "GitSignsChangedeleteCul", "GitSignsStagedChangeCul", "GitSignsStagedChangedeleteCul" },
+  { fg = c.purple, bg = c.cursorline }
+)
+hl_many(
+  { "GitSignsDeleteCul", "GitSignsTopdeleteCul", "GitSignsStagedDeleteCul", "GitSignsStagedTopdeleteCul" },
+  { fg = c.red, bg = c.cursorline }
+)
+hl_many({
+  "GitSignsAddInline",
+  "GitSignsAddLn",
+  "GitSignsAddPreview",
+  "GitSignsAddVirtLn",
+  "GitSignsUntrackedLn",
+  "GitSignsStagedAddLn",
+  "GitSignsStagedUntrackedLn",
+}, { fg = c.green, bg = c.diff_add })
+hl_many({
+  "GitSignsChangeInline",
+  "GitSignsChangeLn",
+  "GitSignsChangeVirtLn",
+  "GitSignsChangedeleteLn",
+  "GitSignsStagedChangeLn",
+  "GitSignsStagedChangedeleteLn",
+}, { fg = c.purple, bg = c.diff_change })
+hl_many({
+  "GitSignsDeleteInline",
+  "GitSignsDeleteLn",
+  "GitSignsDeletePreview",
+  "GitSignsDeleteVirtLn",
+  "GitSignsTopdeleteLn",
+  "GitSignsStagedDeleteLn",
+  "GitSignsStagedTopdeleteLn",
+}, { fg = c.red, bg = c.diff_delete })
+link_many("Comment", { "GitSignsCurrentLineBlame", "GitSignsVirtLnum" })

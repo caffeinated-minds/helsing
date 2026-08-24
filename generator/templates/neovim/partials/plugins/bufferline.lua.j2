@@ -1,0 +1,45 @@
+-- Buffer tabs (bufferline.nvim)
+hl("BufferLineFill", { bg = c.bg_alt })
+hl_many({ "BufferLineBackground", "BufferLineBuffer" }, { fg = c.muted, bg = c.bg_alt })
+hl("BufferLineBufferVisible", { fg = c.fg, bg = c.bg_alt })
+hl("BufferLineBufferSelected", { fg = c.fg, bg = c.selection, bold = true })
+hl("BufferLineIndicatorSelected", { fg = c.blue, bg = c.selection })
+hl("BufferLineModified", { fg = c.purple, bg = c.bg_alt })
+hl("BufferLineModifiedVisible", { fg = c.purple, bg = c.bg_alt })
+hl("BufferLineModifiedSelected", { fg = c.purple, bg = c.selection })
+hl_many({ "BufferLineSeparator", "BufferLineSeparatorVisible" }, { fg = c.border, bg = c.bg_alt })
+hl("BufferLineSeparatorSelected", { fg = c.border, bg = c.selection })
+hl_many(
+  { "BufferLineTruncMarker", "BufferLineGroupSeparator", "BufferLineOffsetSeparator" },
+  { fg = c.subtle, bg = c.bg_alt }
+)
+hl_many({
+  "BufferLineNumbers",
+  "BufferLineNumbersVisible",
+  "BufferLineDuplicate",
+  "BufferLineDuplicateVisible",
+  "BufferLineGroupLabel",
+}, { fg = c.muted, bg = c.bg_alt })
+hl_many({ "BufferLineNumbersSelected", "BufferLineDuplicateSelected" }, { fg = c.fg, bg = c.selection, bold = true })
+hl_many({ "BufferLineCloseButton", "BufferLineCloseButtonVisible" }, { fg = c.subtle, bg = c.bg_alt })
+hl("BufferLineCloseButtonSelected", { fg = c.muted, bg = c.selection })
+hl_many({ "BufferLinePick", "BufferLinePickVisible" }, { fg = c.blue, bg = c.bg_alt, bold = true })
+hl("BufferLinePickSelected", { fg = c.blue, bg = c.selection, bold = true })
+
+local function bufferline_diagnostics(kind, color)
+  hl_many({
+    "BufferLine" .. kind,
+    "BufferLine" .. kind .. "Diagnostic",
+    "BufferLine" .. kind .. "Visible",
+    "BufferLine" .. kind .. "DiagnosticVisible",
+  }, { fg = color, bg = c.bg_alt })
+  hl_many({
+    "BufferLine" .. kind .. "Selected",
+    "BufferLine" .. kind .. "DiagnosticSelected",
+  }, { fg = color, bg = c.selection })
+end
+
+bufferline_diagnostics("Error", c.red)
+bufferline_diagnostics("Warning", c.yellow)
+bufferline_diagnostics("Info", c.info)
+bufferline_diagnostics("Hint", c.info)
