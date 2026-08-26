@@ -57,11 +57,20 @@ semantic_roles:
   border: border
   selection: selection
   keyword: purple
+  operator: purple
   function: blue
+  builtin_function: blue
   string: green
+  regexp: pink
   number: orange
   type: cyan
+  namespace: cyan
   constant: pink
+  decorator: pink
+  variable: fg
+  parameter: fg
+  property: fg
+  punctuation: subtle
   error: red
   warning: yellow
   info: info

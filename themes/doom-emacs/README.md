@@ -22,6 +22,10 @@ Set the theme in `config.el`:
 
 Then run `doom sync` and restart Emacs.
 
+## Syntax highlighting
+
+Helsing explicitly maps modern Emacs Font Lock and Eglot semantic-token faces to the canonical syntax roles. For the closest parity with the VS Code and Neovim themes, use each language's Tree-sitter mode and install the corresponding native grammar. Legacy major modes remain supported, but they may expose fewer semantic categories for the theme to colour.
+
 ## Development
 
 The theme is generated from [`docs/helsing-palette.yml`](../../docs/helsing-palette.yml) using [`generator/config/doom-emacs.yml`](../../generator/config/doom-emacs.yml) and [`generator/templates/doom-emacs/helsing-theme.el.j2`](../../generator/templates/doom-emacs/helsing-theme.el.j2). Do not edit the generated file independently.

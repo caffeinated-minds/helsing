@@ -12,6 +12,16 @@ fi
 
 "$python_bin" "$repo_root/generator/generate.py" --check
 
+grep -Fq 'operator: purple' "$repo_root/docs/helsing-palette.yml"
+grep -Fq 'decorator: pink' "$repo_root/docs/helsing-palette.yml"
+grep -Fq 'namespace: cyan' "$repo_root/docs/helsing-palette.yml"
+grep -Fq 'foreground: purple' \
+  <(sed -n '/^  operator:/,/^  parameter:/p' "$repo_root/generator/config/vscode.yml")
+grep -Fq 'foreground: pink' \
+  <(sed -n '/^  decorator:/,/^  enum:/p' "$repo_root/generator/config/vscode.yml")
+grep -Fq 'hl("@lsp.mod.defaultLibrary", { fg = c.blue, italic = true })' \
+  "$repo_root/themes/neovim/helsing.lua"
+
 mapping_body=$(sed -n '/^local function hl/,$p' "$repo_root/themes/neovim/helsing.lua")
 if grep -Eq '#[0-9A-Fa-f]{6}' <<<"$mapping_body"; then
   echo "Neovim mappings contain a literal colour outside the palette table." >&2
@@ -61,6 +71,7 @@ if command -v emacs >/dev/null 2>&1 && [[ -n "$doom_themes_dir" ]]; then
     emacs --batch -Q -L "$doom_themes_dir" \
     --eval '(progn
       (require '\''doom-themes'')
+      (require '\''eglot'')
       (add-to-list '\''custom-theme-load-path (getenv "HELSING_THEME_DIR"))
       (load-theme '\''helsing t)
       (unless (custom-theme-enabled-p '\''helsing)
@@ -71,6 +82,31 @@ if command -v emacs >/dev/null 2>&1 && [[ -n "$doom_themes_dir" ]]; then
       (unless (equal (cdr (assq '\''fg doom-themes--colors))
                      '\''("#2A2A2A" "black" "black"))
         (error "Helsing Doom foreground token is incorrect"))
+      (let ((settings (get '\''helsing '\''theme-settings)))
+        (cl-labels
+            ((theme-face-attribute
+              (face attribute)
+              (let* ((entry
+                      (seq-find
+                       (lambda (item)
+                         (and (eq (car item) '\''theme-face)
+                              (eq (cadr item) face)))
+                       settings))
+                     (spec (nth 3 entry)))
+                (plist-get (cadr (car spec)) attribute))))
+          (dolist (expectation
+                   '\''((font-lock-number-face :foreground "#C47A2C")
+                      (font-lock-operator-face :foreground "#7C6EE6")
+                      (font-lock-function-call-face :foreground "#3A7BD5")
+                      (font-lock-property-use-face :foreground "#2A2A2A")
+                      (eglot-semantic-number :foreground "#C47A2C")
+                      (eglot-semantic-operator :foreground "#7C6EE6")
+                      (eglot-semantic-namespace :foreground "#2F8F8B")
+                      (eglot-semantic-decorator :foreground "#C05A8C")))
+            (pcase-let ((`(,face ,attribute ,expected) expectation))
+              (unless (equal (theme-face-attribute face attribute) expected)
+                (error "Helsing face %S does not map %S to %S"
+                       face attribute expected))))))
       (disable-theme '\''helsing))'
 else
   echo "Skipping Doom Emacs runtime validation: Emacs or doom-themes is not installed."

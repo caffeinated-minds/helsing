@@ -214,10 +214,15 @@ tokenColors:
   - name: Operators
     scope:
       - keyword.operator
+    settings:
+      foreground: purple
+
+  - name: Punctuation
+    scope:
       - punctuation.separator
       - punctuation.terminator
     settings:
-      foreground: red
+      foreground: subtle
 
   - name: Functions
     scope:
@@ -263,12 +268,17 @@ tokenColors:
     settings:
       foreground: fg
 
-  - name: Tags and Attributes
+  - name: Tags
     scope:
       - entity.name.tag
+    settings:
+      foreground: cyan
+
+  - name: Attributes
+    scope:
       - entity.other.attribute-name
     settings:
-      foreground: orange
+      foreground: pink
 
   - name: Modules and Namespaces
     scope:
@@ -321,7 +331,7 @@ semanticTokenColors:
     foreground: muted
     fontStyle: italic
   decorator:
-    foreground: orange
+    foreground: pink
   enum:
     foreground: cyan
   enumMember:
@@ -342,19 +352,19 @@ semanticTokenColors:
   number:
     foreground: orange
   operator:
-    foreground: red
+    foreground: purple
   parameter:
     foreground: fg
   property:
     foreground: fg
   regexp:
-    foreground: red
+    foreground: pink
   string:
     foreground: green
   type:
     foreground: cyan
   typeParameter:
-    foreground: purple
+    foreground: cyan
   variable:
     foreground: fg
   variable.defaultLibrary:

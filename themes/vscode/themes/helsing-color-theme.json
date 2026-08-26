@@ -194,12 +194,20 @@
   {
     "name": "Operators",
     "scope": [
-      "keyword.operator",
+      "keyword.operator"
+    ],
+    "settings": {
+      "foreground": "#7C6EE6"
+    }
+  },
+  {
+    "name": "Punctuation",
+    "scope": [
       "punctuation.separator",
       "punctuation.terminator"
     ],
     "settings": {
-      "foreground": "#C23B3B"
+      "foreground": "#A8A29E"
     }
   },
   {
@@ -265,13 +273,21 @@
     }
   },
   {
-    "name": "Tags and Attributes",
+    "name": "Tags",
     "scope": [
-      "entity.name.tag",
+      "entity.name.tag"
+    ],
+    "settings": {
+      "foreground": "#2F8F8B"
+    }
+  },
+  {
+    "name": "Attributes",
+    "scope": [
       "entity.other.attribute-name"
     ],
     "settings": {
-      "foreground": "#C47A2C"
+      "foreground": "#C05A8C"
     }
   },
   {
@@ -346,7 +362,7 @@
     "fontStyle": "italic"
   },
   "decorator": {
-    "foreground": "#C47A2C"
+    "foreground": "#C05A8C"
   },
   "enum": {
     "foreground": "#2F8F8B"
@@ -377,7 +393,7 @@
     "foreground": "#C47A2C"
   },
   "operator": {
-    "foreground": "#C23B3B"
+    "foreground": "#7C6EE6"
   },
   "parameter": {
     "foreground": "#2A2A2A"
@@ -386,7 +402,7 @@
     "foreground": "#2A2A2A"
   },
   "regexp": {
-    "foreground": "#C23B3B"
+    "foreground": "#C05A8C"
   },
   "string": {
     "foreground": "#4C9A5F"
@@ -395,7 +411,7 @@
     "foreground": "#2F8F8B"
   },
   "typeParameter": {
-    "foreground": "#7C6EE6"
+    "foreground": "#2F8F8B"
   },
   "variable": {
     "foreground": "#2A2A2A"
