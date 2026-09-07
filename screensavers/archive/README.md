@@ -31,7 +31,7 @@ Press Escape to exit. This is not a screen lock. Desktop-specific idle detection
 
 ## cortadOS integration
 
-The NixOS configuration vendors the collection for offline recovery. The existing five-minute idle timer selects it when the live theme is Helsing. Each active monitor gets an mpv viewer with the same shuffled order and 30-second intervals. A gentle Ken Burns effect alternates zoom direction between slides, with bounded panning at 24 updates per second. Images fill the screen proportionally; portrait works are cropped more heavily on ultrawide displays. This uses more rendering resources than the static preview above, and does not modify the source files.
+The NixOS configuration vendors the collection for offline recovery. The existing five-minute idle timer selects it when the live theme is Helsing. Each active monitor gets an mpv viewer with the same shuffled order, one-second parchment fades and 30-second intervals. A gentle Ken Burns effect alternates zoom direction between slides, with bounded panning at 24 updates per second. Images fill the screen proportionally; portrait works are cropped more heavily on ultrawide displays. This uses more rendering resources than the static preview above, and does not modify the source files.
 
 Activity dismisses all viewers. Escape and mouse movement also dismiss manual previews. New monitors are picked up on the next launch. Other themes retain their terminal savers. The original static version held each image for 90 seconds, which could appear not to advance during a short preview.
 
