@@ -23,6 +23,10 @@ character and a modern, workmanlike interface.
 > companion, nor in any way associated with the Dracula Theme project, apart
 > from the reference.
 
+## Wallpaper
+
+[Helsing Woodland](wallpapers/woodland/README.md) is an edge-to-edge ink woodland on warm parchment, adapted with AI from Thomas Rowlandson’s public-domain *Study of trees*. It supports ultrawide displays and centred crops for laptop screens.
+
 ## Contributing
 
 Helsing is meant to travel. Contributions that bring the theme to more editors, terminals, browsers, desktop environments, operating systems and other applications are welcome. Contributions to improve an existing Helsing theme are welcome too.
