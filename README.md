@@ -29,6 +29,8 @@ character and a modern, workmanlike interface.
 
 ## Contributing
 
+The [Helsing Archive slideshow collection](screensavers/archive/README.md) brings public-domain architecture, library photography, interiors and natural studies to idle screens.
+
 Helsing is meant to travel. Contributions that bring the theme to more editors, terminals, browsers, desktop environments, operating systems and other applications are welcome. Contributions to improve an existing Helsing theme are welcome too.
 
 Before starting a new port, open an issue in the [Helsing issue tracker](https://github.com/caffeinated-minds/helsing/issues) so we can confirm the target, avoid duplicated work and discuss any platform constraints.
