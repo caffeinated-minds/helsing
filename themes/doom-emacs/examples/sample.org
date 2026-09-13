@@ -1,0 +1,20 @@
+#+title: Archive Watch
+#+author: Helsing
+
+* Morning inspection
+
+The archive should remain readable in daylight and in a constrained terminal.
+
+** Checklist
+
+- [X] Identify the active major mode
+- [ ] Inspect the face at point
+- [ ] Compare it with the role contract
+
+#+begin_src emacs-lisp
+(helsing-inspect-archive "/srv/archive" t)
+#+end_src
+
+#+begin_quote
+Fix the rendering path, not merely the visible symptom.
+#+end_quote

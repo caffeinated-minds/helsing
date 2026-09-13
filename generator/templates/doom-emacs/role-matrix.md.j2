@@ -1,0 +1,51 @@
+# Helsing Emacs Role Matrix
+
+This file is generated from `docs/helsing-palette.yml` and `generator/config/doom-emacs.yml`. Do not edit it by hand.
+
+The matrix records semantic intent. It does not imply that every face is active in every buffer. The active major mode, Font Lock rules, Tree-sitter queries, Eglot server capabilities, package faces, and overlays determine which face Emacs actually applies.
+
+## Role aliases
+
+| Doom alias | Helsing role | Palette token | Colour |
+| --- | --- | --- | --- |
+{% for alias in doom_role_aliases -%}
+| `{{ alias.alias }}` | `{{ alias.role }}` | `{{ alias.token }}` | `{{ alias.color }}` |
+{% endfor %}
+
+## Face contract
+
+{% for group in doom_face_groups %}
+### {{ group.layer | replace("_", " ") | title }}
+
+| Emacs face | Foreground role | Background role | Inherits | Notes |
+| --- | --- | --- | --- | --- |
+{% for entry in group.entries -%}
+| `{{ entry.face }}` | {% if entry.get("foreground") %}`{{ entry.foreground.role }}` → `{{ entry.foreground.token }}` (`{{ entry.foreground.color }}`){% else %}Inherited{% endif %} | {% if entry.get("background") %}`{{ entry.background.role }}` → `{{ entry.background.token }}` (`{{ entry.background.color }}`){% else %}Inherited{% endif %} | {% if entry.get("inherits") %}`{{ entry.inherits }}`{% else %}None{% endif %} | {{ entry.notes }} |
+{% endfor %}
+
+{% endfor %}
+## Terminal contract
+
+| Doom colour | Palette token | Graphical | 256-colour fallback | TTY fallback |
+| --- | --- | --- | --- | --- |
+{% for entry in doom_terminal_contract -%}
+| `{{ entry.name }}` | `{{ entry.token }}` | `{{ entry.color }}` | `{{ entry.ansi256 }}` | `{{ entry.tty }}` |
+{% endfor %}
+
+## Target helpers
+
+| Helper | Colour | Purpose |
+| --- | --- | --- |
+{% for helper in doom_helper_usage -%}
+| `{{ helper.name }}` | `{{ helper.color }}` | {{ helper.usage }} |
+{% endfor %}
+
+## Rendering paths
+
+Built-in Emacs Tree-sitter modes normally assign Font Lock faces, so their contract is the Font Lock section above. The legacy `tree-sitter` package has a separate `tree-sitter-hl-face:*` namespace; Helsing does not map those faces without runtime evidence that an installed mode uses them.
+
+Eglot faces are conditional. They affect a buffer only when Eglot is managing it, semantic-token highlighting is enabled, and the language server advertises a semantic-token provider. Otherwise, Font Lock remains the fallback.
+
+## Inspection rule
+
+When a token renders incorrectly, record the major mode, face at point, inherited faces, Eglot state, semantic-token capability, and final foreground/background before changing the theme.

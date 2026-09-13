@@ -1,5 +1,376 @@
 target: doom-emacs
-output: themes/doom-emacs/helsing-theme.el
+outputs:
+  theme: themes/doom-emacs/helsing-theme.el
+  role_matrix: docs/helsing-emacs-role-matrix.md
+  test_contract: checks/generated/helsing-emacs-face-contract.el
+
+# These aliases bridge Doom's conventional colour names to Helsing's
+# canonical semantic roles. A value may name either a semantic role from
+# docs/helsing-palette.yml or a canonical palette token.
+role_aliases:
+  # Doom's historical `builtin` base colour remains pink for compatibility.
+  # `font-lock-builtin-face` is explicitly mapped to builtin_function/blue.
+  builtin: pink
+  comments: text_muted
+  doc-comments: chrome
+  constants: constant
+  functions: function
+  keywords: keyword
+  methods: function
+  operators: operator
+  type: type
+  strings: string
+  variables: variable
+  numbers: number
+  region: selection
+  error: error
+  warning: warning
+  success: green
+  vc-modified: orange
+  vc-added: green
+  vc-deleted: red
+
+# The face contract is used to generate human-readable documentation and the
+# executable Emacs test contract. It deliberately records semantic intent;
+# application-specific styling such as italics remains in the theme template.
+face_contract:
+  core:
+    - face: default
+      foreground: text
+      background: background
+      notes: "Main editor surface and ordinary text."
+    - face: cursor
+      background: text
+      notes: "High-contrast insertion point."
+    - face: region
+      background: selection
+      notes: "Selected text; foreground inherits from the buffer."
+    - face: line-number
+      foreground: chrome
+      notes: "Inactive line numbers."
+    - face: line-number-current-line
+      foreground: text
+      notes: "Current line number."
+  font_lock:
+    - face: font-lock-builtin-face
+      foreground: builtin_function
+      notes: "Language-provided functions and constructs."
+    - face: font-lock-comment-face
+      foreground: text_muted
+      notes: "Comments."
+    - face: font-lock-constant-face
+      foreground: constant
+      notes: "Constants and enum-like values."
+    - face: font-lock-doc-face
+      foreground: chrome
+      notes: "Documentation comments and docstrings when distinguished."
+    - face: font-lock-function-name-face
+      foreground: function
+      notes: "Function names in definitions."
+    - face: font-lock-function-call-face
+      foreground: function
+      notes: "Function names at call sites when distinguished."
+    - face: font-lock-keyword-face
+      foreground: keyword
+      notes: "Control and declaration keywords, including Python def."
+    - face: font-lock-number-face
+      foreground: number
+      notes: "Numeric literals."
+    - face: font-lock-operator-face
+      foreground: operator
+      notes: "Operators."
+    - face: font-lock-preprocessor-face
+      foreground: constant
+      notes: "Preprocessor directives and macros."
+    - face: font-lock-property-name-face
+      foreground: property
+      notes: "Property names when distinguished."
+    - face: font-lock-property-use-face
+      foreground: property
+      notes: "Property use sites when distinguished."
+    - face: font-lock-punctuation-face
+      foreground: punctuation
+      notes: "Punctuation and delimiters when distinguished."
+    - face: font-lock-string-face
+      foreground: string
+      notes: "String literals."
+    - face: font-lock-type-face
+      foreground: type
+      notes: "Types and class-like identifiers."
+    - face: font-lock-variable-name-face
+      foreground: variable
+      notes: "Variable declarations and names."
+    - face: font-lock-variable-use-face
+      foreground: variable
+      notes: "Variable use sites when distinguished."
+  eglot:
+    - face: eglot-highlight-symbol-face
+      background: selection
+      notes: "References highlighted by Eglot."
+    - face: eglot-diagnostic-tag-unnecessary-face
+      foreground: text_muted
+      notes: "Code marked unnecessary by the language server."
+    - face: eglot-diagnostic-tag-deprecated-face
+      foreground: text_muted
+      notes: "Code marked deprecated by the language server."
+    - face: eglot-inlay-hint-face
+      foreground: chrome
+      notes: "Base face for unobtrusive inlay hints."
+    - face: eglot-type-hint-face
+      inherits: eglot-inlay-hint-face
+      notes: "Type inlay hints inherit the restrained hint role."
+    - face: eglot-parameter-hint-face
+      inherits: eglot-inlay-hint-face
+      notes: "Parameter inlay hints inherit the restrained hint role."
+  editor_chrome:
+    - face: mode-line
+      foreground: text
+      background: modeline_bg
+      notes: "Active modeline."
+    - face: mode-line-inactive
+      foreground: text_muted
+      background: modeline_bg_inactive
+      notes: "Inactive modeline."
+    - face: mode-line-emphasis
+      foreground: function
+      notes: "Emphasised modeline content."
+    - face: doom-modeline-bar
+      background: function
+      notes: "Active Doom modeline indicator."
+    - face: doom-modeline-bar-inactive
+      background: border
+      notes: "Inactive Doom modeline indicator."
+  corfu:
+    - face: corfu-default
+      foreground: text
+      background: popup_bg
+      notes: "Completion popup surface."
+    - face: corfu-current
+      foreground: text
+      background: popup_selection
+      notes: "Selected completion candidate."
+    - face: corfu-border
+      background: border
+      notes: "Completion popup border."
+    - face: corfu-annotations
+      foreground: text_muted
+      notes: "Completion annotations."
+    - face: corfu-deprecated
+      foreground: error
+      notes: "Deprecated completion candidate."
+    - face: corfu-bar
+      background: function
+      notes: "Completion scrollbar."
+  completion:
+    - face: vertico-current
+      foreground: text
+      background: popup_selection
+      notes: "Current Vertico candidate."
+    - face: orderless-match-face-0
+      foreground: function
+      notes: "First Orderless match component."
+    - face: orderless-match-face-1
+      foreground: keyword
+      notes: "Second Orderless match component."
+    - face: orderless-match-face-2
+      foreground: string
+      notes: "Third Orderless match component."
+    - face: orderless-match-face-3
+      foreground: warning
+      notes: "Fourth Orderless match component."
+    - face: marginalia-documentation
+      foreground: text_muted
+      notes: "Marginalia documentation."
+    - face: marginalia-file-name
+      foreground: text
+      notes: "Marginalia file names."
+    - face: marginalia-size
+      foreground: chrome
+      notes: "Marginalia sizes and secondary measurements."
+    - face: marginalia-modified
+      foreground: orange
+      notes: "Marginalia modified state."
+  dashboard:
+    - face: dashboard-heading
+      foreground: keyword
+      notes: "Dashboard section headings."
+    - face: dashboard-items-face
+      foreground: text
+      notes: "Dashboard items."
+    - face: dashboard-no-items-message
+      foreground: text_muted
+      notes: "Dashboard empty state."
+    - face: dashboard-banner-logo-title
+      foreground: function
+      notes: "Dashboard title."
+    - face: dashboard-footer
+      foreground: chrome
+      notes: "Dashboard footer."
+  magit_transient:
+    - face: magit-section-heading
+      foreground: function
+      notes: "Magit section heading."
+    - face: magit-section-heading-selection
+      foreground: orange
+      notes: "Selected Magit section heading."
+    - face: magit-section-highlight
+      inherits: hl-line
+      notes: "Highlighted Magit section."
+    - face: magit-diff-added
+      foreground: green
+      background: diff_add_bg
+      notes: "Added diff line."
+    - face: magit-diff-added-highlight
+      foreground: green
+      background: diff_add_bg
+      notes: "Selected added diff line."
+    - face: magit-diff-removed
+      foreground: red
+      background: diff_delete_bg
+      notes: "Removed diff line."
+    - face: magit-diff-removed-highlight
+      foreground: red
+      background: diff_delete_bg
+      notes: "Selected removed diff line."
+    - face: magit-diff-context-highlight
+      foreground: text
+      background: surface
+      notes: "Highlighted unchanged diff context."
+    - face: magit-diff-hunk-heading
+      foreground: keyword
+      background: diff_change_bg
+      notes: "Diff hunk heading."
+    - face: magit-diff-hunk-heading-highlight
+      foreground: background
+      background: keyword
+      notes: "Selected diff hunk heading."
+    - face: magit-header-line
+      foreground: text
+      background: selection
+      notes: "Magit header line."
+    - face: magit-dimmed
+      foreground: text_muted
+      notes: "Dimmed Magit content."
+    - face: transient-heading
+      foreground: keyword
+      notes: "Transient section heading."
+    - face: transient-key
+      foreground: function
+      notes: "Transient command key."
+    - face: transient-value
+      foreground: string
+      notes: "Transient argument value."
+    - face: transient-inactive-argument
+      foreground: text_muted
+      notes: "Inactive Transient argument."
+    - face: transient-inactive-value
+      foreground: text_muted
+      notes: "Inactive Transient value."
+  diagnostics:
+    - face: hl-line
+      background: surface
+      notes: "Current line surface."
+    - face: hl-todo
+      foreground: error
+      notes: "TODO-style attention marker."
+    - face: whitespace-trailing
+      background: diff_delete_bg
+      notes: "Trailing whitespace warning."
+    - face: whitespace-tab
+      background: base0
+      notes: "Visible tab background."
+    - face: whitespace-indentation
+      background: base0
+      notes: "Visible indentation background."
+  org_markdown:
+    - face: org-block
+      background: base2
+      notes: "Org source block."
+    - face: org-block-begin-line
+      foreground: text_muted
+      background: base2
+      notes: "Org source block opening line."
+    - face: org-block-end-line
+      foreground: text_muted
+      background: base2
+      notes: "Org source block closing line."
+    - face: org-code
+      foreground: orange
+      notes: "Inline Org code."
+    - face: org-link
+      foreground: function
+      notes: "Org link."
+    - face: org-todo
+      foreground: green
+      notes: "Open Org task."
+    - face: org-done
+      foreground: text_muted
+      notes: "Completed Org task."
+    - face: markdown-header-face
+      foreground: keyword
+      notes: "Markdown heading."
+    - face: markdown-markup-face
+      foreground: chrome
+      notes: "Markdown markup punctuation."
+    - face: markdown-code-face
+      background: base2
+      notes: "Markdown code."
+  dired_evil_vc:
+    - face: dired-directory
+      foreground: function
+      notes: "Dired directory name."
+    - face: dired-symlink
+      foreground: type
+      notes: "Dired symbolic link."
+    - face: evil-ex-lazy-highlight
+      inherits: lazy-highlight
+      notes: "Evil Ex secondary match."
+    - face: diff-added
+      foreground: green
+      background: diff_add_bg
+      notes: "Added line in Diff mode."
+    - face: diff-removed
+      foreground: red
+      background: diff_delete_bg
+      notes: "Removed line in Diff mode."
+    - face: diff-changed
+      foreground: keyword
+      background: diff_change_bg
+      notes: "Changed line in Diff mode."
+
+eglot_policy:
+  syntax_highlighting: font_lock
+  semantic_token_faces: []
+  notes:
+    - "Emacs 30.2 Eglot does not provide eglot-semantic-tokens-mode."
+    - "Do not add speculative eglot-semantic-* faces. Reassess against the installed Emacs API before adding semantic-token mappings."
+
+# Built-in Emacs Tree-sitter modes normally apply Font Lock faces and are
+# covered above. Legacy tree-sitter-hl-face:* groups are intentionally absent:
+# add one only after inspection proves that an installed mode uses it.
+tree_sitter_policy:
+  builtin_emacs: font_lock
+  legacy_faces: []
+  require_runtime_evidence_for_legacy_face: true
+
+terminal_contract:
+  bg: {token: bg, ansi256: white, tty: white}
+  fg: {token: fg, ansi256: black, tty: black}
+  bg-alt: {token: bg_alt, ansi256: white, tty: white}
+  fg-alt: {token: muted, ansi256: black, tty: brightblack}
+  muted: {token: muted, ansi256: black, tty: brightblack}
+  subtle: {token: subtle, ansi256: brightblack, tty: brightblack}
+  border: {token: border, ansi256: brightblack, tty: brightblack}
+  info: {token: info, ansi256: brightblue, tty: brightblue}
+  red: {token: red, ansi256: red, tty: red}
+  orange: {token: orange, ansi256: brightred, tty: brightred}
+  green: {token: green, ansi256: green, tty: green}
+  yellow: {token: yellow, ansi256: yellow, tty: yellow}
+  blue: {token: blue, ansi256: brightblue, tty: brightblue}
+  pink: {token: pink, ansi256: magenta, tty: magenta}
+  purple: {token: purple, ansi256: brightmagenta, tty: brightmagenta}
+  cyan: {token: cyan, ansi256: brightcyan, tty: brightcyan}
+  selection: {token: selection, ansi256: brightblack, tty: brightblack}
 
 # Doom themes require a light-to-dark neutral ramp in addition to the
 # portable Helsing structural roles. These are derived target helpers; the
@@ -21,3 +392,21 @@ helpers:
   diff_add_bg: "#DCEEDB"
   diff_change_bg: "#E8E1F3"
   diff_delete_bg: "#F3D9D9"
+
+helper_usage:
+  base0: "Lightest paper surface for whitespace and subtle overlays."
+  base1: "Doom neutral ramp alias for the canonical background."
+  base2: "Secondary paper surface used by blocks and panels."
+  base3: "Neutral border step."
+  base4: "Intermediate neutral required by Doom's base palette."
+  base5: "Subtle chrome neutral."
+  base6: "Muted foreground neutral."
+  base7: "Dark neutral between foreground and muted text."
+  base8: "Doom neutral ramp alias for the canonical foreground."
+  modeline_bg: "Active modeline surface."
+  modeline_bg_inactive: "Inactive modeline surface."
+  popup_bg: "Completion and popup surface."
+  popup_selection: "Selected completion or picker row."
+  diff_add_bg: "Low-chroma added-line background."
+  diff_change_bg: "Low-chroma changed-line background."
+  diff_delete_bg: "Low-chroma deleted-line background."

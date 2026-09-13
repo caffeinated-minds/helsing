@@ -68,8 +68,12 @@ The generator consumes that contract and renders target-specific output such as:
   - Mintty foreground, background, selection, cursor, and ANSI mappings
 - `generator/templates/doom-emacs/helsing-theme.el.j2`
   - Doom Emacs theme entrypoint
+- `generator/templates/doom-emacs/role-matrix.md.j2`
+  - generated role-to-face documentation
+- `generator/templates/doom-emacs/face-contract.el.j2`
+  - generated executable test expectations
 - `generator/config/doom-emacs.yml`
-  - Doom-specific neutral ramp and helper surfaces
+  - Doom-specific neutral ramp, semantic aliases, face contract and helper surfaces
 
 ## Usage
 
@@ -103,6 +107,20 @@ Run the repository validation after changing a palette, target configuration or 
 ```bash
 ./checks/validate.sh
 ```
+
+The Doom Emacs target produces three coordinated artifacts: the loadable theme, `docs/helsing-emacs-role-matrix.md`, and `checks/generated/helsing-emacs-face-contract.el`. This keeps implementation, documentation and tests on the same contract.
+
+The VS Code target also produces three coordinated artifacts: the packaged theme, `docs/helsing-vscode-role-matrix.md`, and `checks/generated/helsing-vscode-token-contract.json`. The target validator rejects unknown palette references, undocumented helper colours, dangerous broad selectors, missing role coverage, stale outputs, and fixture expectations that no longer identify source text.
+
+From `themes/vscode`, the reproducible target commands are:
+
+```bash
+npm ci
+npm run theme:check
+npm run package:vsix
+```
+
+`npm run package:vsix` invokes `vscode:prepublish`, so packaging stops if the generated artifacts are stale or validation fails. Set `HELSING_PYTHON` only when the project virtual environment and the normal `python3` or `python` commands are unavailable.
 
 ## What is canonical vs target-specific
 

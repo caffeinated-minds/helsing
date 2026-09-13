@@ -165,6 +165,80 @@ def build_doom_emacs_context() -> dict:
     helpers = doom_emacs.get("helpers", {})
 
     context["colors"].update(helpers)
+    semantic_roles = context["palette"]["semantic_roles"]
+
+    def resolve_role(role: str) -> dict[str, str]:
+        token = semantic_roles.get(role, role)
+        if token not in context["colors"]:
+            raise ValueError(
+                f"Unknown Doom Emacs role or token {role!r} (resolved to {token!r})"
+            )
+        return {
+            "role": role,
+            "token": token,
+            "color": context["colors"][token],
+        }
+
+    role_aliases = doom_emacs.get("role_aliases", {})
+    context["doom_role_aliases"] = [
+        {"alias": alias, **resolve_role(role)}
+        for alias, role in role_aliases.items()
+    ]
+
+    seen_faces: set[str] = set()
+    face_groups = []
+    for layer, entries in doom_emacs.get("face_contract", {}).items():
+        resolved_entries = []
+        for entry in entries:
+            face = entry["face"]
+            if face in seen_faces:
+                raise ValueError(f"Duplicate Doom Emacs face contract: {face}")
+            seen_faces.add(face)
+
+            resolved = dict(entry)
+            for attribute in ("foreground", "background"):
+                if role := entry.get(attribute):
+                    resolved[attribute] = resolve_role(role)
+            resolved_entries.append(resolved)
+        face_groups.append({"layer": layer, "entries": resolved_entries})
+
+    context["doom_face_groups"] = face_groups
+
+    terminal_contract = []
+    for name, entry in doom_emacs.get("terminal_contract", {}).items():
+        token = entry["token"]
+        if token not in context["colors"]:
+            raise ValueError(
+                f"Unknown Doom Emacs terminal token {token!r} for {name!r}"
+            )
+        terminal_contract.append(
+            {
+                "name": name,
+                "token": token,
+                "color": context["colors"][token],
+                "ansi256": entry["ansi256"],
+                "tty": entry["tty"],
+            }
+        )
+    context["doom_terminal_contract"] = terminal_contract
+
+    helper_usage = doom_emacs.get("helper_usage", {})
+    undocumented_helpers = set(helpers) - set(helper_usage)
+    unknown_helper_docs = set(helper_usage) - set(helpers)
+    if undocumented_helpers:
+        raise ValueError(
+            "Undocumented Doom Emacs helpers: "
+            + ", ".join(sorted(undocumented_helpers))
+        )
+    if unknown_helper_docs:
+        raise ValueError(
+            "Doom Emacs helper documentation has no value: "
+            + ", ".join(sorted(unknown_helper_docs))
+        )
+    context["doom_helper_usage"] = [
+        {"name": name, "color": color, "usage": helper_usage[name]}
+        for name, color in helpers.items()
+    ]
     context["doom_emacs"] = doom_emacs
     context["helpers"] = helpers
     return context
@@ -172,10 +246,21 @@ def build_doom_emacs_context() -> dict:
 
 def generate_doom_emacs(*, check: bool = False) -> list[Path]:
     context = build_doom_emacs_context()
-    output = render_template("doom-emacs/helsing-theme.el.j2", context)
-    output_path = ROOT / context["doom_emacs"]["output"]
-    write_file(output_path, output, check=check)
-    return [output_path]
+    outputs = context["doom_emacs"]["outputs"]
+
+    theme_output = render_template("doom-emacs/helsing-theme.el.j2", context)
+    theme_path = ROOT / outputs["theme"]
+    write_file(theme_path, theme_output, check=check)
+
+    matrix_output = render_template("doom-emacs/role-matrix.md.j2", context)
+    matrix_path = ROOT / outputs["role_matrix"]
+    write_file(matrix_path, matrix_output, check=check)
+
+    contract_output = render_template("doom-emacs/face-contract.el.j2", context)
+    contract_path = ROOT / outputs["test_contract"]
+    write_file(contract_path, contract_output, check=check)
+
+    return [theme_path, matrix_path, contract_path]
 
 
 def hex_to_rgb_csv(value: str) -> str:

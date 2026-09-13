@@ -3,6 +3,11 @@
 __pycache__/
 *.py[cod]
 
+# Emacs build and test artefacts
+*.elc
+*.eln
+.emacs-test/
+
 # JavaScript and editor caches
 node_modules/
 .ruff_cache/

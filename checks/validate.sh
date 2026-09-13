@@ -34,6 +34,15 @@ if grep -Eq 'nvim_create_(autocmd|augroup)|vim\.defer_fn|VeryLazy' \
   exit 1
 fi
 
+for emacs_theme_source in \
+  "$repo_root/generator/templates/doom-emacs/helsing-theme.el.j2" \
+  "$repo_root/themes/doom-emacs/helsing-theme.el"; do
+  if grep -Eq 'eglot-semantic-|tree-sitter-hl-face:' "$emacs_theme_source"; then
+    echo "Doom Emacs theme contains an unsupported speculative face: ${emacs_theme_source#"$repo_root/"}" >&2
+    exit 1
+  fi
+done
+
 while IFS= read -r source_file; do
   if awk 'length($0) > 120 { exit 1 }' "$source_file"; then
     continue
@@ -68,46 +77,11 @@ done
 
 if command -v emacs >/dev/null 2>&1 && [[ -n "$doom_themes_dir" ]]; then
   HELSING_THEME_DIR="$repo_root/themes/doom-emacs" \
-    emacs --batch -Q -L "$doom_themes_dir" \
-    --eval '(progn
-      (require '\''doom-themes'')
-      (require '\''eglot'')
-      (add-to-list '\''custom-theme-load-path (getenv "HELSING_THEME_DIR"))
-      (load-theme '\''helsing t)
-      (unless (custom-theme-enabled-p '\''helsing)
-        (error "Helsing Doom theme did not enable"))
-      (unless (equal (cdr (assq '\''bg doom-themes--colors))
-                     '\''("#F4F1EA" "white" "white"))
-        (error "Helsing Doom background token is incorrect"))
-      (unless (equal (cdr (assq '\''fg doom-themes--colors))
-                     '\''("#2A2A2A" "black" "black"))
-        (error "Helsing Doom foreground token is incorrect"))
-      (let ((settings (get '\''helsing '\''theme-settings)))
-        (cl-labels
-            ((theme-face-attribute
-              (face attribute)
-              (let* ((entry
-                      (seq-find
-                       (lambda (item)
-                         (and (eq (car item) '\''theme-face)
-                              (eq (cadr item) face)))
-                       settings))
-                     (spec (nth 3 entry)))
-                (plist-get (cadr (car spec)) attribute))))
-          (dolist (expectation
-                   '\''((font-lock-number-face :foreground "#C47A2C")
-                      (font-lock-operator-face :foreground "#7C6EE6")
-                      (font-lock-function-call-face :foreground "#3A7BD5")
-                      (font-lock-property-use-face :foreground "#2A2A2A")
-                      (eglot-semantic-number :foreground "#C47A2C")
-                      (eglot-semantic-operator :foreground "#7C6EE6")
-                      (eglot-semantic-namespace :foreground "#2F8F8B")
-                      (eglot-semantic-decorator :foreground "#C05A8C")))
-            (pcase-let ((`(,face ,attribute ,expected) expectation))
-              (unless (equal (theme-face-attribute face attribute) expected)
-                (error "Helsing face %S does not map %S to %S"
-                       face attribute expected))))))
-      (disable-theme '\''helsing))'
+    HELSING_ROOT="$repo_root" \
+    emacs --batch -Q \
+    -L "$doom_themes_dir" \
+    -L "$repo_root/checks/generated" \
+    -l "$repo_root/checks/emacs-theme-test.el"
 else
   echo "Skipping Doom Emacs runtime validation: Emacs or doom-themes is not installed."
 fi
