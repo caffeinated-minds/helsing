@@ -1,5 +1,9 @@
 target: vscode
-output: themes/vscode/themes/helsing-color-theme.json
+outputs:
+  theme: themes/vscode/themes/helsing-color-theme.json
+  role_matrix: docs/helsing-vscode-role-matrix.md
+  test_contract: checks/generated/helsing-vscode-token-contract.json
+fixtures: generator/config/vscode-fixtures.yml
 
 metadata:
   name: Helsing
@@ -16,6 +20,48 @@ helpers:
   input_active: "#DDD4C5"
   find_match: "#F1E7B8"
   current_find_match: "#E8D58B"
+
+helper_usage:
+  diff_add: "Background for inserted diff lines and text."
+  diff_change: "Reserved diff-change surface for targets that distinguish changed from inserted content."
+  diff_delete: "Background for removed diff lines and text."
+  editor_line: "Current editor-line background."
+  linenr: "Inactive editor line numbers."
+  input_bg: "Input, completion and suggestion surfaces."
+  input_active: "Selected input, suggestion and hover surface."
+  find_match: "Non-current search-match background."
+  current_find_match: "Current search-match and strong word-highlight background."
+
+scope_allowlist:
+  support.function:
+    role: function
+    reason: "Built-in and runtime-provided callables are functions when no semantic provider is available."
+  support.type:
+    role: type
+    reason: "Grammar-provided built-in types are types when no semantic provider is available."
+  variable:
+    role: variable
+    reason: "This fallback deliberately uses the ordinary foreground, so it cannot steal an accent from a more specific rule."
+
+coverage:
+  required_roles:
+    - keyword
+    - operator
+    - function
+    - type
+    - namespace
+    - string
+    - regexp
+    - number
+    - constant
+    - decorator
+    - variable
+    - parameter
+    - property
+    - punctuation
+    - comment
+  semantic_fallbacks:
+    punctuation: "The LSP semantic-token vocabulary has no punctuation token; TextMate remains authoritative."
 
 colors:
   foreground: fg
@@ -181,194 +227,332 @@ colors:
 
 tokenColors:
   - name: Comments
+    role: comment
     scope:
       - comment
       - punctuation.definition.comment
     settings:
-      foreground: muted
       fontStyle: italic
 
   - name: Strings
+    role: string
     scope:
       - string
       - string.quoted
       - string.template
-    settings:
-      foreground: green
+    settings: {}
+
+  - name: Regular Expressions
+    role: regexp
+    scope:
+      - string.regexp
+      - constant.regexp
+    settings: {}
 
   - name: Numbers
+    role: number
     scope:
       - constant.numeric
       - constant.language.boolean
-    settings:
-      foreground: orange
+      - constant.language.json
+    settings: {}
 
   - name: Keywords
+    role: keyword
     scope:
       - keyword
-      - storage
       - keyword.control
-    settings:
-      foreground: purple
+      - storage.modifier
+      - storage.type.class.python
+      - storage.type.function.python
+      - storage.type.function.async.python
+      - storage.type.function.lambda.python
+      - storage.type.c
+      - storage.type.cpp
+      - storage.type.function.shell
+      - storage.type.alias.shell
+      - storage.type.js
+      - storage.type.js.jsx
+      - storage.type.class.js
+      - storage.type.class.js.jsx
+      - storage.type.enum.js
+      - storage.type.enum.js.jsx
+      - storage.type.function.js
+      - storage.type.function.js.jsx
+      - storage.type.interface.js
+      - storage.type.interface.js.jsx
+      - storage.type.namespace.js
+      - storage.type.namespace.js.jsx
+      - storage.type.type.js
+      - storage.type.type.js.jsx
+      - storage.type.ts
+      - storage.type.tsx
+      - storage.type.class.ts
+      - storage.type.class.tsx
+      - storage.type.enum.ts
+      - storage.type.enum.tsx
+      - storage.type.function.ts
+      - storage.type.function.tsx
+      - storage.type.interface.ts
+      - storage.type.interface.tsx
+      - storage.type.namespace.ts
+      - storage.type.namespace.tsx
+      - storage.type.type.ts
+      - storage.type.type.tsx
+    settings: {}
 
   - name: Operators
+    role: operator
     scope:
       - keyword.operator
-    settings:
-      foreground: purple
+    settings: {}
 
   - name: Punctuation
+    role: punctuation
     scope:
       - punctuation.separator
       - punctuation.terminator
-    settings:
-      foreground: subtle
+    settings: {}
 
   - name: Functions
+    role: function
     scope:
       - entity.name.function
       - support.function
-      - meta.function-call
-    settings:
-      foreground: blue
+      - meta.function-call entity.name.function
+      - meta.function-call.python entity.name.function.python
+    settings: {}
 
   - name: Types
+    role: type
     scope:
       - entity.name.type
       - support.type
-      - storage.type
-    settings:
-      foreground: cyan
+      - storage.type.built-in.c
+      - storage.type.built-in.primitive.c
+      - storage.type.built-in.cpp
+      - storage.type.built-in.primitive.cpp
+      - storage.type.boolean.go
+      - storage.type.byte.go
+      - storage.type.error.go
+      - storage.type.numeric.go
+      - storage.type.rune.go
+      - storage.type.string.go
+      - storage.type.uintptr.go
+    settings: {}
 
   - name: Constants
+    role: constant
     scope:
       - constant
       - variable.other.constant
       - support.constant
-    settings:
-      foreground: pink
+    settings: {}
 
   - name: Variables
+    role: variable
     scope:
       - variable
       - meta.definition.variable
-    settings:
-      foreground: fg
+    settings: {}
 
   - name: Parameters
+    role: parameter
     scope:
       - variable.parameter
-    settings:
-      foreground: fg
+    settings: {}
 
   - name: Properties
+    role: property
     scope:
       - variable.other.property
       - meta.property-name
-    settings:
-      foreground: fg
+      - support.type.property-name.css
+      - support.type.property-name.json
+      - support.type.property-name.toml
+      - entity.name.tag.yaml
+    settings: {}
 
   - name: Tags
+    role: type
     scope:
       - entity.name.tag
-    settings:
-      foreground: cyan
+    settings: {}
 
   - name: Attributes
+    role: attribute
     scope:
       - entity.other.attribute-name
-    settings:
-      foreground: pink
+    settings: {}
+
+  - name: Decorators
+    role: decorator
+    scope:
+      - entity.name.function.decorator
+      - punctuation.definition.decorator
+    settings: {}
 
   - name: Modules and Namespaces
+    role: namespace
     scope:
       - entity.name.namespace
       - entity.name.module
-    settings:
-      foreground: cyan
+    settings: {}
 
   - name: Invalid
+    role: error
     scope:
       - invalid
       - invalid.illegal
     settings:
-      foreground: red
       fontStyle: ""
 
   - name: Markdown Headings
+    role: heading
     scope:
       - markup.heading
     settings:
-      foreground: blue
       fontStyle: bold
 
   - name: Markdown Bold
+    role: emphasis
     scope:
       - markup.bold
     settings:
-      foreground: fg
       fontStyle: bold
 
   - name: Markdown Italic
+    role: emphasis
     scope:
       - markup.italic
     settings:
-      foreground: fg
       fontStyle: italic
 
   - name: Markdown Links
+    role: link
     scope:
       - markup.underline.link
       - string.other.link
     settings:
-      foreground: blue
       fontStyle: underline
 
 semanticTokenColors:
   class:
-    foreground: cyan
+    role: type
+    settings: {}
   comment:
-    foreground: muted
-    fontStyle: italic
+    role: comment
+    settings:
+      fontStyle: italic
+  clsParameter:
+    role: parameter
+    settings: {}
   decorator:
-    foreground: pink
+    role: decorator
+    settings: {}
   enum:
-    foreground: cyan
+    role: type
+    settings: {}
   enumMember:
-    foreground: pink
+    role: constant
+    settings: {}
   function:
-    foreground: blue
+    role: function
+    settings: {}
   interface:
-    foreground: cyan
+    role: type
+    settings: {}
+  intrinsic:
+    role: builtin_function
+    settings: {}
   keyword:
-    foreground: purple
+    role: keyword
+    settings: {}
   macro:
-    foreground: pink
-    fontStyle: italic
+    role: constant
+    settings:
+      fontStyle: italic
+  magicFunction:
+    role: function
+    settings: {}
+  member:
+    role: function
+    settings: {}
   method:
-    foreground: blue
+    role: function
+    settings: {}
+  module:
+    role: namespace
+    settings: {}
   namespace:
-    foreground: cyan
+    role: namespace
+    settings: {}
   number:
-    foreground: orange
+    role: number
+    settings: {}
   operator:
-    foreground: purple
+    role: operator
+    settings: {}
   parameter:
-    foreground: fg
+    role: parameter
+    settings: {}
   property:
-    foreground: fg
+    role: property
+    settings: {}
   regexp:
-    foreground: pink
+    role: regexp
+    settings: {}
+  selfParameter:
+    role: parameter
+    settings: {}
   string:
-    foreground: green
+    role: string
+    settings: {}
   type:
-    foreground: cyan
+    role: type
+    settings: {}
   typeParameter:
-    foreground: cyan
+    role: type
+    settings: {}
   variable:
-    foreground: fg
+    role: variable
+    settings: {}
   variable.defaultLibrary:
-    foreground: blue
-    fontStyle: italic
+    role: builtin_function
+    settings:
+      fontStyle: italic
   variable.readonly:
-    foreground: pink
+    role: constant
+    settings: {}
+  "*.abstract":
+    modifier: true
+    settings:
+      fontStyle: italic
+  "*.async":
+    modifier: true
+    settings:
+      fontStyle: italic
+  "*.builtin":
+    modifier: true
+    settings:
+      fontStyle: italic
+  "*.declaration":
+    modifier: true
+    settings:
+      fontStyle: bold
+  "*.definition":
+    modifier: true
+    settings:
+      fontStyle: bold
+  "*.documentation":
+    modifier: true
+    settings:
+      fontStyle: italic
+  "*.modification":
+    modifier: true
+    settings:
+      fontStyle: underline
+  "*.static":
+    modifier: true
+    settings:
+      fontStyle: italic

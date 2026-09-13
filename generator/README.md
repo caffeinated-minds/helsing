@@ -42,8 +42,12 @@ The generator consumes that contract and renders target-specific output such as:
   - WezTerm-specific mappings, ANSI slots, and tab bar colors
 - `generator/templates/vscode/helsing-color-theme.json.j2`
   - VS Code color theme template
+- `generator/templates/vscode/role-matrix.md.j2`
+  - generated VS Code role-to-scope documentation
 - `generator/config/vscode.yml`
-  - VS Code UI colors, token scopes, and semantic token mappings
+  - VS Code UI colors, named-role TextMate scopes, semantic token mappings, helper declarations, and coverage requirements
+- `generator/config/vscode-fixtures.yml`
+  - recorded fixture tokens, expected roles, TextMate scopes, and semantic-token expectations
 - `generator/templates/alacritty/helsing.toml.j2`
   - Alacritty color theme template
 - `generator/config/alacritty.yml`

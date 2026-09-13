@@ -155,8 +155,8 @@
       "punctuation.definition.comment"
     ],
     "settings": {
-      "foreground": "#6B6B6B",
-      "fontStyle": "italic"
+      "fontStyle": "italic",
+      "foreground": "#6B6B6B"
     }
   },
   {
@@ -171,10 +171,21 @@
     }
   },
   {
+    "name": "Regular Expressions",
+    "scope": [
+      "string.regexp",
+      "constant.regexp"
+    ],
+    "settings": {
+      "foreground": "#C05A8C"
+    }
+  },
+  {
     "name": "Numbers",
     "scope": [
       "constant.numeric",
-      "constant.language.boolean"
+      "constant.language.boolean",
+      "constant.language.json"
     ],
     "settings": {
       "foreground": "#C47A2C"
@@ -184,8 +195,44 @@
     "name": "Keywords",
     "scope": [
       "keyword",
-      "storage",
-      "keyword.control"
+      "keyword.control",
+      "storage.modifier",
+      "storage.type.class.python",
+      "storage.type.function.python",
+      "storage.type.function.async.python",
+      "storage.type.function.lambda.python",
+      "storage.type.c",
+      "storage.type.cpp",
+      "storage.type.function.shell",
+      "storage.type.alias.shell",
+      "storage.type.js",
+      "storage.type.js.jsx",
+      "storage.type.class.js",
+      "storage.type.class.js.jsx",
+      "storage.type.enum.js",
+      "storage.type.enum.js.jsx",
+      "storage.type.function.js",
+      "storage.type.function.js.jsx",
+      "storage.type.interface.js",
+      "storage.type.interface.js.jsx",
+      "storage.type.namespace.js",
+      "storage.type.namespace.js.jsx",
+      "storage.type.type.js",
+      "storage.type.type.js.jsx",
+      "storage.type.ts",
+      "storage.type.tsx",
+      "storage.type.class.ts",
+      "storage.type.class.tsx",
+      "storage.type.enum.ts",
+      "storage.type.enum.tsx",
+      "storage.type.function.ts",
+      "storage.type.function.tsx",
+      "storage.type.interface.ts",
+      "storage.type.interface.tsx",
+      "storage.type.namespace.ts",
+      "storage.type.namespace.tsx",
+      "storage.type.type.ts",
+      "storage.type.type.tsx"
     ],
     "settings": {
       "foreground": "#7C6EE6"
@@ -215,7 +262,8 @@
     "scope": [
       "entity.name.function",
       "support.function",
-      "meta.function-call"
+      "meta.function-call entity.name.function",
+      "meta.function-call.python entity.name.function.python"
     ],
     "settings": {
       "foreground": "#3A7BD5"
@@ -226,7 +274,17 @@
     "scope": [
       "entity.name.type",
       "support.type",
-      "storage.type"
+      "storage.type.built-in.c",
+      "storage.type.built-in.primitive.c",
+      "storage.type.built-in.cpp",
+      "storage.type.built-in.primitive.cpp",
+      "storage.type.boolean.go",
+      "storage.type.byte.go",
+      "storage.type.error.go",
+      "storage.type.numeric.go",
+      "storage.type.rune.go",
+      "storage.type.string.go",
+      "storage.type.uintptr.go"
     ],
     "settings": {
       "foreground": "#2F8F8B"
@@ -266,7 +324,11 @@
     "name": "Properties",
     "scope": [
       "variable.other.property",
-      "meta.property-name"
+      "meta.property-name",
+      "support.type.property-name.css",
+      "support.type.property-name.json",
+      "support.type.property-name.toml",
+      "entity.name.tag.yaml"
     ],
     "settings": {
       "foreground": "#2A2A2A"
@@ -291,6 +353,16 @@
     }
   },
   {
+    "name": "Decorators",
+    "scope": [
+      "entity.name.function.decorator",
+      "punctuation.definition.decorator"
+    ],
+    "settings": {
+      "foreground": "#C05A8C"
+    }
+  },
+  {
     "name": "Modules and Namespaces",
     "scope": [
       "entity.name.namespace",
@@ -307,8 +379,8 @@
       "invalid.illegal"
     ],
     "settings": {
-      "foreground": "#C23B3B",
-      "fontStyle": ""
+      "fontStyle": "",
+      "foreground": "#C23B3B"
     }
   },
   {
@@ -317,8 +389,8 @@
       "markup.heading"
     ],
     "settings": {
-      "foreground": "#3A7BD5",
-      "fontStyle": "bold"
+      "fontStyle": "bold",
+      "foreground": "#3A7BD5"
     }
   },
   {
@@ -327,8 +399,8 @@
       "markup.bold"
     ],
     "settings": {
-      "foreground": "#2A2A2A",
-      "fontStyle": "bold"
+      "fontStyle": "bold",
+      "foreground": "#2A2A2A"
     }
   },
   {
@@ -337,8 +409,8 @@
       "markup.italic"
     ],
     "settings": {
-      "foreground": "#2A2A2A",
-      "fontStyle": "italic"
+      "fontStyle": "italic",
+      "foreground": "#2A2A2A"
     }
   },
   {
@@ -348,8 +420,8 @@
       "string.other.link"
     ],
     "settings": {
-      "foreground": "#3A7BD5",
-      "fontStyle": "underline"
+      "fontStyle": "underline",
+      "foreground": "#3A7BD5"
     }
   }
 ],
@@ -358,8 +430,11 @@
     "foreground": "#2F8F8B"
   },
   "comment": {
-    "foreground": "#6B6B6B",
-    "fontStyle": "italic"
+    "fontStyle": "italic",
+    "foreground": "#6B6B6B"
+  },
+  "clsParameter": {
+    "foreground": "#2A2A2A"
   },
   "decorator": {
     "foreground": "#C05A8C"
@@ -376,15 +451,27 @@
   "interface": {
     "foreground": "#2F8F8B"
   },
+  "intrinsic": {
+    "foreground": "#3A7BD5"
+  },
   "keyword": {
     "foreground": "#7C6EE6"
   },
   "macro": {
-    "foreground": "#C05A8C",
-    "fontStyle": "italic"
+    "fontStyle": "italic",
+    "foreground": "#C05A8C"
+  },
+  "magicFunction": {
+    "foreground": "#3A7BD5"
+  },
+  "member": {
+    "foreground": "#3A7BD5"
   },
   "method": {
     "foreground": "#3A7BD5"
+  },
+  "module": {
+    "foreground": "#2F8F8B"
   },
   "namespace": {
     "foreground": "#2F8F8B"
@@ -404,6 +491,9 @@
   "regexp": {
     "foreground": "#C05A8C"
   },
+  "selfParameter": {
+    "foreground": "#2A2A2A"
+  },
   "string": {
     "foreground": "#4C9A5F"
   },
@@ -417,11 +507,35 @@
     "foreground": "#2A2A2A"
   },
   "variable.defaultLibrary": {
-    "foreground": "#3A7BD5",
-    "fontStyle": "italic"
+    "fontStyle": "italic",
+    "foreground": "#3A7BD5"
   },
   "variable.readonly": {
     "foreground": "#C05A8C"
+  },
+  "*.abstract": {
+    "fontStyle": "italic"
+  },
+  "*.async": {
+    "fontStyle": "italic"
+  },
+  "*.builtin": {
+    "fontStyle": "italic"
+  },
+  "*.declaration": {
+    "fontStyle": "bold"
+  },
+  "*.definition": {
+    "fontStyle": "bold"
+  },
+  "*.documentation": {
+    "fontStyle": "italic"
+  },
+  "*.modification": {
+    "fontStyle": "underline"
+  },
+  "*.static": {
+    "fontStyle": "italic"
   }
 }
 }

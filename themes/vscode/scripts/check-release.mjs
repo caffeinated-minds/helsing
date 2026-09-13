@@ -34,7 +34,9 @@ function requirePng(relativePath) {
 }
 
 const manifest = JSON.parse(read("package.json").toString("utf8"));
-JSON.parse(read("themes/helsing-color-theme.json").toString("utf8"));
+const theme = JSON.parse(
+  read("themes/helsing-color-theme.json").toString("utf8"),
+);
 
 const palette = fs.readFileSync(
   path.join(repositoryRoot, "docs/helsing-palette.yml"),
@@ -62,7 +64,43 @@ if (!manifest.license) {
   failures.push("package.json has no licence field");
 }
 
-for (const requiredEntry of ["themes", "images", "LICENSE", "README.md", "CHANGELOG.md"]) {
+if (!manifest.scripts?.["vscode:prepublish"]?.includes("theme:check")) {
+  failures.push("vscode:prepublish must validate generated theme drift");
+}
+
+if (theme.semanticHighlighting !== true) {
+  failures.push("generated theme must enable semantic highlighting");
+}
+
+for (const forbiddenScope of [
+  "storage",
+  "storage.type",
+  "support",
+  "meta.function-call",
+]) {
+  if (theme.tokenColors?.some((rule) => rule.scope?.includes(forbiddenScope))) {
+    failures.push(
+      `generated theme contains dangerous broad scope ${forbiddenScope}`,
+    );
+  }
+}
+
+for (const repositoryFile of [
+  "docs/helsing-vscode-role-matrix.md",
+  "checks/generated/helsing-vscode-token-contract.json",
+]) {
+  if (!fs.existsSync(path.join(repositoryRoot, repositoryFile))) {
+    failures.push(`missing generated repository artifact ${repositoryFile}`);
+  }
+}
+
+for (const requiredEntry of [
+  "themes",
+  "images",
+  "LICENSE",
+  "README.md",
+  "CHANGELOG.md",
+]) {
   if (!manifest.files?.includes(requiredEntry)) {
     failures.push(`package.json files allowlist is missing ${requiredEntry}`);
   }
@@ -85,4 +123,6 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("Release metadata, assets and generated JSON are ready for packaging.");
+console.log(
+  "Release metadata, assets and generated JSON are ready for packaging.",
+);

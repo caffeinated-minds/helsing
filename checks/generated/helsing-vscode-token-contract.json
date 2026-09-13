@@ -1,0 +1,1136 @@
+{
+  "theme": "Helsing",
+  "paletteVersion": "0.1.2",
+  "roles": {
+    "background": {
+      "role": "background",
+      "token": "bg",
+      "color": "#F4F1EA",
+      "intent": "Primary application and editor background.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": null,
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "surface": {
+      "role": "surface",
+      "token": "bg_alt",
+      "color": "#EAE5DC",
+      "intent": "Secondary surfaces such as panels, popups and inactive chrome.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "background",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "text": {
+      "role": "text",
+      "token": "fg",
+      "color": "#2A2A2A",
+      "intent": "Primary readable foreground without additional semantic meaning.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic",
+        "underline"
+      ],
+      "fallback": null,
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "text_muted": {
+      "role": "text_muted",
+      "token": "muted",
+      "color": "#6B6B6B",
+      "intent": "Secondary information that must remain readable but visually recede.",
+      "styles": [
+        "normal",
+        "italic"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "chrome": {
+      "role": "chrome",
+      "token": "subtle",
+      "color": "#A8A29E",
+      "intent": "Low-emphasis interface decoration and syntax separators.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "text_muted",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "border": {
+      "role": "border",
+      "token": "border",
+      "color": "#D6D0C4",
+      "intent": "Boundaries between adjacent surfaces.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "chrome",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "selection": {
+      "role": "selection",
+      "token": "selection",
+      "color": "#E6DCC8",
+      "intent": "Selected or focused region background.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "surface",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "keyword": {
+      "role": "keyword",
+      "token": "purple",
+      "color": "#7C6EE6",
+      "intent": "Language control, declaration and storage keywords.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "keyword",
+        "keyword.control",
+        "storage.modifier",
+        "storage.type.class.python",
+        "storage.type.function.python",
+        "storage.type.function.async.python",
+        "storage.type.function.lambda.python",
+        "storage.type.c",
+        "storage.type.cpp",
+        "storage.type.function.shell",
+        "storage.type.alias.shell",
+        "storage.type.js",
+        "storage.type.js.jsx",
+        "storage.type.class.js",
+        "storage.type.class.js.jsx",
+        "storage.type.enum.js",
+        "storage.type.enum.js.jsx",
+        "storage.type.function.js",
+        "storage.type.function.js.jsx",
+        "storage.type.interface.js",
+        "storage.type.interface.js.jsx",
+        "storage.type.namespace.js",
+        "storage.type.namespace.js.jsx",
+        "storage.type.type.js",
+        "storage.type.type.js.jsx",
+        "storage.type.ts",
+        "storage.type.tsx",
+        "storage.type.class.ts",
+        "storage.type.class.tsx",
+        "storage.type.enum.ts",
+        "storage.type.enum.tsx",
+        "storage.type.function.ts",
+        "storage.type.function.tsx",
+        "storage.type.interface.ts",
+        "storage.type.interface.tsx",
+        "storage.type.namespace.ts",
+        "storage.type.namespace.tsx",
+        "storage.type.type.ts",
+        "storage.type.type.tsx"
+      ],
+      "semantic_selectors": [
+        "keyword"
+      ],
+      "semantic_fallback": null
+    },
+    "operator": {
+      "role": "operator",
+      "token": "purple",
+      "color": "#7C6EE6",
+      "intent": "Language operators and operator-like keywords.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "keyword",
+      "textmate_scopes": [
+        "keyword.operator"
+      ],
+      "semantic_selectors": [
+        "operator"
+      ],
+      "semantic_fallback": null
+    },
+    "function": {
+      "role": "function",
+      "token": "blue",
+      "color": "#3A7BD5",
+      "intent": "Function and method declarations or calls.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call entity.name.function",
+        "meta.function-call.python entity.name.function.python"
+      ],
+      "semantic_selectors": [
+        "function",
+        "magicFunction",
+        "member",
+        "method"
+      ],
+      "semantic_fallback": null
+    },
+    "builtin_function": {
+      "role": "builtin_function",
+      "token": "blue",
+      "color": "#3A7BD5",
+      "intent": "Runtime or standard-library callable supplied by the language environment.",
+      "styles": [
+        "normal",
+        "italic"
+      ],
+      "fallback": "function",
+      "textmate_scopes": [],
+      "semantic_selectors": [
+        "intrinsic",
+        "variable.defaultLibrary"
+      ],
+      "semantic_fallback": null
+    },
+    "string": {
+      "role": "string",
+      "token": "green",
+      "color": "#4C9A5F",
+      "intent": "String and character literal content.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "string",
+        "string.quoted",
+        "string.template"
+      ],
+      "semantic_selectors": [
+        "string"
+      ],
+      "semantic_fallback": null
+    },
+    "regexp": {
+      "role": "regexp",
+      "token": "pink",
+      "color": "#C05A8C",
+      "intent": "Regular-expression literal content.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "string",
+      "textmate_scopes": [
+        "string.regexp",
+        "constant.regexp"
+      ],
+      "semantic_selectors": [
+        "regexp"
+      ],
+      "semantic_fallback": null
+    },
+    "number": {
+      "role": "number",
+      "token": "orange",
+      "color": "#C47A2C",
+      "intent": "Numeric and boolean literal values.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "constant",
+      "textmate_scopes": [
+        "constant.numeric",
+        "constant.language.boolean",
+        "constant.language.json"
+      ],
+      "semantic_selectors": [
+        "number"
+      ],
+      "semantic_fallback": null
+    },
+    "type": {
+      "role": "type",
+      "token": "cyan",
+      "color": "#2F8F8B",
+      "intent": "Type, class, interface and type-parameter names.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "entity.name.type",
+        "support.type",
+        "storage.type.built-in.c",
+        "storage.type.built-in.primitive.c",
+        "storage.type.built-in.cpp",
+        "storage.type.built-in.primitive.cpp",
+        "storage.type.boolean.go",
+        "storage.type.byte.go",
+        "storage.type.error.go",
+        "storage.type.numeric.go",
+        "storage.type.rune.go",
+        "storage.type.string.go",
+        "storage.type.uintptr.go",
+        "entity.name.tag"
+      ],
+      "semantic_selectors": [
+        "class",
+        "enum",
+        "interface",
+        "type",
+        "typeParameter"
+      ],
+      "semantic_fallback": null
+    },
+    "namespace": {
+      "role": "namespace",
+      "token": "cyan",
+      "color": "#2F8F8B",
+      "intent": "Module, package and namespace names.",
+      "styles": [
+        "normal",
+        "italic"
+      ],
+      "fallback": "type",
+      "textmate_scopes": [
+        "entity.name.namespace",
+        "entity.name.module"
+      ],
+      "semantic_selectors": [
+        "module",
+        "namespace"
+      ],
+      "semantic_fallback": null
+    },
+    "constant": {
+      "role": "constant",
+      "token": "pink",
+      "color": "#C05A8C",
+      "intent": "Constants, enum members and readonly values.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic"
+      ],
+      "fallback": "variable",
+      "textmate_scopes": [
+        "constant",
+        "variable.other.constant",
+        "support.constant"
+      ],
+      "semantic_selectors": [
+        "enumMember",
+        "macro",
+        "variable.readonly"
+      ],
+      "semantic_fallback": null
+    },
+    "decorator": {
+      "role": "decorator",
+      "token": "pink",
+      "color": "#C05A8C",
+      "intent": "Decorators, annotations and metadata attached to declarations.",
+      "styles": [
+        "normal",
+        "italic"
+      ],
+      "fallback": "function",
+      "textmate_scopes": [
+        "entity.name.function.decorator",
+        "punctuation.definition.decorator"
+      ],
+      "semantic_selectors": [
+        "decorator"
+      ],
+      "semantic_fallback": null
+    },
+    "attribute": {
+      "role": "attribute",
+      "token": "pink",
+      "color": "#C05A8C",
+      "intent": "Markup and configuration attribute names.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "property",
+      "textmate_scopes": [
+        "entity.other.attribute-name"
+      ],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "variable": {
+      "role": "variable",
+      "token": "fg",
+      "color": "#2A2A2A",
+      "intent": "Mutable or otherwise ordinary variable names.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic",
+        "underline"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "variable",
+        "meta.definition.variable"
+      ],
+      "semantic_selectors": [
+        "variable"
+      ],
+      "semantic_fallback": null
+    },
+    "parameter": {
+      "role": "parameter",
+      "token": "fg",
+      "color": "#2A2A2A",
+      "intent": "Function, method and closure parameters.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic",
+        "underline"
+      ],
+      "fallback": "variable",
+      "textmate_scopes": [
+        "variable.parameter"
+      ],
+      "semantic_selectors": [
+        "clsParameter",
+        "parameter",
+        "selfParameter"
+      ],
+      "semantic_fallback": null
+    },
+    "property": {
+      "role": "property",
+      "token": "fg",
+      "color": "#2A2A2A",
+      "intent": "Object fields, properties and ordinary members.",
+      "styles": [
+        "normal",
+        "bold",
+        "italic",
+        "underline"
+      ],
+      "fallback": "variable",
+      "textmate_scopes": [
+        "variable.other.property",
+        "meta.property-name",
+        "support.type.property-name.css",
+        "support.type.property-name.json",
+        "support.type.property-name.toml",
+        "entity.name.tag.yaml"
+      ],
+      "semantic_selectors": [
+        "property"
+      ],
+      "semantic_fallback": null
+    },
+    "punctuation": {
+      "role": "punctuation",
+      "token": "subtle",
+      "color": "#A8A29E",
+      "intent": "Structural punctuation without independent semantic meaning.",
+      "styles": [
+        "normal"
+      ],
+      "fallback": "chrome",
+      "textmate_scopes": [
+        "punctuation.separator",
+        "punctuation.terminator"
+      ],
+      "semantic_selectors": [],
+      "semantic_fallback": "The LSP semantic-token vocabulary has no punctuation token; TextMate remains authoritative."
+    },
+    "comment": {
+      "role": "comment",
+      "token": "muted",
+      "color": "#6B6B6B",
+      "intent": "Source comments and documentation prose.",
+      "styles": [
+        "normal",
+        "italic"
+      ],
+      "fallback": "text_muted",
+      "textmate_scopes": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "semantic_selectors": [
+        "comment"
+      ],
+      "semantic_fallback": null
+    },
+    "heading": {
+      "role": "heading",
+      "token": "blue",
+      "color": "#3A7BD5",
+      "intent": "Document and markup headings.",
+      "styles": [
+        "bold"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "markup.heading"
+      ],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "emphasis": {
+      "role": "emphasis",
+      "token": "fg",
+      "color": "#2A2A2A",
+      "intent": "Markup emphasis that changes weight or slant without changing semantic colour.",
+      "styles": [
+        "bold",
+        "italic"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "markup.bold",
+        "markup.italic"
+      ],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "link": {
+      "role": "link",
+      "token": "blue",
+      "color": "#3A7BD5",
+      "intent": "Navigable links and references.",
+      "styles": [
+        "normal",
+        "underline"
+      ],
+      "fallback": "function",
+      "textmate_scopes": [
+        "markup.underline.link",
+        "string.other.link"
+      ],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "error": {
+      "role": "error",
+      "token": "red",
+      "color": "#C23B3B",
+      "intent": "Errors, invalid syntax and destructive states.",
+      "styles": [
+        "normal",
+        "bold",
+        "underline"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [
+        "invalid",
+        "invalid.illegal"
+      ],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "warning": {
+      "role": "warning",
+      "token": "yellow",
+      "color": "#B58900",
+      "intent": "Warnings and cautionary states.",
+      "styles": [
+        "normal",
+        "bold",
+        "underline"
+      ],
+      "fallback": "text",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    },
+    "info": {
+      "role": "info",
+      "token": "info",
+      "color": "#4A90E2",
+      "intent": "Informational diagnostics and active informational states.",
+      "styles": [
+        "normal",
+        "underline"
+      ],
+      "fallback": "function",
+      "textmate_scopes": [],
+      "semantic_selectors": [],
+      "semantic_fallback": null
+    }
+  },
+  "scopeAllowlist": {
+    "support.function": {
+      "role": "function",
+      "reason": "Built-in and runtime-provided callables are functions when no semantic provider is available."
+    },
+    "support.type": {
+      "role": "type",
+      "reason": "Grammar-provided built-in types are types when no semantic provider is available."
+    },
+    "variable": {
+      "role": "variable",
+      "reason": "This fallback deliberately uses the ordinary foreground, so it cannot steal an accent from a more specific rule."
+    }
+  },
+  "fixtures": [
+    {
+      "path": "themes/vscode/examples/archive.py",
+      "language": "python",
+      "expectations": [
+        {
+          "text": "def",
+          "occurrence": 2,
+          "role": "keyword",
+          "textmate_scopes": [
+            "storage.type.function.python"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "class",
+          "occurrence": 1,
+          "role": "keyword",
+          "textmate_scopes": [
+            "storage.type.class.python"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "Threat",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.type.class.python"
+          ],
+          "semantic_token": "class"
+        },
+        {
+          "text": "CLEAR",
+          "occurrence": 1,
+          "role": "constant",
+          "textmate_role": "variable",
+          "fallback_reason": "The Python grammar exposes enum members as ordinary read/write variables; Pylance supplies enumMember semantics.",
+          "textmate_scopes": [
+            "variable.other.readwrite.python"
+          ],
+          "semantic_token": "enumMember"
+        },
+        {
+          "text": "\"clear\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.python"
+          ],
+          "semantic_token": "string"
+        },
+        {
+          "text": "3",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.numeric.dec.python"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/sentinel.go",
+      "language": "go",
+      "expectations": [
+        {
+          "text": "func",
+          "occurrence": 1,
+          "role": "keyword",
+          "textmate_scopes": [
+            "keyword.function.go"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "ThreatLevel",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.type.go"
+          ],
+          "semantic_token": "type"
+        },
+        {
+          "text": "ThreatSevere",
+          "occurrence": 1,
+          "role": "constant",
+          "textmate_scopes": [
+            "variable.other.constant.go"
+          ],
+          "semantic_token": "variable.readonly"
+        },
+        {
+          "text": "Patrol",
+          "occurrence": 1,
+          "role": "function",
+          "textmate_scopes": [
+            "entity.name.function.go"
+          ],
+          "semantic_token": "method"
+        },
+        {
+          "text": "\"warning: close the curtains near %s\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.go"
+          ],
+          "semantic_token": "string"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/patrol.sh",
+      "language": "shellscript",
+      "expectations": [
+        {
+          "text": "readonly",
+          "occurrence": 1,
+          "role": "keyword",
+          "textmate_scopes": [
+            "storage.modifier.shell"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "log",
+          "occurrence": 1,
+          "role": "function",
+          "textmate_scopes": [
+            "entity.name.function.shell"
+          ],
+          "semantic_token": "function"
+        },
+        {
+          "text": "REPORT_DIR",
+          "occurrence": 1,
+          "role": "constant",
+          "textmate_role": "variable",
+          "fallback_reason": "The Bash grammar exposes readonly assignments as ordinary read/write variables; a semantic provider may add readonly information.",
+          "textmate_scopes": [
+            "variable.other.readwrite.shell"
+          ],
+          "semantic_token": "variable.readonly"
+        },
+        {
+          "text": "\"clear\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.shell"
+          ],
+          "semantic_token": "string"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/watch.js",
+      "language": "javascript",
+      "expectations": [
+        {
+          "text": "class",
+          "occurrence": 1,
+          "role": "keyword",
+          "textmate_scopes": [
+            "storage.type.class.js"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "DaylightWatch",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.type.class.js"
+          ],
+          "semantic_token": "class"
+        },
+        {
+          "text": "MAX_SHADOWS",
+          "occurrence": 1,
+          "role": "constant",
+          "textmate_scopes": [
+            "variable.other.constant.js"
+          ],
+          "semantic_token": "variable.readonly"
+        },
+        {
+          "text": "inspect",
+          "occurrence": 1,
+          "role": "function",
+          "textmate_scopes": [
+            "entity.name.function.js"
+          ],
+          "semantic_token": "function"
+        },
+        {
+          "text": "\"severe\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.js"
+          ],
+          "semantic_token": "string"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/ward.ts",
+      "language": "typescript",
+      "expectations": [
+        {
+          "text": "interface",
+          "occurrence": 1,
+          "role": "keyword",
+          "textmate_scopes": [
+            "storage.type.interface.ts"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "Observation",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.type.interface.ts"
+          ],
+          "semantic_token": "interface"
+        },
+        {
+          "text": "classify",
+          "occurrence": 1,
+          "role": "function",
+          "textmate_scopes": [
+            "entity.name.function.ts"
+          ],
+          "semantic_token": "function"
+        },
+        {
+          "text": "thresholds",
+          "occurrence": 1,
+          "role": "constant",
+          "textmate_scopes": [
+            "variable.other.constant.ts"
+          ],
+          "semantic_token": "variable.readonly"
+        },
+        {
+          "text": "3",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.numeric.decimal.ts"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/registry.tsx",
+      "language": "typescriptreact",
+      "expectations": [
+        {
+          "text": "type",
+          "occurrence": 2,
+          "role": "keyword",
+          "textmate_scopes": [
+            "storage.type.type.tsx"
+          ],
+          "semantic_token": "keyword"
+        },
+        {
+          "text": "ObservationCardProps",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.type.interface.tsx"
+          ],
+          "semantic_token": "interface"
+        },
+        {
+          "text": "ObservationCard",
+          "occurrence": 1,
+          "role": "function",
+          "textmate_scopes": [
+            "entity.name.function.tsx"
+          ],
+          "semantic_token": "function"
+        },
+        {
+          "text": "article",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.tag.tsx"
+          ],
+          "semantic_token": null
+        },
+        {
+          "text": "data-level",
+          "occurrence": 1,
+          "role": "attribute",
+          "textmate_scopes": [
+            "entity.other.attribute-name.tsx"
+          ],
+          "semantic_token": null
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/watch.c",
+      "language": "c",
+      "expectations": [
+        {
+          "text": "int",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "storage.type.built-in.primitive.c"
+          ],
+          "semantic_token": "type"
+        },
+        {
+          "text": "classify",
+          "occurrence": 1,
+          "role": "function",
+          "textmate_scopes": [
+            "entity.name.function.definition.c"
+          ],
+          "semantic_token": "function"
+        },
+        {
+          "text": "THREAT_CLEAR",
+          "occurrence": 1,
+          "role": "constant",
+          "textmate_scopes": [
+            "constant.other.enum.c"
+          ],
+          "semantic_token": "enumMember"
+        },
+        {
+          "text": "\"library\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.c"
+          ],
+          "semantic_token": "string"
+        },
+        {
+          "text": "0U",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.numeric.decimal.c"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/dashboard.css",
+      "language": "css",
+      "expectations": [
+        {
+          "text": "body",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.tag.css"
+          ],
+          "semantic_token": null
+        },
+        {
+          "text": "min-height",
+          "occurrence": 1,
+          "role": "property",
+          "textmate_scopes": [
+            "support.type.property-name.css"
+          ],
+          "semantic_token": "property"
+        },
+        {
+          "text": "--paper",
+          "occurrence": 1,
+          "role": "variable",
+          "textmate_scopes": [
+            "variable.css"
+          ],
+          "semantic_token": "variable"
+        },
+        {
+          "text": "1rem",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.numeric.css"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/index.html",
+      "language": "html",
+      "expectations": [
+        {
+          "text": "article",
+          "occurrence": 1,
+          "role": "type",
+          "textmate_scopes": [
+            "entity.name.tag.html"
+          ],
+          "semantic_token": null
+        },
+        {
+          "text": "data-level",
+          "occurrence": 1,
+          "role": "attribute",
+          "textmate_scopes": [
+            "entity.other.attribute-name.html"
+          ],
+          "semantic_token": null
+        },
+        {
+          "text": "\"clear\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.html"
+          ],
+          "semantic_token": null
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/observations.json",
+      "language": "json",
+      "expectations": [
+        {
+          "text": "\"location\"",
+          "occurrence": 1,
+          "role": "property",
+          "textmate_scopes": [
+            "support.type.property-name.json"
+          ],
+          "semantic_token": "property"
+        },
+        {
+          "text": "\"North Library\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.json"
+          ],
+          "semantic_token": "string"
+        },
+        {
+          "text": "true",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.language.json"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/watch.yml",
+      "language": "yaml",
+      "expectations": [
+        {
+          "text": "location",
+          "occurrence": 1,
+          "role": "property",
+          "textmate_scopes": [
+            "entity.name.tag.yaml"
+          ],
+          "semantic_token": "property"
+        },
+        {
+          "text": "North Library",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.unquoted.plain.out.yaml"
+          ],
+          "semantic_token": "string"
+        },
+        {
+          "text": "30",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.numeric.integer.yaml"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    },
+    {
+      "path": "themes/vscode/examples/settings.toml",
+      "language": "toml",
+      "expectations": [
+        {
+          "text": "location",
+          "occurrence": 1,
+          "role": "property",
+          "textmate_scopes": [
+            "support.type.property-name.toml"
+          ],
+          "semantic_token": "property"
+        },
+        {
+          "text": "\"North Library\"",
+          "occurrence": 1,
+          "role": "string",
+          "textmate_scopes": [
+            "string.quoted.double.basic.line.toml"
+          ],
+          "semantic_token": "string"
+        },
+        {
+          "text": "30",
+          "occurrence": 1,
+          "role": "number",
+          "textmate_scopes": [
+            "constant.numeric.integer.toml"
+          ],
+          "semantic_token": "number"
+        }
+      ]
+    }
+  ]
+}

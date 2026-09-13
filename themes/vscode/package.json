@@ -2,7 +2,7 @@
   "name": "helsing-theme",
   "displayName": "Helsing Theme",
   "description": "A scholarly daylight theme for VS Code with warm paper, graphite text and restrained semantic colour.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "caffeinatedminds",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -15,8 +15,9 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "theme:generate": "../../.venv/bin/python ../../generator/generate.py vscode",
-    "vscode:prepublish": "npm run theme:generate",
+    "theme:generate": "node scripts/run-python.mjs ../../generator/generate.py vscode",
+    "theme:check": "node scripts/run-python.mjs ../../generator/generate.py vscode --check && node scripts/run-python.mjs ../../checks/validate-vscode.py",
+    "vscode:prepublish": "npm run theme:check && npm run check:release",
     "check:contents": "vsce ls --tree",
     "check:release": "node scripts/check-release.mjs",
     "package:vsix": "vsce package",

@@ -1,0 +1,7 @@
+watch:
+  location: North Library
+  enabled: true
+  interval_seconds: 30
+  thresholds:
+    observed: 1
+    severe: 3

@@ -1,0 +1,312 @@
+inspection:
+  vscode_version: "1.119.0"
+  method: "Developer: Inspect Editor Tokens and Scopes"
+  status: "Grammar-derived expectations recorded; final semantic-provider observations require interactive confirmation."
+
+fixtures:
+  - path: themes/vscode/examples/archive.py
+    language: python
+    expectations:
+      - text: def
+        occurrence: 2
+        role: keyword
+        textmate_scopes: [storage.type.function.python]
+        semantic_token: keyword
+      - text: class
+        occurrence: 1
+        role: keyword
+        textmate_scopes: [storage.type.class.python]
+        semantic_token: keyword
+      - text: Threat
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.type.class.python]
+        semantic_token: class
+      - text: CLEAR
+        occurrence: 1
+        role: constant
+        textmate_role: variable
+        fallback_reason: "The Python grammar exposes enum members as ordinary read/write variables; Pylance supplies enumMember semantics."
+        textmate_scopes: [variable.other.readwrite.python]
+        semantic_token: enumMember
+      - text: '"clear"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.python]
+        semantic_token: string
+      - text: "3"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.numeric.dec.python]
+        semantic_token: number
+
+  - path: themes/vscode/examples/sentinel.go
+    language: go
+    expectations:
+      - text: func
+        occurrence: 1
+        role: keyword
+        textmate_scopes: [keyword.function.go]
+        semantic_token: keyword
+      - text: ThreatLevel
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.type.go]
+        semantic_token: type
+      - text: ThreatSevere
+        occurrence: 1
+        role: constant
+        textmate_scopes: [variable.other.constant.go]
+        semantic_token: variable.readonly
+      - text: Patrol
+        occurrence: 1
+        role: function
+        textmate_scopes: [entity.name.function.go]
+        semantic_token: method
+      - text: '"warning: close the curtains near %s"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.go]
+        semantic_token: string
+
+  - path: themes/vscode/examples/patrol.sh
+    language: shellscript
+    expectations:
+      - text: readonly
+        occurrence: 1
+        role: keyword
+        textmate_scopes: [storage.modifier.shell]
+        semantic_token: keyword
+      - text: log
+        occurrence: 1
+        role: function
+        textmate_scopes: [entity.name.function.shell]
+        semantic_token: function
+      - text: REPORT_DIR
+        occurrence: 1
+        role: constant
+        textmate_role: variable
+        fallback_reason: "The Bash grammar exposes readonly assignments as ordinary read/write variables; a semantic provider may add readonly information."
+        textmate_scopes: [variable.other.readwrite.shell]
+        semantic_token: variable.readonly
+      - text: '"clear"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.shell]
+        semantic_token: string
+
+  - path: themes/vscode/examples/watch.js
+    language: javascript
+    expectations:
+      - text: class
+        occurrence: 1
+        role: keyword
+        textmate_scopes: [storage.type.class.js]
+        semantic_token: keyword
+      - text: DaylightWatch
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.type.class.js]
+        semantic_token: class
+      - text: MAX_SHADOWS
+        occurrence: 1
+        role: constant
+        textmate_scopes: [variable.other.constant.js]
+        semantic_token: variable.readonly
+      - text: inspect
+        occurrence: 1
+        role: function
+        textmate_scopes: [entity.name.function.js]
+        semantic_token: function
+      - text: '"severe"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.js]
+        semantic_token: string
+
+  - path: themes/vscode/examples/ward.ts
+    language: typescript
+    expectations:
+      - text: interface
+        occurrence: 1
+        role: keyword
+        textmate_scopes: [storage.type.interface.ts]
+        semantic_token: keyword
+      - text: Observation
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.type.interface.ts]
+        semantic_token: interface
+      - text: classify
+        occurrence: 1
+        role: function
+        textmate_scopes: [entity.name.function.ts]
+        semantic_token: function
+      - text: thresholds
+        occurrence: 1
+        role: constant
+        textmate_scopes: [variable.other.constant.ts]
+        semantic_token: variable.readonly
+      - text: "3"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.numeric.decimal.ts]
+        semantic_token: number
+
+  - path: themes/vscode/examples/registry.tsx
+    language: typescriptreact
+    expectations:
+      - text: type
+        occurrence: 2
+        role: keyword
+        textmate_scopes: [storage.type.type.tsx]
+        semantic_token: keyword
+      - text: ObservationCardProps
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.type.interface.tsx]
+        semantic_token: interface
+      - text: ObservationCard
+        occurrence: 1
+        role: function
+        textmate_scopes: [entity.name.function.tsx]
+        semantic_token: function
+      - text: article
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.tag.tsx]
+        semantic_token: null
+      - text: data-level
+        occurrence: 1
+        role: attribute
+        textmate_scopes: [entity.other.attribute-name.tsx]
+        semantic_token: null
+
+  - path: themes/vscode/examples/watch.c
+    language: c
+    expectations:
+      - text: int
+        occurrence: 1
+        role: type
+        textmate_scopes: [storage.type.built-in.primitive.c]
+        semantic_token: type
+      - text: classify
+        occurrence: 1
+        role: function
+        textmate_scopes: [entity.name.function.definition.c]
+        semantic_token: function
+      - text: THREAT_CLEAR
+        occurrence: 1
+        role: constant
+        textmate_scopes: [constant.other.enum.c]
+        semantic_token: enumMember
+      - text: '"library"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.c]
+        semantic_token: string
+      - text: "0U"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.numeric.decimal.c]
+        semantic_token: number
+
+  - path: themes/vscode/examples/dashboard.css
+    language: css
+    expectations:
+      - text: body
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.tag.css]
+        semantic_token: null
+      - text: min-height
+        occurrence: 1
+        role: property
+        textmate_scopes: [support.type.property-name.css]
+        semantic_token: property
+      - text: --paper
+        occurrence: 1
+        role: variable
+        textmate_scopes: [variable.css]
+        semantic_token: variable
+      - text: "1rem"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.numeric.css]
+        semantic_token: number
+
+  - path: themes/vscode/examples/index.html
+    language: html
+    expectations:
+      - text: article
+        occurrence: 1
+        role: type
+        textmate_scopes: [entity.name.tag.html]
+        semantic_token: null
+      - text: data-level
+        occurrence: 1
+        role: attribute
+        textmate_scopes: [entity.other.attribute-name.html]
+        semantic_token: null
+      - text: '"clear"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.html]
+        semantic_token: null
+
+  - path: themes/vscode/examples/observations.json
+    language: json
+    expectations:
+      - text: '"location"'
+        occurrence: 1
+        role: property
+        textmate_scopes: [support.type.property-name.json]
+        semantic_token: property
+      - text: '"North Library"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.json]
+        semantic_token: string
+      - text: "true"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.language.json]
+        semantic_token: number
+
+  - path: themes/vscode/examples/watch.yml
+    language: yaml
+    expectations:
+      - text: location
+        occurrence: 1
+        role: property
+        textmate_scopes: [entity.name.tag.yaml]
+        semantic_token: property
+      - text: North Library
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.unquoted.plain.out.yaml]
+        semantic_token: string
+      - text: "30"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.numeric.integer.yaml]
+        semantic_token: number
+
+  - path: themes/vscode/examples/settings.toml
+    language: toml
+    expectations:
+      - text: location
+        occurrence: 1
+        role: property
+        textmate_scopes: [support.type.property-name.toml]
+        semantic_token: property
+      - text: '"North Library"'
+        occurrence: 1
+        role: string
+        textmate_scopes: [string.quoted.double.basic.line.toml]
+        semantic_token: string
+      - text: "30"
+        occurrence: 1
+        role: number
+        textmate_scopes: [constant.numeric.integer.toml]
+        semantic_token: number

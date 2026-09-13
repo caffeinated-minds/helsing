@@ -1,6 +1,6 @@
 name: Helsing
 slug: helsing
-version: 0.1.1
+version: 0.1.2
 variant: light
 
 meta:
@@ -67,13 +67,230 @@ semantic_roles:
   namespace: cyan
   constant: pink
   decorator: pink
+  attribute: pink
   variable: fg
   parameter: fg
   property: fg
   punctuation: subtle
+  comment: muted
+  heading: blue
+  emphasis: fg
+  link: blue
   error: red
   warning: yellow
   info: info
+
+role_contracts:
+  background:
+    token: bg
+    intent: "Primary application and editor background."
+    usage: [background]
+    styles: [normal]
+    fallback: null
+    examples: [editor canvas, terminal background]
+  surface:
+    token: bg_alt
+    intent: "Secondary surfaces such as panels, popups and inactive chrome."
+    usage: [background]
+    styles: [normal]
+    fallback: background
+    examples: [sidebars, popup surfaces]
+  text:
+    token: fg
+    intent: "Primary readable foreground without additional semantic meaning."
+    usage: [foreground]
+    styles: [normal, bold, italic, underline]
+    fallback: null
+    examples: [ordinary text, identifiers without semantic classification]
+  text_muted:
+    token: muted
+    intent: "Secondary information that must remain readable but visually recede."
+    usage: [foreground]
+    styles: [normal, italic]
+    fallback: text
+    examples: [descriptions, inactive labels]
+  chrome:
+    token: subtle
+    intent: "Low-emphasis interface decoration and syntax separators."
+    usage: [foreground, background]
+    styles: [normal]
+    fallback: text_muted
+    examples: [punctuation, guides]
+  border:
+    token: border
+    intent: "Boundaries between adjacent surfaces."
+    usage: [foreground, background]
+    styles: [normal]
+    fallback: chrome
+    examples: [widget borders, rulers]
+  selection:
+    token: selection
+    intent: "Selected or focused region background."
+    usage: [background]
+    styles: [normal]
+    fallback: surface
+    examples: [text selection, focused list item]
+  keyword:
+    token: purple
+    intent: "Language control, declaration and storage keywords."
+    usage: [foreground]
+    styles: [normal, bold, italic]
+    fallback: text
+    examples: [if, class, def]
+  operator:
+    token: purple
+    intent: "Language operators and operator-like keywords."
+    usage: [foreground]
+    styles: [normal]
+    fallback: keyword
+    examples: [plus, equals, pipe]
+  function:
+    token: blue
+    intent: "Function and method declarations or calls."
+    usage: [foreground]
+    styles: [normal, bold, italic]
+    fallback: text
+    examples: [classify, store]
+  builtin_function:
+    token: blue
+    intent: "Runtime or standard-library callable supplied by the language environment."
+    usage: [foreground]
+    styles: [normal, italic]
+    fallback: function
+    examples: [print, len]
+  string:
+    token: green
+    intent: "String and character literal content."
+    usage: [foreground]
+    styles: [normal]
+    fallback: text
+    examples: [quoted strings, template text]
+  regexp:
+    token: pink
+    intent: "Regular-expression literal content."
+    usage: [foreground]
+    styles: [normal]
+    fallback: string
+    examples: [regular expressions]
+  number:
+    token: orange
+    intent: "Numeric and boolean literal values."
+    usage: [foreground]
+    styles: [normal]
+    fallback: constant
+    examples: [integers, floating-point values, booleans]
+  type:
+    token: cyan
+    intent: "Type, class, interface and type-parameter names."
+    usage: [foreground]
+    styles: [normal, bold, italic]
+    fallback: text
+    examples: [Observation, string, Protocol]
+  namespace:
+    token: cyan
+    intent: "Module, package and namespace names."
+    usage: [foreground]
+    styles: [normal, italic]
+    fallback: type
+    examples: [datetime, context]
+  constant:
+    token: pink
+    intent: "Constants, enum members and readonly values."
+    usage: [foreground]
+    styles: [normal, bold, italic]
+    fallback: variable
+    examples: [Threat.CLEAR, MAX_RETRIES]
+  decorator:
+    token: pink
+    intent: "Decorators, annotations and metadata attached to declarations."
+    usage: [foreground]
+    styles: [normal, italic]
+    fallback: function
+    examples: [dataclass, override]
+  attribute:
+    token: pink
+    intent: "Markup and configuration attribute names."
+    usage: [foreground]
+    styles: [normal]
+    fallback: property
+    examples: [aria-label, data-level]
+  variable:
+    token: fg
+    intent: "Mutable or otherwise ordinary variable names."
+    usage: [foreground]
+    styles: [normal, bold, italic, underline]
+    fallback: text
+    examples: [observation, count]
+  parameter:
+    token: fg
+    intent: "Function, method and closure parameters."
+    usage: [foreground]
+    styles: [normal, bold, italic, underline]
+    fallback: variable
+    examples: [archive, threat]
+  property:
+    token: fg
+    intent: "Object fields, properties and ordinary members."
+    usage: [foreground]
+    styles: [normal, bold, italic, underline]
+    fallback: variable
+    examples: [subject, recordedAt]
+  punctuation:
+    token: subtle
+    intent: "Structural punctuation without independent semantic meaning."
+    usage: [foreground]
+    styles: [normal]
+    fallback: chrome
+    examples: [commas, terminators]
+  comment:
+    token: muted
+    intent: "Source comments and documentation prose."
+    usage: [foreground]
+    styles: [normal, italic]
+    fallback: text_muted
+    examples: [line comments, block comments]
+  heading:
+    token: blue
+    intent: "Document and markup headings."
+    usage: [foreground]
+    styles: [bold]
+    fallback: text
+    examples: [Markdown headings]
+  emphasis:
+    token: fg
+    intent: "Markup emphasis that changes weight or slant without changing semantic colour."
+    usage: [foreground]
+    styles: [bold, italic]
+    fallback: text
+    examples: [Markdown bold, Markdown italic]
+  link:
+    token: blue
+    intent: "Navigable links and references."
+    usage: [foreground]
+    styles: [normal, underline]
+    fallback: function
+    examples: [Markdown links, URLs]
+  error:
+    token: red
+    intent: "Errors, invalid syntax and destructive states."
+    usage: [foreground, background]
+    styles: [normal, bold, underline]
+    fallback: text
+    examples: [invalid tokens, error diagnostics]
+  warning:
+    token: yellow
+    intent: "Warnings and cautionary states."
+    usage: [foreground, background]
+    styles: [normal, bold, underline]
+    fallback: text
+    examples: [warning diagnostics]
+  info:
+    token: info
+    intent: "Informational diagnostics and active informational states."
+    usage: [foreground, background]
+    styles: [normal, underline]
+    fallback: function
+    examples: [information diagnostics]
 
 rules:
   use_semantic_roles_first: true

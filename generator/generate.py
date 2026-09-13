@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 import json
 from pathlib import Path
+import re
 import sys
 
 import yaml
@@ -24,6 +26,7 @@ SWAY_CONFIG_FILE = GENERATOR_DIR / "config" / "sway.yml"
 CHROME_CONFIG_FILE = GENERATOR_DIR / "config" / "chrome.yml"
 MINTTY_CONFIG_FILE = GENERATOR_DIR / "config" / "mintty.yml"
 DOOM_EMACS_CONFIG_FILE = GENERATOR_DIR / "config" / "doom-emacs.yml"
+HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
 
 def load_yaml(path: Path) -> dict:
@@ -44,6 +47,36 @@ def build_base_context() -> dict:
     colors = {}
     colors.update(structural)
     colors.update(semantic)
+
+    semantic_roles = palette.get("semantic_roles", {})
+    role_contracts = palette.get("role_contracts", {})
+    if set(semantic_roles) != set(role_contracts):
+        missing_contracts = sorted(set(semantic_roles) - set(role_contracts))
+        unknown_contracts = sorted(set(role_contracts) - set(semantic_roles))
+        details = []
+        if missing_contracts:
+            details.append("missing contracts: " + ", ".join(missing_contracts))
+        if unknown_contracts:
+            details.append("unknown contracts: " + ", ".join(unknown_contracts))
+        raise ValueError("Palette role contract mismatch (" + "; ".join(details) + ")")
+
+    for role, token in semantic_roles.items():
+        contract = role_contracts[role]
+        if contract.get("token") != token:
+            raise ValueError(
+                f"Role {role!r} maps to {token!r}, but its contract maps to "
+                f"{contract.get('token')!r}"
+            )
+        if token not in colors:
+            raise ValueError(f"Role {role!r} references unknown token {token!r}")
+        for field in ("intent", "usage", "styles", "fallback", "examples"):
+            if field not in contract:
+                raise ValueError(f"Role {role!r} has no {field!r} contract field")
+        fallback = contract["fallback"]
+        if fallback is not None and fallback not in semantic_roles:
+            raise ValueError(
+                f"Role {role!r} references unknown fallback role {fallback!r}"
+            )
 
     return {
         "palette": palette,
@@ -81,13 +114,305 @@ def resolve_tokens(value, colors: dict) -> object:
     return value
 
 
+def find_hex_literals(value, path: tuple[str, ...] = ()):
+    if isinstance(value, dict):
+        for key, item in value.items():
+            yield from find_hex_literals(item, (*path, str(key)))
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            yield from find_hex_literals(item, (*path, str(index)))
+    elif isinstance(value, str) and HEX_COLOR.fullmatch(value):
+        yield path, value
+
+
 def build_vscode_context() -> dict:
     context = build_base_context()
-    vscode = load_yaml(VSCODE_CONFIG_FILE)
-    helpers = vscode.get("helpers", {})
+    source = load_yaml(VSCODE_CONFIG_FILE)
+    helpers = source.get("helpers", {})
+    helper_usage = source.get("helper_usage", {})
+    semantic_roles = context["palette"]["semantic_roles"]
+    role_contracts = context["palette"]["role_contracts"]
+
+    unapproved_literals = [
+        (path, value)
+        for path, value in find_hex_literals(source)
+        if not path or path[0] != "helpers"
+    ]
+    if unapproved_literals:
+        locations = ", ".join(
+            f"{'.'.join(path)}={value}" for path, value in unapproved_literals
+        )
+        raise ValueError(
+            "VS Code source contains raw hex colours outside helpers: " + locations
+        )
+
+    if set(helpers) != set(helper_usage):
+        undocumented = sorted(set(helpers) - set(helper_usage))
+        unknown_docs = sorted(set(helper_usage) - set(helpers))
+        details = []
+        if undocumented:
+            details.append("undocumented helpers: " + ", ".join(undocumented))
+        if unknown_docs:
+            details.append("unknown helper docs: " + ", ".join(unknown_docs))
+        raise ValueError("VS Code helper contract mismatch (" + "; ".join(details) + ")")
+    for helper, color in helpers.items():
+        if not isinstance(color, str) or not HEX_COLOR.fullmatch(color):
+            raise ValueError(f"VS Code helper {helper!r} is not a six-digit hex colour")
+        if not isinstance(helper_usage[helper], str) or not helper_usage[helper].strip():
+            raise ValueError(f"VS Code helper {helper!r} has no usage explanation")
 
     context["colors"].update(helpers)
-    context["vscode"] = resolve_tokens(vscode, context["colors"])
+
+    def role_details(role: str) -> dict[str, str]:
+        if role not in semantic_roles:
+            raise ValueError(f"Unknown VS Code role {role!r}")
+        token = semantic_roles[role]
+        return {"role": role, "token": token, "color": context["colors"][token]}
+
+    def validate_style(role: str, settings: dict, location: str) -> None:
+        style_value = settings.get("fontStyle")
+        if style_value is None:
+            return
+        styles = [style for style in style_value.split() if style] or ["normal"]
+        allowed = set(role_contracts[role]["styles"])
+        invalid = sorted(set(styles) - allowed)
+        if invalid:
+            raise ValueError(
+                f"{location} uses styles not allowed by role {role!r}: "
+                + ", ".join(invalid)
+            )
+
+    resolved_colors = {}
+    for name, token in source.get("colors", {}).items():
+        if token not in context["colors"]:
+            raise ValueError(
+                f"VS Code workbench colour {name!r} references unknown token {token!r}"
+            )
+        resolved_colors[name] = context["colors"][token]
+
+    textmate_roles: dict[str, list[str]] = defaultdict(list)
+    scope_owners: dict[str, str] = {}
+    token_colors = []
+    for rule in source.get("tokenColors", []):
+        role = rule.get("role")
+        details = role_details(role)
+        settings = dict(rule.get("settings", {}))
+        if "foreground" in settings:
+            raise ValueError(
+                f"VS Code TextMate rule {rule['name']!r} embeds a foreground; use its role"
+            )
+        validate_style(role, settings, f"VS Code TextMate rule {rule['name']!r}")
+        settings["foreground"] = details["color"]
+        scopes = rule.get("scope", [])
+        if not scopes:
+            raise ValueError(f"VS Code TextMate rule {rule['name']!r} has no scopes")
+        for scope in scopes:
+            if scope in scope_owners:
+                raise ValueError(
+                    f"VS Code TextMate scope {scope!r} is owned by both "
+                    f"{scope_owners[scope]!r} and {rule['name']!r}"
+                )
+            scope_owners[scope] = rule["name"]
+        textmate_roles[role].extend(scopes)
+        token_colors.append(
+            {"name": rule["name"], "scope": scopes, "settings": settings}
+        )
+
+    dangerous_scopes = {
+        "storage",
+        "storage.type",
+        "support",
+        "support.function",
+        "support.type",
+        "variable",
+        "meta.function-call",
+    }
+    allowlist = source.get("scope_allowlist", {})
+    used_dangerous_scopes = dangerous_scopes.intersection(scope_owners)
+    if used_dangerous_scopes != set(allowlist):
+        unapproved = sorted(used_dangerous_scopes - set(allowlist))
+        unused = sorted(set(allowlist) - used_dangerous_scopes)
+        details = []
+        if unapproved:
+            details.append("unapproved: " + ", ".join(unapproved))
+        if unused:
+            details.append("unused allow-list entries: " + ", ".join(unused))
+        raise ValueError("VS Code dangerous-scope contract mismatch (" + "; ".join(details) + ")")
+    for scope, exception in allowlist.items():
+        owner = next(rule for rule in source["tokenColors"] if scope in rule["scope"])
+        if exception.get("role") != owner["role"] or not exception.get("reason"):
+            raise ValueError(f"Invalid VS Code scope allow-list entry for {scope!r}")
+
+    semantic_roles_used: dict[str, list[str]] = defaultdict(list)
+    semantic_token_colors = {}
+    for selector, specification in source.get("semanticTokenColors", {}).items():
+        settings = dict(specification.get("settings", {}))
+        role = specification.get("role")
+        is_modifier = specification.get("modifier") is True
+        if bool(role) == is_modifier:
+            raise ValueError(
+                f"VS Code semantic selector {selector!r} must define exactly one of role or modifier"
+            )
+        if "foreground" in settings:
+            raise ValueError(
+                f"VS Code semantic selector {selector!r} embeds a foreground; use its role"
+            )
+        if role:
+            details = role_details(role)
+            validate_style(role, settings, f"VS Code semantic selector {selector!r}")
+            settings["foreground"] = details["color"]
+            semantic_roles_used[role].append(selector)
+        elif not selector.startswith("*.") or not settings.get("fontStyle"):
+            raise ValueError(
+                f"VS Code semantic modifier {selector!r} must be a style-only wildcard selector"
+            )
+        semantic_token_colors[selector] = settings
+
+    def textmate_selector_matches(selector: str, observed_scope: str) -> bool:
+        leaf_selector = selector.split()[-1]
+        return observed_scope == leaf_selector or observed_scope.startswith(
+            leaf_selector + "."
+        )
+
+    def textmate_winning_roles(observed_scopes: list[str]) -> set[str]:
+        candidates = []
+        for rule in source.get("tokenColors", []):
+            for selector in rule.get("scope", []):
+                for observed_scope in observed_scopes:
+                    if textmate_selector_matches(selector, observed_scope):
+                        leaf_selector = selector.split()[-1]
+                        specificity = len(leaf_selector.split("."))
+                        candidates.append((specificity, rule["role"]))
+        if not candidates:
+            return set()
+        winning_specificity = max(specificity for specificity, _role in candidates)
+        return {
+            role
+            for specificity, role in candidates
+            if specificity == winning_specificity
+        }
+
+    def semantic_selector_matches(selector: str, observed_token: str) -> bool:
+        if selector.startswith("*."):
+            return False
+        return observed_token == selector or observed_token.startswith(selector + ".")
+
+    def semantic_winning_roles(observed_token: str) -> set[str]:
+        candidates = []
+        for selector, specification in source.get("semanticTokenColors", {}).items():
+            role = specification.get("role")
+            if role and semantic_selector_matches(selector, observed_token):
+                candidates.append((len(selector.split(".")), role))
+        if not candidates:
+            return set()
+        winning_specificity = max(specificity for specificity, _role in candidates)
+        return {
+            role
+            for specificity, role in candidates
+            if specificity == winning_specificity
+        }
+
+    coverage = source.get("coverage", {})
+    semantic_fallbacks = coverage.get("semantic_fallbacks", {})
+    for role in coverage.get("required_roles", []):
+        if not textmate_roles.get(role):
+            raise ValueError(f"Required VS Code role {role!r} has no TextMate mapping")
+        if not semantic_roles_used.get(role) and role not in semantic_fallbacks:
+            raise ValueError(
+                f"Required VS Code role {role!r} has no semantic mapping or documented fallback"
+            )
+
+    fixture_path = ROOT / source["fixtures"]
+    fixture_contract = load_yaml(fixture_path)
+    for fixture in fixture_contract.get("fixtures", []):
+        source_path = ROOT / fixture["path"]
+        if not source_path.is_file():
+            raise ValueError(f"VS Code fixture is missing: {fixture['path']}")
+        source_text = source_path.read_text(encoding="utf-8")
+        for expectation in fixture.get("expectations", []):
+            role = expectation["role"]
+            role_details(role)
+            textmate_role = expectation.get("textmate_role", role)
+            semantic_role = expectation.get("semantic_role", role)
+            role_details(textmate_role)
+            role_details(semantic_role)
+            if (textmate_role != role or semantic_role != role) and not expectation.get(
+                "fallback_reason"
+            ):
+                raise ValueError(
+                    f"VS Code fixture expectation {fixture['path']}:{expectation['text']!r} "
+                    "overrides a rendering role without a fallback reason"
+                )
+            occurrence = expectation.get("occurrence", 1)
+            if source_text.count(expectation["text"]) < occurrence:
+                raise ValueError(
+                    f"VS Code fixture {fixture['path']} does not contain occurrence "
+                    f"{occurrence} of {expectation['text']!r}"
+                )
+            if not expectation.get("textmate_scopes"):
+                raise ValueError(
+                    f"VS Code fixture expectation {fixture['path']}:{expectation['text']!r} "
+                    "has no TextMate scope record"
+                )
+            textmate_roles_winning = textmate_winning_roles(
+                expectation["textmate_scopes"]
+            )
+            if textmate_role not in textmate_roles_winning:
+                rendered_roles = ", ".join(sorted(textmate_roles_winning)) or "none"
+                raise ValueError(
+                    f"VS Code fixture expectation {fixture['path']}:{expectation['text']!r} "
+                    f"resolves to TextMate role(s) {rendered_roles}, not {textmate_role!r}"
+                )
+            if "semantic_token" not in expectation:
+                raise ValueError(
+                    f"VS Code fixture expectation {fixture['path']}:{expectation['text']!r} "
+                    "does not record semantic-token behaviour"
+                )
+            semantic_token = expectation["semantic_token"]
+            if semantic_token is not None:
+                semantic_roles_winning = semantic_winning_roles(semantic_token)
+                if semantic_role not in semantic_roles_winning:
+                    rendered_roles = (
+                        ", ".join(sorted(semantic_roles_winning)) or "none"
+                    )
+                    raise ValueError(
+                        f"VS Code fixture expectation {fixture['path']}:{expectation['text']!r} "
+                        f"resolves to semantic role(s) {rendered_roles}, not {semantic_role!r}"
+                    )
+
+    all_role_rows = []
+    for role, contract in role_contracts.items():
+        token = semantic_roles[role]
+        all_role_rows.append(
+            {
+                "role": role,
+                "token": token,
+                "color": context["colors"][token],
+                "intent": contract["intent"],
+                "styles": contract["styles"],
+                "fallback": contract["fallback"],
+                "textmate_scopes": textmate_roles.get(role, []),
+                "semantic_selectors": semantic_roles_used.get(role, []),
+                "semantic_fallback": semantic_fallbacks.get(role),
+            }
+        )
+
+    context["vscode"] = {
+        "metadata": source["metadata"],
+        "outputs": source["outputs"],
+        "colors": resolved_colors,
+        "tokenColors": token_colors,
+        "semanticTokenColors": semantic_token_colors,
+    }
+    context["vscode_role_rows"] = all_role_rows
+    context["vscode_fixture_contract"] = fixture_contract
+    context["vscode_test_contract"] = {
+        "theme": source["metadata"]["name"],
+        "paletteVersion": context["palette"]["version"],
+        "roles": {row["role"]: row for row in all_role_rows},
+        "scopeAllowlist": allowlist,
+        "fixtures": fixture_contract.get("fixtures", []),
+    }
     return context
 
 
@@ -315,10 +640,21 @@ def generate_wezterm(*, check: bool = False) -> list[Path]:
 
 def generate_vscode(*, check: bool = False) -> list[Path]:
     context = build_vscode_context()
+    outputs = context["vscode"]["outputs"]
+
     output = render_template("vscode/helsing-color-theme.json.j2", context)
-    output_path = ROOT / context["vscode"]["output"]
+    output_path = ROOT / outputs["theme"]
     write_file(output_path, output, check=check)
-    return [output_path]
+
+    matrix_output = render_template("vscode/role-matrix.md.j2", context)
+    matrix_path = ROOT / outputs["role_matrix"]
+    write_file(matrix_path, matrix_output, check=check)
+
+    contract_output = json.dumps(context["vscode_test_contract"], indent=2) + "\n"
+    contract_path = ROOT / outputs["test_contract"]
+    write_file(contract_path, contract_output, check=check)
+
+    return [output_path, matrix_path, contract_path]
 
 
 def generate_alacritty(*, check: bool = False) -> list[Path]:

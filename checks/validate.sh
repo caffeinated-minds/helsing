@@ -11,14 +11,13 @@ else
 fi
 
 "$python_bin" "$repo_root/generator/generate.py" --check
+"$python_bin" "$repo_root/checks/validate-vscode.py"
 
 grep -Fq 'operator: purple' "$repo_root/docs/helsing-palette.yml"
 grep -Fq 'decorator: pink' "$repo_root/docs/helsing-palette.yml"
 grep -Fq 'namespace: cyan' "$repo_root/docs/helsing-palette.yml"
-grep -Fq 'foreground: purple' \
-  <(sed -n '/^  operator:/,/^  parameter:/p' "$repo_root/generator/config/vscode.yml")
-grep -Fq 'foreground: pink' \
-  <(sed -n '/^  decorator:/,/^  enum:/p' "$repo_root/generator/config/vscode.yml")
+grep -Fq 'role: operator' "$repo_root/generator/config/vscode.yml"
+grep -Fq 'role: decorator' "$repo_root/generator/config/vscode.yml"
 grep -Fq 'hl("@lsp.mod.defaultLibrary", { fg = c.blue, italic = true })' \
   "$repo_root/themes/neovim/helsing.lua"
 
